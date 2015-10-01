@@ -1,0 +1,7 @@
+[submodule "Carthage/Checkouts/Tor.framework"]
+	path = Carthage/Checkouts/Tor.framework
+	url = https://github.com/iCepa/Tor.framework.git
+[submodule "Extension/tun2tor"]
+	path = Extension/tun2tor
+	url = https://github.com/iCepa/tun2tor.git
+

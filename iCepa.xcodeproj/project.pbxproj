@@ -1,0 +1,843 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095BFD31BBD621D0077E38B /* AppDelegate.swift */; };
+		D095BFD91BBD621D0077E38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D095BFD71BBD621D0077E38B /* MainMenu.xib */; };
+		D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFE31BBD626E0077E38B /* Cocoa.framework */; };
+		D095BFEE1BBD626E0077E38B /* iCepaTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D095BFE21BBD626E0077E38B /* iCepaTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D095BFF31BBD62810077E38B /* CPAPacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D80C1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.m */; };
+		D095BFF91BBD64970077E38B /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFF81BBD64970077E38B /* Tor.framework */; };
+		D095BFFA1BBD64970077E38B /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFF81BBD64970077E38B /* Tor.framework */; };
+		D095BFFB1BBD652E0077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
+		D095BFFC1BBD65300077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
+		D095BFFD1BBD65310077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
+		D095C0051BBD6C190077E38B /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D095C0041BBD6C190077E38B /* libtun2tor.a */; };
+		D0F2D7D41BB5CC1B000E1D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */; };
+		D0F2D7D61BB5CC1B000E1D86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */; };
+		D0F2D7DB1BB5CC1B000E1D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F2D7DA1BB5CC1B000E1D86 /* Assets.xcassets */; };
+		D0F2D7DE1BB5CC1B000E1D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0F2D7DC1BB5CC1B000E1D86 /* LaunchScreen.storyboard */; };
+		D0F2D7EC1BB5CD59000E1D86 /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
+		D0F2D8061BB5D148000E1D86 /* iCepaTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D0F2D7F81BB5D148000E1D86 /* iCepaTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D0F2D80D1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D80C1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D095BFEC1BBD626E0077E38B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D095BFE11BBD626E0077E38B;
+			remoteInfo = "iCepaTunnel-Mac";
+		};
+		D095C0061BBD6C4F0077E38B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D095BFFE1BBD69010077E38B;
+			remoteInfo = "tun2tor-Mac";
+		};
+		D0F2D8041BB5D148000E1D86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0F2D7F71BB5D148000E1D86;
+			remoteInfo = iCepaTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D095BFF21BBD626E0077E38B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D095BFEE1BBD626E0077E38B /* iCepaTunnel.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D80A1BB5D148000E1D86 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D0F2D8061BB5D148000E1D86 /* iCepaTunnel.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D095BFD11BBD621D0077E38B /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D095BFD31BBD621D0077E38B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D095BFD81BBD621D0077E38B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D095BFDA1BBD621D0077E38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D095BFE21BBD626E0077E38B /* iCepaTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iCepaTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D095BFE31BBD626E0077E38B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		D095BFF51BBD630A0077E38B /* iCepa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iCepa.entitlements; sourceTree = "<group>"; };
+		D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iCepa-Mac.xcconfig"; sourceTree = SOURCE_ROOT; };
+		D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iCepa-iOS.xcconfig"; sourceTree = SOURCE_ROOT; };
+		D095BFF81BBD64970077E38B /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = "<group>"; };
+		D095C0021BBD6B080077E38B /* tun2tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = tun2tor.sh; sourceTree = "<group>"; };
+		D095C0041BBD6C190077E38B /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtun2tor.a; path = "Extension/tun2tor/target/x86_64-apple-darwin/release/libtun2tor.a"; sourceTree = SOURCE_ROOT; };
+		D095C0081BBD7C6C0077E38B /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
+		D095C0091BBD89390077E38B /* iCepaTunnel-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iCepaTunnel-iOS.entitlements"; sourceTree = "<group>"; };
+		D0F2D7D01BB5CC1B000E1D86 /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0F2D7DA1BB5CC1B000E1D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0F2D7DD1BB5CC1B000E1D86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0F2D7DF1BB5CC1B000E1D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0F2D7EA1BB5CD59000E1D86 /* CPASharedConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPASharedConstants.h; sourceTree = "<group>"; };
+		D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPASharedConstants.m; sourceTree = "<group>"; };
+		D0F2D7ED1BB5CE0B000E1D86 /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
+		D0F2D7F21BB5D0C5000E1D86 /* iCepa.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = iCepa.entitlements; sourceTree = "<group>"; };
+		D0F2D7F81BB5D148000E1D86 /* iCepaTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iCepaTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F2D8031BB5D148000E1D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0F2D80B1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAPacketTunnelProvider.h; sourceTree = "<group>"; };
+		D0F2D80C1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAPacketTunnelProvider.m; sourceTree = "<group>"; };
+		D0F2D80F1BB5D206000E1D86 /* iCepaTunnel-Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iCepaTunnel-Mac.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D095BFCE1BBD621D0077E38B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D095BFDF1BBD626E0077E38B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D095C0051BBD6C190077E38B /* libtun2tor.a in Frameworks */,
+				D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D7CD1BB5CC1B000E1D86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D095BFF91BBD64970077E38B /* Tor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D7F51BB5D148000E1D86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D095BFFA1BBD64970077E38B /* Tor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D095BFD21BBD621D0077E38B /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				D095BFD31BBD621D0077E38B /* AppDelegate.swift */,
+				D095BFF41BBD62BF0077E38B /* Supporting Files */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		D095BFF41BBD62BF0077E38B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D095C0081BBD7C6C0077E38B /* CPABridging.h */,
+				D095BFD71BBD621D0077E38B /* MainMenu.xib */,
+				D095BFF51BBD630A0077E38B /* iCepa.entitlements */,
+				D095BFDA1BBD621D0077E38B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D095C0031BBD6B0B0077E38B /* External */ = {
+			isa = PBXGroup;
+			children = (
+				D095C0021BBD6B080077E38B /* tun2tor.sh */,
+				D095C0041BBD6C190077E38B /* libtun2tor.a */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		D0F2D7C71BB5CC1B000E1D86 = {
+			isa = PBXGroup;
+			children = (
+				D0F2D7D21BB5CC1B000E1D86 /* iOS */,
+				D095BFD21BBD621D0077E38B /* Mac */,
+				D0F2D7FC1BB5D148000E1D86 /* Extension */,
+				D0F2D7E81BB5CD39000E1D86 /* Shared */,
+				D0F2D7F91BB5D148000E1D86 /* Frameworks */,
+				D0F2D7D11BB5CC1B000E1D86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0F2D7D11BB5CC1B000E1D86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2D7D01BB5CC1B000E1D86 /* iCepa.app */,
+				D0F2D7F81BB5D148000E1D86 /* iCepaTunnel.appex */,
+				D095BFD11BBD621D0077E38B /* iCepa.app */,
+				D095BFE21BBD626E0077E38B /* iCepaTunnel.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0F2D7D21BB5CC1B000E1D86 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */,
+				D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */,
+				D0F2D7E51BB5CC28000E1D86 /* Supporting Files */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D0F2D7E51BB5CC28000E1D86 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2D7ED1BB5CE0B000E1D86 /* CPABridging.h */,
+				D0F2D7DA1BB5CC1B000E1D86 /* Assets.xcassets */,
+				D0F2D7DC1BB5CC1B000E1D86 /* LaunchScreen.storyboard */,
+				D0F2D7F21BB5D0C5000E1D86 /* iCepa.entitlements */,
+				D0F2D7DF1BB5CC1B000E1D86 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0F2D7E81BB5CD39000E1D86 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */,
+				D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */,
+				D0F2D7EA1BB5CD59000E1D86 /* CPASharedConstants.h */,
+				D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D0F2D7F91BB5D148000E1D86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D095BFF81BBD64970077E38B /* Tor.framework */,
+				D095BFE31BBD626E0077E38B /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0F2D7FC1BB5D148000E1D86 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2D80B1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.h */,
+				D0F2D80C1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.m */,
+				D095C0031BBD6B0B0077E38B /* External */,
+				D0F2D80E1BB5D1B3000E1D86 /* Supporting Files */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D0F2D80E1BB5D1B3000E1D86 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D095C0091BBD89390077E38B /* iCepaTunnel-iOS.entitlements */,
+				D0F2D80F1BB5D206000E1D86 /* iCepaTunnel-Mac.entitlements */,
+				D0F2D8031BB5D148000E1D86 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		D095BFFE1BBD69010077E38B /* tun2tor-Mac */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"$(SRCROOT)/Extension/tun2tor.sh\"";
+			buildConfigurationList = D095BFFF1BBD69010077E38B /* Build configuration list for PBXLegacyTarget "tun2tor-Mac" */;
+			buildPhases = (
+			);
+			buildToolPath = /bin/bash;
+			buildWorkingDirectory = Extension/tun2tor;
+			dependencies = (
+			);
+			name = "tun2tor-Mac";
+			passBuildSettingsInEnvironment = 1;
+			productName = tun2tor;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		D095BFD01BBD621D0077E38B /* iCepa-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D095BFDB1BBD621D0077E38B /* Build configuration list for PBXNativeTarget "iCepa-Mac" */;
+			buildPhases = (
+				D095BFCD1BBD621D0077E38B /* Sources */,
+				D095BFCE1BBD621D0077E38B /* Frameworks */,
+				D095BFCF1BBD621D0077E38B /* Resources */,
+				D095BFF21BBD626E0077E38B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D095BFED1BBD626E0077E38B /* PBXTargetDependency */,
+			);
+			name = "iCepa-Mac";
+			productName = "iCepa-Mac";
+			productReference = D095BFD11BBD621D0077E38B /* iCepa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D095BFEF1BBD626E0077E38B /* Build configuration list for PBXNativeTarget "iCepaTunnel-Mac" */;
+			buildPhases = (
+				D095BFDE1BBD626E0077E38B /* Sources */,
+				D095BFDF1BBD626E0077E38B /* Frameworks */,
+				D095BFE01BBD626E0077E38B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D095C0071BBD6C4F0077E38B /* PBXTargetDependency */,
+			);
+			name = "iCepaTunnel-Mac";
+			productName = "iCepaTunnel-Mac";
+			productReference = D095BFE21BBD626E0077E38B /* iCepaTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D0F2D7CF1BB5CC1B000E1D86 /* iCepa-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0F2D7E21BB5CC1B000E1D86 /* Build configuration list for PBXNativeTarget "iCepa-iOS" */;
+			buildPhases = (
+				D0F2D7CC1BB5CC1B000E1D86 /* Sources */,
+				D0F2D7CD1BB5CC1B000E1D86 /* Frameworks */,
+				D0F2D7CE1BB5CC1B000E1D86 /* Resources */,
+				D0F2D80A1BB5D148000E1D86 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0F2D8051BB5D148000E1D86 /* PBXTargetDependency */,
+			);
+			name = "iCepa-iOS";
+			productName = iCepa;
+			productReference = D0F2D7D01BB5CC1B000E1D86 /* iCepa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D0F2D7F71BB5D148000E1D86 /* iCepaTunnel-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0F2D8071BB5D148000E1D86 /* Build configuration list for PBXNativeTarget "iCepaTunnel-iOS" */;
+			buildPhases = (
+				D0F2D7F41BB5D148000E1D86 /* Sources */,
+				D0F2D7F51BB5D148000E1D86 /* Frameworks */,
+				D0F2D7F61BB5D148000E1D86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iCepaTunnel-iOS";
+			productName = iCepaTunnel;
+			productReference = D0F2D7F81BB5D148000E1D86 /* iCepaTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0F2D7C81BB5CC1B000E1D86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Conrad Kramer";
+				TargetAttributes = {
+					D095BFD01BBD621D0077E38B = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					D095BFE11BBD626E0077E38B = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					D095BFFE1BBD69010077E38B = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					D0F2D7CF1BB5CC1B000E1D86 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					D0F2D7F71BB5D148000E1D86 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = D0F2D7CB1BB5CC1B000E1D86 /* Build configuration list for PBXProject "iCepa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0F2D7C71BB5CC1B000E1D86;
+			productRefGroup = D0F2D7D11BB5CC1B000E1D86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0F2D7CF1BB5CC1B000E1D86 /* iCepa-iOS */,
+				D095BFD01BBD621D0077E38B /* iCepa-Mac */,
+				D0F2D7F71BB5D148000E1D86 /* iCepaTunnel-iOS */,
+				D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */,
+				D095BFFE1BBD69010077E38B /* tun2tor-Mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D095BFCF1BBD621D0077E38B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D095BFD91BBD621D0077E38B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D095BFE01BBD626E0077E38B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D7CE1BB5CC1B000E1D86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F2D7DE1BB5CC1B000E1D86 /* LaunchScreen.storyboard in Resources */,
+				D0F2D7DB1BB5CC1B000E1D86 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D7F61BB5D148000E1D86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D095BFCD1BBD621D0077E38B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */,
+				D095BFFB1BBD652E0077E38B /* CPASharedConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D095BFDE1BBD626E0077E38B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D095BFF31BBD62810077E38B /* CPAPacketTunnelProvider.m in Sources */,
+				D095BFFD1BBD65310077E38B /* CPASharedConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D7CC1BB5CC1B000E1D86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F2D7D61BB5CC1B000E1D86 /* ViewController.swift in Sources */,
+				D0F2D7D41BB5CC1B000E1D86 /* AppDelegate.swift in Sources */,
+				D0F2D7EC1BB5CD59000E1D86 /* CPASharedConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F2D7F41BB5D148000E1D86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F2D80D1BB5D1A9000E1D86 /* CPAPacketTunnelProvider.m in Sources */,
+				D095BFFC1BBD65300077E38B /* CPASharedConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D095BFED1BBD626E0077E38B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */;
+			targetProxy = D095BFEC1BBD626E0077E38B /* PBXContainerItemProxy */;
+		};
+		D095C0071BBD6C4F0077E38B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D095BFFE1BBD69010077E38B /* tun2tor-Mac */;
+			targetProxy = D095C0061BBD6C4F0077E38B /* PBXContainerItemProxy */;
+		};
+		D0F2D8051BB5D148000E1D86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0F2D7F71BB5D148000E1D86 /* iCepaTunnel-iOS */;
+			targetProxy = D0F2D8041BB5D148000E1D86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D095BFD71BBD621D0077E38B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D095BFD81BBD621D0077E38B /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D0F2D7DC1BB5CC1B000E1D86 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0F2D7DD1BB5CC1B000E1D86 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D095BFDC1BBD621D0077E38B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Mac/iCepa.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepa;
+				PROVISIONING_PROFILE = "a1a63819-9ce8-476c-b701-ac896b1d3b6e";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = Mac/CPABridging.h;
+			};
+			name = Debug;
+		};
+		D095BFDD1BBD621D0077E38B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Mac/iCepa.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepa;
+				PROVISIONING_PROFILE = "a1a63819-9ce8-476c-b701-ac896b1d3b6e";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = Mac/CPABridging.h;
+			};
+			name = Release;
+		};
+		D095BFF01BBD626E0077E38B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Extension/tun2tor/target/x86_64-apple-darwin/release",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepaTunnel;
+				PROVISIONING_PROFILE = "961a1343-d9d3-4256-9b1b-d794f69b4db7";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
+			};
+			name = Debug;
+		};
+		D095BFF11BBD626E0077E38B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Extension/tun2tor/target/x86_64-apple-darwin/release",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepaTunnel;
+				PROVISIONING_PROFILE = "961a1343-d9d3-4256-9b1b-d794f69b4db7";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
+			};
+			name = Release;
+		};
+		D095C0001BBD69010077E38B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = tun2tor;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D095C0011BBD69010077E38B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = tun2tor;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D0F2D7E01BB5CC1B000E1D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CPA_APPLICATION_GROUP=$(CPA_APPLICATION_GROUP)",
+					"CPA_EXTENSION_BUNDLE_IDENTIFIER=$(CPA_EXTENSION_BUNDLE_IDENTIFIER)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0F2D7E11BB5CC1B000E1D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CPA_APPLICATION_GROUP=$(CPA_APPLICATION_GROUP)",
+					"CPA_EXTENSION_BUNDLE_IDENTIFIER=$(CPA_EXTENSION_BUNDLE_IDENTIFIER)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0F2D7E31BB5CC1B000E1D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iOS/iCepa.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepa;
+				SWIFT_OBJC_BRIDGING_HEADER = iOS/CPABridging.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D0F2D7E41BB5CC1B000E1D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iOS/iCepa.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepa;
+				SWIFT_OBJC_BRIDGING_HEADER = iOS/CPABridging.h;
+			};
+			name = Release;
+		};
+		D0F2D8081BB5D148000E1D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepaTunnel;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D0F2D8091BB5D148000E1D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = iCepaTunnel;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D095BFDB1BBD621D0077E38B /* Build configuration list for PBXNativeTarget "iCepa-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D095BFDC1BBD621D0077E38B /* Debug */,
+				D095BFDD1BBD621D0077E38B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D095BFEF1BBD626E0077E38B /* Build configuration list for PBXNativeTarget "iCepaTunnel-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D095BFF01BBD626E0077E38B /* Debug */,
+				D095BFF11BBD626E0077E38B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D095BFFF1BBD69010077E38B /* Build configuration list for PBXLegacyTarget "tun2tor-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D095C0001BBD69010077E38B /* Debug */,
+				D095C0011BBD69010077E38B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0F2D7CB1BB5CC1B000E1D86 /* Build configuration list for PBXProject "iCepa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F2D7E01BB5CC1B000E1D86 /* Debug */,
+				D0F2D7E11BB5CC1B000E1D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0F2D7E21BB5CC1B000E1D86 /* Build configuration list for PBXNativeTarget "iCepa-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F2D7E31BB5CC1B000E1D86 /* Debug */,
+				D0F2D7E41BB5CC1B000E1D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0F2D8071BB5D148000E1D86 /* Build configuration list for PBXNativeTarget "iCepaTunnel-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F2D8081BB5D148000E1D86 /* Debug */,
+				D0F2D8091BB5D148000E1D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+}

@@ -1,0 +1,11 @@
+//
+//  iCepa.xcconfig
+//  iCepa
+//
+//  Created by Conrad Kramer on 9/25/15.
+//
+//
+
+CPA_APPLICATION_BUNDLE_IDENTIFIER = dk.conra.tor.mac
+CPA_EXTENSION_BUNDLE_IDENTIFIER = dk.conra.tor.mac.extension
+CPA_APPLICATION_GROUP = group.dk.conra.tor
