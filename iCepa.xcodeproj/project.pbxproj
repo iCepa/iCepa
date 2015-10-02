@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; settings = {ASSET_TAGS = (); }; };
 		D01A93701BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; settings = {ASSET_TAGS = (); }; };
+		D01A93741BBEB2830047BB66 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFF81BBD64970077E38B /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095BFD31BBD621D0077E38B /* AppDelegate.swift */; };
 		D095BFD91BBD621D0077E38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D095BFD71BBD621D0077E38B /* MainMenu.xib */; };
 		D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFE31BBD626E0077E38B /* Cocoa.framework */; };
@@ -60,6 +61,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D01A93731BBEB2750047BB66 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D01A93741BBEB2830047BB66 /* Tor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D095BFF21BBD626E0077E38B /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,6 +359,7 @@
 				D0F2D7CD1BB5CC1B000E1D86 /* Frameworks */,
 				D0F2D7CE1BB5CC1B000E1D86 /* Resources */,
 				D0F2D80A1BB5D148000E1D86 /* Embed App Extensions */,
+				D01A93731BBEB2750047BB66 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
