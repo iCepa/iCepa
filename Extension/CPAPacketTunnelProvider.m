@@ -6,6 +6,8 @@
 //  Copyright © 2015 Conrad Kramer. All rights reserved.
 //
 
+#import <asl.h>
+
 #import "CPAPacketTunnelProvider.h"
 #import "CPASharedConstants.h"
 
@@ -20,6 +22,13 @@
 @implementation CPAPacketTunnelProvider
 
 @dynamic protocolConfiguration;
+
++ (void)load {
+    aslclient client = asl_open(NULL, "com.apple.console", 0);
+    asl_log_descriptor(client, NULL, ASL_LEVEL_NOTICE, STDOUT_FILENO, ASL_LOG_DESCRIPTOR_WRITE);
+    asl_log_descriptor(client, NULL, ASL_LEVEL_ERR, STDERR_FILENO, ASL_LOG_DESCRIPTOR_WRITE);
+    asl_close(client);
+}
 
 - (void)handleAppMessage:(NSData *)messageData completionHandler:(nullable void (^)(NSData * __nullable responseData))completionHandler {
     
