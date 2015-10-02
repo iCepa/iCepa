@@ -17,8 +17,12 @@ if [[ ${ACTION:-build} = "build" ]]; then
     LIBRARIES=()
     for ARCH in $ARCHS
     do
-        cargo build --release --lib --target "${ARCH}-apple-${TARGET_OS}"
-        LIBRARIES+=("target/${ARCH}-apple-${TARGET_OS}/release/libtun2tor.a")
+        FIXED_ARCH=$ARCH
+        if [[ $FIXED_ARCH = "arm64" ]]; then
+            FIXED_ARCH="aarch64"
+        fi
+        cargo build --release --lib --target "${FIXED_ARCH}-apple-${TARGET_OS}"
+        LIBRARIES+=("target/${FIXED_ARCH}-apple-${TARGET_OS}/release/libtun2tor.a")
     done
 
     xcrun --sdk $PLATFORM_NAME lipo -create $LIBRARIES -output "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
