@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; settings = {ASSET_TAGS = (); }; };
+		D01A93701BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; settings = {ASSET_TAGS = (); }; };
 		D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095BFD31BBD621D0077E38B /* AppDelegate.swift */; };
 		D095BFD91BBD621D0077E38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D095BFD71BBD621D0077E38B /* MainMenu.xib */; };
 		D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFE31BBD626E0077E38B /* Cocoa.framework */; };
@@ -17,7 +19,6 @@
 		D095BFFB1BBD652E0077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
 		D095BFFC1BBD65300077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
 		D095BFFD1BBD65310077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
-		D095C0051BBD6C190077E38B /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D095C0041BBD6C190077E38B /* libtun2tor.a */; };
 		D0F2D7D41BB5CC1B000E1D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */; };
 		D0F2D7D61BB5CC1B000E1D86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */; };
 		D0F2D7DB1BB5CC1B000E1D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F2D7DA1BB5CC1B000E1D86 /* Assets.xcassets */; };
@@ -28,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D01A93711BBE9B030047BB66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D01A936A1BBE98200047BB66;
+			remoteInfo = "tun2tor-iOS";
+		};
 		D095BFEC1BBD626E0077E38B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
@@ -77,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D01A936E1BBE9A610047BB66 /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtun2tor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D095BFD11BBD621D0077E38B /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D095BFD31BBD621D0077E38B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D095BFD81BBD621D0077E38B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -88,7 +97,6 @@
 		D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iCepa-iOS.xcconfig"; sourceTree = SOURCE_ROOT; };
 		D095BFF81BBD64970077E38B /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = "<group>"; };
 		D095C0021BBD6B080077E38B /* tun2tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = tun2tor.sh; sourceTree = "<group>"; };
-		D095C0041BBD6C190077E38B /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtun2tor.a; path = "Extension/tun2tor/target/x86_64-apple-darwin/release/libtun2tor.a"; sourceTree = SOURCE_ROOT; };
 		D095C0081BBD7C6C0077E38B /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
 		D095C0091BBD89390077E38B /* iCepaTunnel-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iCepaTunnel-iOS.entitlements"; sourceTree = "<group>"; };
 		D0F2D7D01BB5CC1B000E1D86 /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D095C0051BBD6C190077E38B /* libtun2tor.a in Frameworks */,
+				D01A93701BBE9A610047BB66 /* libtun2tor.a in Frameworks */,
 				D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */,
 				D095BFFA1BBD64970077E38B /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				D095C0021BBD6B080077E38B /* tun2tor.sh */,
-				D095C0041BBD6C190077E38B /* libtun2tor.a */,
+				D01A936E1BBE9A610047BB66 /* libtun2tor.a */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -262,6 +271,20 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
+		D01A936A1BBE98200047BB66 /* tun2tor-iOS */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"$(SRCROOT)/Extension/tun2tor.sh\"";
+			buildConfigurationList = D01A936D1BBE98200047BB66 /* Build configuration list for PBXLegacyTarget "tun2tor-iOS" */;
+			buildPhases = (
+			);
+			buildToolPath = /bin/bash;
+			buildWorkingDirectory = Extension/tun2tor;
+			dependencies = (
+			);
+			name = "tun2tor-iOS";
+			passBuildSettingsInEnvironment = 1;
+			productName = "tun2tor-iOS";
+		};
 		D095BFFE1BBD69010077E38B /* tun2tor-Mac */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "\"$(SRCROOT)/Extension/tun2tor.sh\"";
@@ -346,6 +369,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D01A93721BBE9B030047BB66 /* PBXTargetDependency */,
 			);
 			name = "iCepaTunnel-iOS";
 			productName = iCepaTunnel;
@@ -362,6 +386,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Conrad Kramer";
 				TargetAttributes = {
+					D01A936A1BBE98200047BB66 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					D095BFD01BBD621D0077E38B = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -396,6 +423,7 @@
 				D095BFD01BBD621D0077E38B /* iCepa-Mac */,
 				D0F2D7F71BB5D148000E1D86 /* iCepaTunnel-iOS */,
 				D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */,
+				D01A936A1BBE98200047BB66 /* tun2tor-iOS */,
 				D095BFFE1BBD69010077E38B /* tun2tor-Mac */,
 			);
 		};
@@ -476,6 +504,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D01A93721BBE9B030047BB66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D01A936A1BBE98200047BB66 /* tun2tor-iOS */;
+			targetProxy = D01A93711BBE9B030047BB66 /* PBXContainerItemProxy */;
+		};
 		D095BFED1BBD626E0077E38B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */;
@@ -513,6 +546,22 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D01A936B1BBE98200047BB66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = tun2tor;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D01A936C1BBE98200047BB66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = tun2tor;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
 		D095BFDC1BBD621D0077E38B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
@@ -557,16 +606,16 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/Carthage/Build/Mac\"",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Extension/tun2tor/target/x86_64-apple-darwin/release",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
@@ -583,12 +632,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/Carthage/Build/Mac\"",
+				);
 				INFOPLIST_FILE = Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Extension/tun2tor/target/x86_64-apple-darwin/release",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
@@ -749,7 +798,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"\"$(PROJECT_DIR)/Carthage/Build/iOS\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -760,6 +809,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
 			};
 			name = Debug;
 		};
@@ -770,19 +820,29 @@
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"\"$(PROJECT_DIR)/Carthage/Build/iOS\"",
 				);
 				INFOPLIST_FILE = Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D01A936D1BBE98200047BB66 /* Build configuration list for PBXLegacyTarget "tun2tor-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D01A936B1BBE98200047BB66 /* Debug */,
+				D01A936C1BBE98200047BB66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D095BFDB1BBD621D0077E38B /* Build configuration list for PBXNativeTarget "iCepa-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
