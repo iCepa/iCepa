@@ -25,7 +25,7 @@ if [[ ${ACTION:-build} = "build" ]]; then
         LIBRARIES+=("target/${FIXED_ARCH}-apple-${TARGET_OS}/release/libtun2tor.a")
     done
 
-    xcrun --sdk $PLATFORM_NAME lipo -create $LIBRARIES -output "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
+    xcrun --sdk $PLATFORM_NAME lipo -create "${LIBRARIES[@]}" -output "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
 elif [[ ${ACTION:-build} = "clean" ]]; then
     cargo clean
     rm -f "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
