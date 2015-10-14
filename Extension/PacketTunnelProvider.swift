@@ -30,11 +30,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             NSLog("Error: Cannot configure data directory: %@", error.localizedDescription)
         }
         
-        // TODO: Convert to use NSURL, make properties optional, add DNSPort
         configuration = TORConfiguration()
         configuration.cookieAuthentication = true
-        configuration.dataDirectory = dataDirectory.path!
-        configuration.controlSocket = dataDirectory.URLByAppendingPathComponent("control_port").path!
+        configuration.dataDirectory = dataDirectory
+        configuration.controlSocket = dataDirectory.URLByAppendingPathComponent("control_port")
         configuration.arguments = ["--ignore-missing-torrc"]
         
         if let x = TORThread.torThread() {
@@ -44,7 +43,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             thread.start()
         }
         
-        controller = TORController(controlSocketPath: configuration.controlSocket)
+        controller = TORController(socketURL: configuration.controlSocket!)
         
         interface = TunnelInterface()
         
@@ -63,14 +62,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         setTunnelNetworkSettings(settings) { (_) -> Void in
             do {
                 try controller.connect()
-                let cookie = try NSData(contentsOfURL: NSURL(fileURLWithPath: self.configuration.dataDirectory).URLByAppendingPathComponent("control_auth_cookie"), options: NSDataReadingOptions(rawValue: 0))
-                
-                // TODO: Make error nullable
-                controller.authenticateWithData(cookie, completion: { (success, _) -> Void in
-//                    if error != nil {
-//                        NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
-//                        return completionHandler(error)
-//                    }
+                let cookie = try NSData(contentsOfURL: self.configuration.dataDirectory!.URLByAppendingPathComponent("control_auth_cookie"), options: NSDataReadingOptions(rawValue: 0))
+                controller.authenticateWithData(cookie, completion: { (success, error) -> Void in
+                    if error != nil {
+                        NSLog("%@: Error: Cannot authenticate with tor: %@", self, error!.localizedDescription)
+                        return completionHandler(error)
+                    }
                     
                     var observer: AnyObject? = nil
                     let initial = controller.addObserverForCircuitEstablished({ (established) -> Void in
@@ -78,10 +75,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                             completionHandler(nil)
                             self.startReadingPackets()
                             
-                            // TODO: Make nullable
-                            if observer != nil {
-                                controller.removeObserver(observer!)
-                            }
+                            controller.removeObserver(observer)
                         }
                         // TODO: Handle circuit establish failure
                     })
