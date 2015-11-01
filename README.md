@@ -14,8 +14,8 @@ Because the network extension depends on [`tun2tor`](https://github.com/iCepa/tu
 Here is how to build the Rust compiler for iOS and install it into your home directory:
 
 ```sh
-curl https://static.rust-lang.org/dist/rustc-1.3.0-src.tar.gz | tar -xz
-cd rustc-1.3.0
+curl https://static.rust-lang.org/dist/rustc-1.4.0-src.tar.gz | tar -xz
+cd rustc-1.4.0
 mkdir build
 cd build
 ../configure --target=armv7-apple-ios,armv7s-apple-ios,i386-apple-ios,aarch64-apple-ios,x86_64-apple-ios --prefix=$HOME/.rustc-ios
