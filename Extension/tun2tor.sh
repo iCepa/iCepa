@@ -2,31 +2,39 @@
 
 if [[ ${ACTION:-build} = "build" ]]; then
     if [[ $PLATFORM_NAME = "macosx" ]]; then
-        TARGET_OS="darwin"
+        RUST_TARGET_OS="darwin"
     else
-        TARGET_OS="ios"
+        RUST_TARGET_OS="ios"
     fi
 
     for ARCH in $ARCHS
     do
         if [[ $(lipo -info "${BUILT_PRODUCTS_DIR}/libtun2tor.a" 2>&1) != *"${ARCH}"* ]]; then
-            cargo clean
+            rm -f "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
         fi
     done
+
+    if [[ $CONFIGURATION = "Debug" ]]; then
+        RUST_CONFIGURATION="debug"
+        RUST_CONFIGURATION_FLAG=""
+    else
+        RUST_CONFIGURATION="release"
+        RUST_CONFIGURATION_FLAG="--release"
+    fi
 
     LIBRARIES=()
     for ARCH in $ARCHS
     do
-        FIXED_ARCH=$ARCH
-        if [[ $FIXED_ARCH = "arm64" ]]; then
-            FIXED_ARCH="aarch64"
+        RUST_ARCH=$ARCH
+        if [[ $RUST_ARCH = "arm64" ]]; then
+            RUST_ARCH="aarch64"
         fi
-        cargo build --release --lib --target "${FIXED_ARCH}-apple-${TARGET_OS}"
-        LIBRARIES+=("target/${FIXED_ARCH}-apple-${TARGET_OS}/release/libtun2tor.a")
+        cargo build --lib $RUST_CONFIGURATION_FLAG --target "${RUST_ARCH}-apple-${RUST_TARGET_OS}"
+        LIBRARIES+=("target/${RUST_ARCH}-apple-${RUST_TARGET_OS}/${RUST_CONFIGURATION}/libtun2tor.a")
     done
 
     xcrun --sdk $PLATFORM_NAME lipo -create "${LIBRARIES[@]}" -output "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
-elif [[ ${ACTION:-build} = "clean" ]]; then
+elif [[ $ACTION = "clean" ]]; then
     cargo clean
     rm -f "${BUILT_PRODUCTS_DIR}/libtun2tor.a"
 fi

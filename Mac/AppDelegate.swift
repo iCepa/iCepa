@@ -34,8 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 manager.protocolConfiguration = config
                 manager.localizedDescription = "Tor"
                 manager.saveToPreferencesWithCompletionHandler { (error) -> Void in
-                    if error != nil {
-                        NSLog("Error! %@", error!)
+                    if let error = error {
+                        NSLog("Error! %@", error)
                     }
                     start(manager)
                 }
