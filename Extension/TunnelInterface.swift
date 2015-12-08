@@ -10,11 +10,11 @@ import Foundation
 
 class TunnelInterface {
     let interface: COpaquePointer
-    var packetCallback: ((NSData) -> Void)? {
+    var packetCallback: ((NSData, NSNumber) -> Void)? {
         didSet {
             if let _ = packetCallback {
-                tunif_set_packet_callback(interface, unsafeBitCast(self, UnsafeMutablePointer<Void>.self)) { (tunif, context, bytes, len) -> Void in
-                    unsafeBitCast(context, TunnelInterface.self).packetCallback!(NSData(bytes: bytes, length: len))
+                tunif_set_packet_callback(interface, unsafeBitCast(self, UnsafeMutablePointer<Void>.self)) { (tunif, context, bytes, len, proto) -> Void in
+                    unsafeBitCast(context, TunnelInterface.self).packetCallback!(NSData(bytes: bytes, length: len), NSNumber(char: proto))
                 }
             } else {
                 tunif_set_packet_callback(interface, nil, nil)
