@@ -8,6 +8,7 @@
 
 import Cocoa
 import NetworkExtension
+import Tor
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -15,32 +16,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let start: (NETunnelProviderManager) -> (Void) = { (manager) -> Void in
+        let start: (NETunnelProviderManager) -> (Void) = { (manager) in
             do {
                 try manager.connection.startVPNTunnel()
             } catch let error as NSError {
-                NSLog("Error! %@", error)
+                NSLog("Error: Could not start manager: %@", error)
             }
+            
+            let appGroupDirectory = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(CPAAppGroupIdentifier)!
+            let dataDirectory = appGroupDirectory.URLByAppendingPathComponent("Tor")
+            let controlSocket = dataDirectory.URLByAppendingPathComponent("control_port")
+            
+            let controller = TORController(socketURL: controlSocket)
+            controller.addObserverForCircuitEstablished({ (established) in
+                
+            })
         }
         
-        NETunnelProviderManager.loadAllFromPreferencesWithCompletionHandler { (managers, _) -> Void in
-            if managers == nil || managers!.count == 0 {
-                let config = NETunnelProviderProtocol()
-                config.providerConfiguration = ["lol": 1]
-                config.providerBundleIdentifier = CPAExtensionBundleIdentifier
-                config.serverAddress = "lolserver"
-                
-                let manager = NETunnelProviderManager()
-                manager.protocolConfiguration = config
-                manager.localizedDescription = "Tor"
-                manager.saveToPreferencesWithCompletionHandler { (error) -> Void in
-                    if let error = error {
-                        NSLog("Error! %@", error)
-                    }
+        NETunnelProviderManager.loadOrCreateDefaultWithCompletionHandler { (manager, _) -> Void in
+            if let manager = manager {
+                if manager.enabled {
                     start(manager)
+                } else {
+                    manager.enabled = true
+                    manager.saveToPreferencesWithCompletionHandler({ (error) in
+                        if let error = error {
+                            NSLog("Error: Could not enable manager: %@", error)
+                            return
+                        }
+                        start(manager)
+                    })
                 }
-            } else {
-                start(managers![0])
             }
         }
     }
