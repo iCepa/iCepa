@@ -148,9 +148,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
             let ivar = variables[Int(index)]
             if UInt8(ivar_getTypeEncoding(ivar)[0]) != "@".utf8.first! { continue }
             guard let object = object_getIvar(session, ivar) else { continue }
-            if !object.respondsToSelector("invalidate") { continue }
+            if !object.respondsToSelector(#selector(NSPort.invalidate)) { continue }
                         
-            object.performSelector("invalidate")
+            object.performSelector(#selector(NSPort.invalidate))
             break
         }
     }

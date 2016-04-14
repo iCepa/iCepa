@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         let button = UIButton(type: .System)
         button.setTitle("Start Tor", forState: .Normal)
-        button.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(ViewController.buttonPressed(_:)), forControlEvents: .TouchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(button)
         
