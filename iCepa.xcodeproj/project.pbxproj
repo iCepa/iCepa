@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		D065D0721CBF8BD30087FD3C /* iCepa-Mac-Run */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D065D0731CBF8BD30087FD3C /* Build configuration list for PBXAggregateTarget "iCepa-Mac-Run" */;
+			buildPhases = (
+				D065D0781CBF8BDE0087FD3C /* Register Plugin */,
+			);
+			dependencies = (
+				D065D0771CBF8BD90087FD3C /* PBXTargetDependency */,
+			);
+			name = "iCepa-Mac-Run";
+			productName = "Mac Run";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
 		D01A93701BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
@@ -42,6 +57,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D01A936A1BBE98200047BB66;
 			remoteInfo = "tun2tor-iOS";
+		};
+		D065D0761CBF8BD90087FD3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D095BFD01BBD621D0077E38B;
+			remoteInfo = "iCepa-Mac";
 		};
 		D095BFEC1BBD626E0077E38B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -427,6 +449,9 @@
 					D01A936A1BBE98200047BB66 = {
 						CreatedOnToolsVersion = 7.0;
 					};
+					D065D0721CBF8BD30087FD3C = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					D095BFD01BBD621D0077E38B = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -461,6 +486,7 @@
 			targets = (
 				D0F2D7CF1BB5CC1B000E1D86 /* iCepa-iOS */,
 				D095BFD01BBD621D0077E38B /* iCepa-Mac */,
+				D065D0721CBF8BD30087FD3C /* iCepa-Mac-Run */,
 				D0F2D7F71BB5D148000E1D86 /* iCepaTunnel-iOS */,
 				D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */,
 				D01A936A1BBE98200047BB66 /* tun2tor-iOS */,
@@ -502,6 +528,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D065D0781CBF8BDE0087FD3C /* Register Plugin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Register Plugin";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pluginkit -a \"${BUILT_PRODUCTS_DIR}/iCepa.app/Contents/PlugIns/iCepaTunnel.appex\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D095BFCD1BBD621D0077E38B /* Sources */ = {
@@ -553,6 +596,11 @@
 			target = D01A936A1BBE98200047BB66 /* tun2tor-iOS */;
 			targetProxy = D01A93711BBE9B030047BB66 /* PBXContainerItemProxy */;
 		};
+		D065D0771CBF8BD90087FD3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D095BFD01BBD621D0077E38B /* iCepa-Mac */;
+			targetProxy = D065D0761CBF8BD90087FD3C /* PBXContainerItemProxy */;
+		};
 		D095BFED1BBD626E0077E38B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */;
@@ -603,6 +651,20 @@
 			buildSettings = {
 				PRODUCT_NAME = tun2tor;
 				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		D065D0741CBF8BD30087FD3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D065D0751CBF8BD30087FD3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -921,6 +983,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D065D0731CBF8BD30087FD3C /* Build configuration list for PBXAggregateTarget "iCepa-Mac-Run" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D065D0741CBF8BD30087FD3C /* Debug */,
+				D065D0751CBF8BD30087FD3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D095BFDB1BBD621D0077E38B /* Build configuration list for PBXNativeTarget "iCepa-Mac" */ = {
 			isa = XCConfigurationList;
