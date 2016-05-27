@@ -9,33 +9,15 @@ iCepa is an iOS system-wide VPN Tor client. It uses [Tor.framework](https://gith
 
 ## Building
 
-Because the network extension depends on [`tun2tor`](https://github.com/iCepa/tun2tor), building this application requires a version of the Rust compiler that can compile for iOS. iOS is not an officially supported Rust platform, so you will need to build the Rust compiler yourself.
+Because the network extension depends on [`tun2tor`](https://github.com/iCepa/tun2tor), building this application requires the Rust compiler. You can install it using [rustup](https://www.rustup.rs):
 
-Here is how to build the Rust compiler for iOS and install it into your home directory:
-
-```sh
-curl https://static.rust-lang.org/dist/rustc-1.8.0-src.tar.gz | tar -xz
-cd rustc-1.8.0
-mkdir build
-cd build
-../configure --target=armv7-apple-ios,armv7s-apple-ios,i386-apple-ios,aarch64-apple-ios,x86_64-apple-ios --prefix=$HOME/.rustc-ios
-make -j$(sysctl hw.ncpu | sed -e 's/^.*: //')
-make install
-```
-
-To use the toolchain you just built, I recommend installing and using [`multirust`](https://github.com/brson/multirust):
 
 ```sh
-brew install multirust
-multirust update stable
-multirust update ios --link-local $HOME/.rustc-ios
-ln -s $HOME/.multirust/toolchains/stable/bin/cargo $HOME/.rustc-ios/bin/cargo
-```
-
-and then from the iCepa directory, run this command to set the default toolchain:
-
-```sh
-multirust override ios
+curl https://sh.rustup.rs -sSf | sh
+rustup install stable
+rustup target add aarch64-apple-ios
+rustup target add armv7s-apple-ios
+rustup target add armv7-apple-ios
 ```
 
 ## Installation
