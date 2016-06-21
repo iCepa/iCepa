@@ -38,6 +38,6 @@ iCepa is separated into two components. The UI is written in Swift, and provides
 
 Things that need work:
 - `tun2tor` parses packets, but does not forward them over SOCKS to tor. Reach out to @conradev if you are interested in helping with this part.
-- Tor currently exceeds the 5 MB memory limit set on packet provider extensions by Apple (TODO: File radar). Until this is fixed, iCepa's extension **will crash**. If you have a jailbroken device, you can circumvent this with [`jetsamctl`](https://github.com/conradev/jetsamctl). Possible solutions include increasing the use of memory mapping in `tor`.
+- Tor currently exceeds the 5 MB memory limit set on packet provider extensions by Apple (rdar://26908158). Until this is fixed, iCepa's extension **will crash**. If you have a jailbroken device, you can circumvent this with [`jetsamctl`](https://github.com/conradev/jetsamctl). Possible solutions include increasing the use of memory mapping in `tor`.
 - The UI is neither designed nor implemented. It will be one screen with very simple controls. Taking mockups/pull requests for either! Create Github issues for now.
 - There is no icon or any branding (the name is not even final).
