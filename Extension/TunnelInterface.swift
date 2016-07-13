@@ -9,12 +9,20 @@
 import Foundation
 
 class TunnelInterface {
-    let interface: COpaquePointer
-    var packetCallback: ((NSData, NSNumber) -> Void)? {
+    private static var asl: asl_object_t! = {
+        let client = asl_open(nil, "com.apple.console", 0)
+        asl_log_descriptor(client, nil, ASL_LEVEL_NOTICE, STDOUT_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
+        asl_log_descriptor(client, nil, ASL_LEVEL_ERR, STDERR_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
+        asl_close(client)
+        return client
+    }()
+    
+    let interface: OpaquePointer
+    var callback: ((Data, NSNumber) -> Void)? {
         didSet {
-            if let _ = packetCallback {
-                tunif_set_packet_callback(interface, unsafeBitCast(self, UnsafeMutablePointer<Void>.self)) { (tunif, context, bytes, len, proto) -> Void in
-                    unsafeBitCast(context, TunnelInterface.self).packetCallback!(NSData(bytes: bytes, length: len), NSNumber(char: proto))
+            if let _ = callback {
+                tunif_set_packet_callback(interface, unsafeBitCast(self, to: UnsafeMutablePointer<Void>.self)) { (tunif, context, bytes, len, proto) -> Void in
+                    unsafeBitCast(context, to: TunnelInterface.self).callback!(Data(bytes: UnsafePointer<UInt8>(bytes!), count: len), NSNumber(value: proto))
                 }
             } else {
                 tunif_set_packet_callback(interface, nil, nil)
@@ -23,14 +31,7 @@ class TunnelInterface {
     }
     
     init() {
-        var onceToken: dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            let client = asl_open(nil, "com.apple.console", 0)
-            asl_log_descriptor(client, nil, ASL_LEVEL_NOTICE, STDOUT_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
-            asl_log_descriptor(client, nil, ASL_LEVEL_ERR, STDERR_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
-            asl_close(client)
-        }
-        
+        let _ = TunnelInterface.asl
         interface = tunif_new()
     }
     
@@ -38,7 +39,7 @@ class TunnelInterface {
         tunif_free(interface)
     }
     
-    func inputPacket(data: NSData) {
-        tunif_input_packet(interface, data.bytes, data.length)
+    func input(packet: Data) {
+        tunif_input_packet(interface, (packet as NSData).bytes, packet.count)
     }
 }

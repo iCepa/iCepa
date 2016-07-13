@@ -8,7 +8,7 @@
 
 import NetworkExtension
 
-class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
+class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
     
     let configuration: TORConfiguration
     let thread: TORThread
@@ -21,11 +21,11 @@ class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
     }
     
     override init() {
-        let appGroupDirectory = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(CPAAppGroupIdentifier)!
-        let dataDirectory = appGroupDirectory.URLByAppendingPathComponent("Tor")
+        let appGroupDirectory = FileManager.default.containerURLForSecurityApplicationGroupIdentifier(CPAAppGroupIdentifier)!
+        let dataDirectory = try! appGroupDirectory.appendingPathComponent("Tor")
         
         do {
-            try NSFileManager.defaultManager().createDirectoryAtURL(dataDirectory, withIntermediateDirectories: true, attributes: [NSFilePosixPermissions: 0o700])
+            try FileManager.default.createDirectory(at: dataDirectory, withIntermediateDirectories: true, attributes: [FileAttributeKey.posixPermissions.rawValue: 0o700])
         } catch let error as NSError {
             NSLog("Error: Cannot configure data directory: %@", error.localizedDescription)
         }
@@ -34,39 +34,38 @@ class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
         configuration.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050", "ControlPort": "9051"]
         configuration.cookieAuthentication = true
         configuration.dataDirectory = dataDirectory
-        //configuration.controlSocket = dataDirectory.URLByAppendingPathComponent("control_port")
+        configuration.controlSocket = try! dataDirectory.appendingPathComponent("control_port")
         configuration.arguments = ["--ignore-missing-torrc"]
         
-        if let x = TORThread.torThread() {
-            thread = x
-        } else {
+//        if let existing = TORThread.torThread() {
+//            thread = existing
+//        } else {
             thread = TORThread(configuration: configuration)
             thread.start()
-        }
-        
-//        controller = TORController(socketURL: configuration.controlSocket!)
-        controller = TORController(socketHost: "127.0.0.1", port: 9051)
+//        }
+    
+        controller = TORController(socketURL: configuration.controlSocket!)
         
         interface = TunnelInterface()
         
         super.init()
         
         weak var weakSelf = self
-        interface.packetCallback = { (data, proto) -> Void in
+        interface.callback = { (data, proto) -> Void in
             if let weakSelf = weakSelf {
                 weakSelf.packetFlow.writePackets([data], withProtocols: [proto])
             }
         }
     }
 
-    override func startTunnelWithOptions(options: [String : NSObject]?, completionHandler: (NSError?) -> Void) {
-        let ipv4Settings = NEIPv4Settings(addresses: ["192.168.1.2"], subnetMasks: ["255.255.255.0"])
-        ipv4Settings.includedRoutes = [NEIPv4Route.defaultRoute()]
+    override func startTunnel(options: [String : NSObject]?, completionHandler: (NSError?) -> Void) {
+        let ipv4Settings = NEIPv4Settings(addresses: ["192.168.20.2"], subnetMasks: ["255.255.255.0"])
+        ipv4Settings.includedRoutes = [NEIPv4Route.default()]
 
-        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
-        settings.IPv4Settings = ipv4Settings
-        settings.DNSSettings = NEDNSSettings(servers: ["8.8.8.8"])
-        
+        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "192.123.45.6")
+        settings.iPv4Settings = ipv4Settings
+        settings.dnsSettings = NEDNSSettings(servers: ["8.8.8.8"])
+       
 //        let ipv6Settings = NEIPv6Settings(addresses: ["2001:4860:4860::8888"], networkPrefixLengths: [64])
 //        ipv6Settings.includedRoutes = [NEIPv6Route.defaultRoute()]
         
@@ -76,11 +75,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
         
         let controller = self.controller
         self.setTunnelNetworkSettings(settings) { (error) -> Void in
-            self.startReadingPackets()
-            #if os(iOS)
-            self.wakeUpApplication()
-            #endif
-            
             if let error = error {
                 NSLog("%@: Error cannot set tunnel network settings: %@", self, error.localizedDescription)
                 return completionHandler(error)
@@ -88,15 +82,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
             
             do {
                 try controller.connect()
-                let cookie = try NSData(contentsOfURL: self.configuration.dataDirectory!.URLByAppendingPathComponent("control_auth_cookie"), options: NSDataReadingOptions(rawValue: 0))
-                controller.authenticateWithData(cookie, completion: { (success, error) -> Void in
+                let cookie = try Data(contentsOf: try! self.configuration.dataDirectory!.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
+                controller.authenticate(with: cookie, completion: { (success, error) -> Void in
                     if let error = error {
                         NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
                         return completionHandler(error)
                     }
                     
                     var observer: AnyObject? = nil
-                    observer = controller.addObserverForCircuitEstablished({ (established) -> Void in
+                    observer = controller.addObserver(forCircuitEstablished: { (established) -> Void in
                         guard established else {
                             return
                         }
@@ -115,44 +109,21 @@ class PacketTunnelProvider: NEPacketTunnelProvider, NSURLSessionDelegate {
         }
     }
     
-    override func stopTunnelWithReason(reason: NEProviderStopReason, completionHandler: () -> Void) {
+    override func stopTunnel(with reason: NEProviderStopReason, completionHandler: () -> Void) {
         // TODO: Add disconnect handler
         completionHandler()
     }
     
-    override func handleAppMessage(messageData: NSData, completionHandler: ((NSData?) -> Void)?) {
+    override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
 
     }
     
     func startReadingPackets() {
-        packetFlow.readPacketsWithCompletionHandler { (packets, _) -> Void in
+        packetFlow.readPackets(completionHandler: { (packets, _) -> Void in
             for packet in packets {
-                self.interface.inputPacket(packet)
+                self.interface.input(packet: packet)
             }
             self.startReadingPackets()
-        }
+        })
     }
-    
-    #if os(iOS)
-    func wakeUpApplication() {
-        let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(NSUUID().UUIDString)
-        configuration.sharedContainerIdentifier = CPAAppGroupIdentifier
-        
-        let session = NSURLSession(configuration: configuration, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.downloadTaskWithURL(NSURL(string: "http://127.0.0.1:1")!).resume()
-        session.finishTasksAndInvalidate()
-        
-        let count: UnsafeMutablePointer<UInt32> = UnsafeMutablePointer.alloc(4)
-        let variables = class_copyIvarList(object_getClass(session), count)
-        for index in 0..<count.memory {
-            let ivar = variables[Int(index)]
-            if UInt8(ivar_getTypeEncoding(ivar)[0]) != "@".utf8.first! { continue }
-            guard let object = object_getIvar(session, ivar) else { continue }
-            if !object.respondsToSelector(#selector(NSPort.invalidate)) { continue }
-                        
-            object.performSelector(#selector(NSPort.invalidate))
-            break
-        }
-    }
-    #endif
 }

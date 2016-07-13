@@ -23,12 +23,12 @@
 
 /* Begin PBXBuildFile section */
 		D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
-		D01A93701BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
 		D01A93741BBEB2830047BB66 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFF81BBD64970077E38B /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D01A93781BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */; };
 		D01A93791BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */; };
 		D01A937B1BC036180047BB66 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
-		D01A937C1BC036180047BB66 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
+		D02E7ED41CC344A4000E8934 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
+		D02E7ED51CC344B4000E8934 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
 		D04F1FBB1C763EEF00B4DD5C /* NETunnelProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F1FBA1C763EEF00B4DD5C /* NETunnelProviderManager.swift */; };
 		D04F1FBC1C763EEF00B4DD5C /* NETunnelProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F1FBA1C763EEF00B4DD5C /* NETunnelProviderManager.swift */; };
 		D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095BFD31BBD621D0077E38B /* AppDelegate.swift */; };
@@ -58,6 +58,13 @@
 			remoteGlobalIDString = D01A936A1BBE98200047BB66;
 			remoteInfo = "tun2tor-iOS";
 		};
+		D02E7ED11CC33CBB000E8934 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D095BFFE1BBD69010077E38B;
+			remoteInfo = "tun2tor-Mac";
+		};
 		D065D0761CBF8BD90087FD3C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
@@ -71,13 +78,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D095BFE11BBD626E0077E38B;
 			remoteInfo = "iCepaTunnel-Mac";
-		};
-		D095C0061BBD6C4F0077E38B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0F2D7C81BB5CC1B000E1D86 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D095BFFE1BBD69010077E38B;
-			remoteInfo = "tun2tor-Mac";
 		};
 		D0F2D8041BB5D148000E1D86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -183,8 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D01A93701BBE9A610047BB66 /* libtun2tor.a in Frameworks */,
 				D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */,
+				D02E7ED41CC344A4000E8934 /* libtun2tor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +391,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D095C0071BBD6C4F0077E38B /* PBXTargetDependency */,
+				D02E7ED21CC33CBB000E8934 /* PBXTargetDependency */,
 			);
 			name = "iCepaTunnel-Mac";
 			productName = "iCepaTunnel-Mac";
@@ -443,7 +443,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Conrad Kramer";
 				TargetAttributes = {
 					D01A936A1BBE98200047BB66 = {
@@ -464,10 +464,12 @@
 					D0F2D7CF1BB5CC1B000E1D86 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 87PW93R2ZR;
+						LastSwiftMigration = 0800;
 					};
 					D0F2D7F71BB5D148000E1D86 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 87PW93R2ZR;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -563,7 +565,7 @@
 			files = (
 				D095BFFD1BBD65310077E38B /* CPASharedConstants.m in Sources */,
 				D01A93791BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */,
-				D01A937C1BC036180047BB66 /* TunnelInterface.swift in Sources */,
+				D02E7ED51CC344B4000E8934 /* TunnelInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +598,11 @@
 			target = D01A936A1BBE98200047BB66 /* tun2tor-iOS */;
 			targetProxy = D01A93711BBE9B030047BB66 /* PBXContainerItemProxy */;
 		};
+		D02E7ED21CC33CBB000E8934 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D095BFFE1BBD69010077E38B /* tun2tor-Mac */;
+			targetProxy = D02E7ED11CC33CBB000E8934 /* PBXContainerItemProxy */;
+		};
 		D065D0771CBF8BD90087FD3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D095BFD01BBD621D0077E38B /* iCepa-Mac */;
@@ -605,11 +612,6 @@
 			isa = PBXTargetDependency;
 			target = D095BFE11BBD626E0077E38B /* iCepaTunnel-Mac */;
 			targetProxy = D095BFEC1BBD626E0077E38B /* PBXContainerItemProxy */;
-		};
-		D095C0071BBD6C4F0077E38B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D095BFFE1BBD69010077E38B /* tun2tor-Mac */;
-			targetProxy = D095C0061BBD6C4F0077E38B /* PBXContainerItemProxy */;
 		};
 		D0F2D8051BB5D148000E1D86 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -672,11 +674,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mac/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -696,11 +698,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mac/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -712,6 +714,7 @@
 				PRODUCT_NAME = iCepa;
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = Mac/CPABridging.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -764,6 +767,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
 			};
 			name = Release;
@@ -822,7 +826,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -866,7 +870,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -878,12 +882,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOS/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -895,6 +899,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = iOS/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -902,12 +907,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D095BFF71BBD638B0077E38B /* iCepa-iOS.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOS/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -918,6 +923,8 @@
 				PRODUCT_NAME = iCepa;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = iOS/CPABridging.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -941,10 +948,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
-				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
 			};
 			name = Debug;
@@ -965,9 +972,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
-				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Extension/tun2tor\"";
 			};
 			name = Release;
