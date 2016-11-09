@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionTaskDelegate {
     
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let window = UIWindow(frame: UIScreen.main().bounds)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = ViewController()
         window.makeKeyAndVisible()
         self.window = window

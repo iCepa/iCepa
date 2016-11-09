@@ -18,9 +18,16 @@ class ViewController: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        NETunnelProviderManager.loadOrCreateDefaultWithCompletionHandler { (manager, _) -> Void in
-            self.manager = manager
+        NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
+            print("Managers \(managers)")
+            if let error = error {
+                print("ERROR \(error)")
+            }
         }
+        
+//        NETunnelProviderManager.loadOrCreateDefaultWithCompletionHandler { (manager, _) -> Void in
+//            self.manager = manager
+//        }
         
         NotificationCenter.default.addObserver(forName: .NEVPNStatusDidChange, object: nil, queue: OperationQueue.main) { (note) in
             
@@ -34,7 +41,7 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.white()
+        view.backgroundColor = UIColor.white
         
         let button = UIButton(type: .system)
         button.setTitle("Start Tor", for: UIControlState())
@@ -55,7 +62,10 @@ class ViewController: UIViewController {
     }
     
     func buttonPressed(_ sender: AnyObject?) {
-        enableAndStart()
+        let permission = PermissionViewController()
+        present(permission, animated: false, completion: nil)
+        
+//        enableAndStart()
     }
     
     func enableAndStart() {
@@ -63,18 +73,17 @@ class ViewController: UIViewController {
         let start: (NETunnelProviderManager) -> (Void) = { (manager) in
             do {
                 try manager.connection.startVPNTunnel()
-            } catch let error as NSError {
-                return NSLog("Error: Could not start manager: %@", error)
+            } catch let error {
+                return print("Error: Could not start manager: \(error)")
             }
             
-            guard let appGroupDirectory = FileManager.default.containerURLForSecurityApplicationGroupIdentifier(CPAAppGroupIdentifier) else { return }
-            let dataDirectory = try! appGroupDirectory.appendingPathComponent("Tor")
-            let controlSocket = try! dataDirectory.appendingPathComponent("control_port")
+            let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
+            let controlSocket = dataDirectory.appendingPathComponent("control_port")
             
             let controller = TORController(socketURL: controlSocket)
             do {
                 try controller.connect()
-                let cookie = try Data(contentsOf: try! dataDirectory.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
+                let cookie = try Data(contentsOf: dataDirectory.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
                 controller.authenticate(with: cookie, completion: { (success, error) -> Void in
                     if let error = error {
                         NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
@@ -98,7 +107,7 @@ class ViewController: UIViewController {
             manager.isEnabled = true
             manager.saveToPreferences(completionHandler: { (error) in
                 if let error = error {
-                    return NSLog("Error: Could not enable manager: %@", error)
+                    return print("Error: Could not enable manager: \(error)")
                 }
                 start(manager)
             })

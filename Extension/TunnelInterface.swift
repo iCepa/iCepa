@@ -6,33 +6,22 @@
 //  Copyright © 2015 Conrad Kramer. All rights reserved.
 //
 
+import os
 import Foundation
 
 class TunnelInterface {
-    private static var asl: asl_object_t! = {
-        let client = asl_open(nil, "com.apple.console", 0)
-        asl_log_descriptor(client, nil, ASL_LEVEL_NOTICE, STDOUT_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
-        asl_log_descriptor(client, nil, ASL_LEVEL_ERR, STDERR_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
-        asl_close(client)
-        return client
-    }()
+
+    var interface: OpaquePointer!
+    var callback: ((Data, UInt8) -> Void)
     
-    let interface: OpaquePointer
-    var callback: ((Data, NSNumber) -> Void)? {
-        didSet {
-            if let _ = callback {
-                tunif_set_packet_callback(interface, unsafeBitCast(self, to: UnsafeMutablePointer<Void>.self)) { (tunif, context, bytes, len, proto) -> Void in
-                    unsafeBitCast(context, to: TunnelInterface.self).callback!(Data(bytes: UnsafePointer<UInt8>(bytes!), count: len), NSNumber(value: proto))
-                }
-            } else {
-                tunif_set_packet_callback(interface, nil, nil)
-            }
+    init(callback: ((Data, UInt8) -> Void)) {
+        self.callback = callback
+        self.interface = tunif_new(Unmanaged.passUnretained(self).toOpaque()) { (context, bytes, len, proto) in
+            guard let context = context,
+                let bytes = bytes else { return }
+            let tunif: TunnelInterface = Unmanaged.fromOpaque(context).takeUnretainedValue()
+            tunif.callback(Data(bytesNoCopy: bytes, count: len, deallocator: .free), proto)
         }
-    }
-    
-    init() {
-        let _ = TunnelInterface.asl
-        interface = tunif_new()
     }
     
     deinit {

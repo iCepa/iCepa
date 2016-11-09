@@ -12,9 +12,9 @@ extension NETunnelProviderManager {
     class func loadOrCreateDefaultWithCompletionHandler(_ completionHandler: ((NETunnelProviderManager?, NSError?) -> Void)?) {
         self.loadAllFromPreferences(completionHandler: { (managers, error) -> Void in
             if let error = error {
-                NSLog("Error: Could not load managers: %@", error)
+                print("Error: Could not load managers: \(error)")
                 if let completionHandler = completionHandler {
-                    completionHandler(nil, error)
+                    completionHandler(nil, error as NSError?)
                 }
                 return
             }
@@ -45,11 +45,11 @@ extension NETunnelProviderManager {
             
             manager.saveToPreferences(completionHandler: { (error) -> Void in
                 if let error = error {
-                    NSLog("Error: Could not create manager: %@", error)
+                    print("Error: Could not create manager: \(error)")
                 }
                 
                 guard let completionHandler = completionHandler else { return }
-                completionHandler(manager, error)
+                completionHandler(manager, error as? NSError)
             })
         })
     }
