@@ -42,7 +42,7 @@ class ControlViewController: UIViewController {
         
         let startButton = FloatingButton()
         startButton.setTitle("Start Tor", for: UIControlState())
-        startButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(enableAndStart), for: .touchUpInside)
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.gradient = (UIColor(rgbaValue: 0x00CD86FF), UIColor(rgbaValue: 0x3AB52AFF))
         view.addSubview(startButton)
@@ -61,10 +61,6 @@ class ControlViewController: UIViewController {
             establishedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             NSLayoutConstraint(item: establishedLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.5, constant: 0)
             ])
-    }
-    
-    func buttonPressed(_ sender: AnyObject?) {
-//        enableAndStart()
     }
     
     func enableAndStart() {
