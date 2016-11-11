@@ -14,7 +14,7 @@ class TunnelInterface {
     var interface: OpaquePointer!
     var callback: ((Data, UInt8) -> Void)
     
-    init(callback: ((Data, UInt8) -> Void)) {
+    init(callback: @escaping ((Data, UInt8) -> Void)) {
         self.callback = callback
         self.interface = tunif_new(Unmanaged.passUnretained(self).toOpaque()) { (context, bytes, len, proto) in
             guard let context = context,
