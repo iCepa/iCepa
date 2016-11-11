@@ -86,17 +86,19 @@ class FloatingButton: UIButton {
         super.init(frame: frame)
         
         contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        titleLabel?.font = .boldSystemFont(ofSize: 14)
+        titleLabel?.font = .boldSystemFont(ofSize: 16)
         setTitleColor(.white, for: .normal)
         
         layer.shadowOffset = CGSize(width: 0, height: 3)
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 5
+        layer.cornerRadius = 6
         layer.endPoint = CGPoint(x: 1, y: 0.5)
     }
     
     override func layoutSubviews() {
-        layer.cornerRadius = 6
+        super.layoutSubviews()
+        
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
     }
     

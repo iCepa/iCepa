@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ControlViewController.swift
 //  iCepa
 //
 //  Created by Conrad Kramer on 9/25/15.
@@ -10,24 +10,21 @@ import UIKit
 import NetworkExtension
 import Tor
 
-class ViewController: UIViewController {
+class ControlViewController: UIViewController {
     
-    var manager: NETunnelProviderManager?
-    var controller: TORController?
+    let manager: NETunnelProviderManager
+    var controller: TORController
+    
     weak var establishedLabel: UILabel?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
-            print("Managers \(managers)")
-            if let error = error {
-                print("ERROR \(error)")
-            }
-        }
+    required init(manager: NETunnelProviderManager) {
+        self.manager = manager
         
-//        NETunnelProviderManager.loadOrCreateDefaultWithCompletionHandler { (manager, _) -> Void in
-//            self.manager = manager
-//        }
+        let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
+        let controlSocket = dataDirectory.appendingPathComponent("control_port")
+        self.controller = TORController(socketURL: controlSocket)
+        
+        super.init(nibName: nil, bundle: nil)
         
         NotificationCenter.default.addObserver(forName: .NEVPNStatusDidChange, object: nil, queue: OperationQueue.main) { (note) in
             
@@ -43,11 +40,12 @@ class ViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        let button = UIButton(type: .system)
-        button.setTitle("Start Tor", for: UIControlState())
-        button.addTarget(self, action: #selector(ViewController.buttonPressed(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
+        let startButton = FloatingButton()
+        startButton.setTitle("Start Tor", for: UIControlState())
+        startButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        startButton.translatesAutoresizingMaskIntoConstraints = false
+        startButton.gradient = (UIColor(rgbaValue: 0x00CD86FF), UIColor(rgbaValue: 0x3AB52AFF))
+        view.addSubview(startButton)
         
         let establishedLabel = UILabel(frame: CGRect.zero)
         establishedLabel.text = "Circuit Not Established"
@@ -55,34 +53,34 @@ class ViewController: UIViewController {
         view.addSubview(establishedLabel)
         self.establishedLabel = establishedLabel
         
-        view.addConstraint(NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: button, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: establishedLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: establishedLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.5, constant: 0))
+        NSLayoutConstraint.activate([
+            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            startButton.widthAnchor.constraint(equalToConstant: 180),
+            startButton.heightAnchor.constraint(equalToConstant: 50),
+            establishedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            NSLayoutConstraint(item: establishedLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.5, constant: 0)
+            ])
     }
     
     func buttonPressed(_ sender: AnyObject?) {
-        let permission = PermissionViewController()
-        present(permission, animated: false, completion: nil)
-        
 //        enableAndStart()
     }
     
     func enableAndStart() {
-        guard let manager = manager else { return }
-        let start: (NETunnelProviderManager) -> (Void) = { (manager) in
+        let manager = self.manager
+        let controller = self.controller
+        
+        let start: ((Void) -> Void) = {
             do {
                 try manager.connection.startVPNTunnel()
             } catch let error {
                 return print("Error: Could not start manager: \(error)")
             }
             
-            let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
-            let controlSocket = dataDirectory.appendingPathComponent("control_port")
-            
-            let controller = TORController(socketURL: controlSocket)
             do {
                 try controller.connect()
+                let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
                 let cookie = try Data(contentsOf: dataDirectory.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
                 controller.authenticate(with: cookie, completion: { (success, error) -> Void in
                     if let error = error {
@@ -102,14 +100,14 @@ class ViewController: UIViewController {
         }
         
         if manager.isEnabled {
-            start(manager)
+            start()
         } else {
             manager.isEnabled = true
             manager.saveToPreferences(completionHandler: { (error) in
                 if let error = error {
                     return print("Error: Could not enable manager: \(error)")
                 }
-                start(manager)
+                start()
             })
         }
     }

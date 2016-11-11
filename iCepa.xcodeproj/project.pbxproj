@@ -29,8 +29,7 @@
 		D01A937B1BC036180047BB66 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
 		D02E7ED41CC344A4000E8934 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
 		D02E7ED51CC344B4000E8934 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
-		D04F1FBB1C763EEF00B4DD5C /* NETunnelProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F1FBA1C763EEF00B4DD5C /* NETunnelProviderManager.swift */; };
-		D04F1FBC1C763EEF00B4DD5C /* NETunnelProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F1FBA1C763EEF00B4DD5C /* NETunnelProviderManager.swift */; };
+		D08892B41DD582F9009DB0CD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08892B31DD582F9009DB0CD /* AppCoordinator.swift */; };
 		D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095BFD31BBD621D0077E38B /* AppDelegate.swift */; };
 		D095BFD91BBD621D0077E38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D095BFD71BBD621D0077E38B /* MainMenu.xib */; };
 		D095BFE41BBD626E0077E38B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFE31BBD626E0077E38B /* Cocoa.framework */; };
@@ -49,7 +48,7 @@
 		D0E9A70E1D708C00005B8F5C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9A70D1D708C00005B8F5C /* FloatingButton.swift */; };
 		D0F001B01C75120100E653AC /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D09E544C1C643B15001DB8F8 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0F2D7D41BB5CC1B000E1D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */; };
-		D0F2D7D61BB5CC1B000E1D86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */; };
+		D0F2D7D61BB5CC1B000E1D86 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7D51BB5CC1B000E1D86 /* ControlViewController.swift */; };
 		D0F2D7DB1BB5CC1B000E1D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F2D7DA1BB5CC1B000E1D86 /* Assets.xcassets */; };
 		D0F2D7DE1BB5CC1B000E1D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0F2D7DC1BB5CC1B000E1D86 /* LaunchScreen.storyboard */; };
 		D0F2D7EC1BB5CD59000E1D86 /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
@@ -146,7 +145,7 @@
 		D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		D01A937A1BC036180047BB66 /* TunnelInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelInterface.swift; sourceTree = "<group>"; };
 		D01A937D1BC036300047BB66 /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
-		D04F1FBA1C763EEF00B4DD5C /* NETunnelProviderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NETunnelProviderManager.swift; sourceTree = "<group>"; };
+		D08892B31DD582F9009DB0CD /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D095BFD11BBD621D0077E38B /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D095BFD31BBD621D0077E38B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D095BFD81BBD621D0077E38B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -166,7 +165,7 @@
 		D0E9A70D1D708C00005B8F5C /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		D0F2D7D01BB5CC1B000E1D86 /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0F2D7D51BB5CC1B000E1D86 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		D0F2D7DA1BB5CC1B000E1D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0F2D7DD1BB5CC1B000E1D86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0F2D7DF1BB5CC1B000E1D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -273,9 +272,10 @@
 			isa = PBXGroup;
 			children = (
 				D0F2D7D31BB5CC1B000E1D86 /* AppDelegate.swift */,
-				D0F2D7D51BB5CC1B000E1D86 /* ViewController.swift */,
-				D0E9A70D1D708C00005B8F5C /* FloatingButton.swift */,
+				D08892B31DD582F9009DB0CD /* AppCoordinator.swift */,
+				D0F2D7D51BB5CC1B000E1D86 /* ControlViewController.swift */,
 				D0E9A7071D6FFA16005B8F5C /* PermissionViewController.swift */,
+				D0E9A70D1D708C00005B8F5C /* FloatingButton.swift */,
 				D0F2D7E51BB5CC28000E1D86 /* Supporting Files */,
 			);
 			path = iOS;
@@ -300,7 +300,6 @@
 				D095BFF61BBD63850077E38B /* iCepa-Mac.xcconfig */,
 				D0F2D7EA1BB5CD59000E1D86 /* CPASharedConstants.h */,
 				D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */,
-				D04F1FBA1C763EEF00B4DD5C /* NETunnelProviderManager.swift */,
 				D0B28C501D53341B00EA635B /* FileManager.swift */,
 			);
 			path = Shared;
@@ -455,7 +454,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Conrad Kramer";
 				TargetAttributes = {
 					D01A936A1BBE98200047BB66 = {
@@ -483,7 +482,7 @@
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 87PW93R2ZR;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -567,7 +566,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D04F1FBC1C763EEF00B4DD5C /* NETunnelProviderManager.swift in Sources */,
 				D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */,
 				D095BFFB1BBD652E0077E38B /* CPASharedConstants.m in Sources */,
 				D0B28C521D53341B00EA635B /* FileManager.swift in Sources */,
@@ -592,10 +590,10 @@
 				D0B28C511D53341B00EA635B /* FileManager.swift in Sources */,
 				D0E9A7081D6FFA16005B8F5C /* PermissionViewController.swift in Sources */,
 				D0E9A70E1D708C00005B8F5C /* FloatingButton.swift in Sources */,
-				D0F2D7D61BB5CC1B000E1D86 /* ViewController.swift in Sources */,
+				D0F2D7D61BB5CC1B000E1D86 /* ControlViewController.swift in Sources */,
+				D08892B41DD582F9009DB0CD /* AppCoordinator.swift in Sources */,
 				D0F2D7D41BB5CC1B000E1D86 /* AppDelegate.swift in Sources */,
 				D0F2D7EC1BB5CD59000E1D86 /* CPASharedConstants.m in Sources */,
-				D04F1FBB1C763EEF00B4DD5C /* NETunnelProviderManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,8 +819,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -868,8 +868,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -893,6 +895,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -958,7 +961,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 87PW93R2ZR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Carthage/Build/iOS\"",
@@ -971,8 +974,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "706a6776-3cac-4704-a238-076233e43a16";
+				PROVISIONING_PROFILE_SPECIFIER = "Tor Extension Development";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -989,7 +992,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 87PW93R2ZR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Carthage/Build/iOS\"",
@@ -998,8 +1001,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "706a6776-3cac-4704-a238-076233e43a16";
+				PROVISIONING_PROFILE_SPECIFIER = "Tor Extension Development";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

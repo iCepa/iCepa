@@ -7,23 +7,52 @@
 //
 
 import UIKit
+import NetworkExtension
 
 class PermissionViewController: UIViewController {
+
     override func loadView() {
         super.loadView()
         
         view.backgroundColor = .white
         
-        let askButton = FloatingButton()
-        askButton.translatesAutoresizingMaskIntoConstraints = false
-        askButton.setTitle("Help Me", for: .normal)
-        askButton.gradient = (UIColor(rgbaValue: 0x00CD86FF), UIColor(rgbaValue: 0x3AB52AFF))
-        
-        view.addSubview(askButton)
-        
+        let grantButton = FloatingButton()
+        grantButton.translatesAutoresizingMaskIntoConstraints = false
+        grantButton.setTitle("Grant Access", for: .normal)
+        grantButton.addTarget(self, action: #selector(requestPermissions), for: .touchUpInside)
+        grantButton.gradient = (UIColor(rgbaValue: 0x00CD86FF), UIColor(rgbaValue: 0x3AB52AFF))
+        view.addSubview(grantButton)
+
         NSLayoutConstraint.activate([
-            askButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            askButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            grantButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            grantButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            grantButton.widthAnchor.constraint(equalToConstant: 180),
+            grantButton.heightAnchor.constraint(equalToConstant: 50)
             ])
+    }
+
+    @objc private func requestPermissions() {
+        NETunnelProviderManager.loadAllFromPreferences() { (managers, error) in
+            if let managers = managers, managers.count > 0 {
+                return NotificationCenter.default.post(name: .NEVPNConfigurationChange, object: nil)
+            }
+            
+            let config = NETunnelProviderProtocol()
+            config.providerConfiguration = ["lol": 1]
+            config.providerBundleIdentifier = CPAExtensionBundleIdentifier
+            config.serverAddress = "somebridge"
+            
+            let manager = NETunnelProviderManager()
+            manager.protocolConfiguration = config
+            manager.localizedDescription = "Tor"
+            
+            manager.saveToPreferences() { (error) -> Void in
+                if let error = error as? NEVPNError, error.code == .configurationReadWriteFailed {
+                    return
+                }
+                
+                NotificationCenter.default.post(name: .NEVPNConfigurationChange, object: nil)
+            }
+        }
     }
 }
