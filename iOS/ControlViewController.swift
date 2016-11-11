@@ -13,7 +13,7 @@ import Tor
 class ControlViewController: UIViewController {
     
     let manager: NETunnelProviderManager
-    var controller: TORController
+    var controller: TorController
     
     weak var establishedLabel: UILabel?
     
@@ -22,7 +22,7 @@ class ControlViewController: UIViewController {
         
         let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
         let controlSocket = dataDirectory.appendingPathComponent("control_port")
-        self.controller = TORController(socketURL: controlSocket)
+        self.controller = TorController(socketURL: controlSocket)
         
         super.init(nibName: nil, bundle: nil)
         

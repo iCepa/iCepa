@@ -10,7 +10,7 @@ import NetworkExtension
 
 class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
 
-    private static let configuration: TORConfiguration = {
+    private static let configuration: TorConfiguration = {
         let appGroupDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: CPAAppGroupIdentifier)!
         let dataDirectory = appGroupDirectory.appendingPathComponent("Tor")
         
@@ -20,7 +20,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
             NSLog("Error: Cannot configure data directory: %@", error.localizedDescription)
         }
         
-        let configuration = TORConfiguration()
+        let configuration = TorConfiguration()
         configuration.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050"]
         configuration.cookieAuthentication = true
         configuration.dataDirectory = dataDirectory
@@ -29,19 +29,19 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         return configuration
     }()
     
-    private static let thread: TORThread = {
+    private static let thread: TorThread = {
         let client = asl_open(nil, "com.apple.console", 0)
         asl_log_descriptor(client, nil, ASL_LEVEL_NOTICE, STDOUT_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
         asl_log_descriptor(client, nil, ASL_LEVEL_ERR, STDERR_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
         asl_close(client)
         
-        let thread = TORThread(configuration: configuration)
+        let thread = TorThread(configuration: configuration)
         thread.start()
         return thread
     }()
     
-    private lazy var controller: TORController = {
-        return TORController(socketURL: configuration.controlSocket!)
+    private lazy var controller: TorController = {
+        return TorController(socketURL: configuration.controlSocket!)
     }()
     
     private lazy var interface: TunnelInterface = {
