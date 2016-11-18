@@ -1,0 +1,28 @@
+language: objective-c
+xcode_project: iCepa.xcodeproj
+cache:
+  cargo: true
+  directories:
+  - $HOME/.multirust
+  - Carthage/Build
+git:
+  submodules: false
+before_install:
+  - curl https://sh.rustup.rs -sSf | bash -s -- -y
+  - $HOME/.cargo/bin/rustup install stable
+  - $HOME/.cargo/bin/rustup target add aarch64-apple-ios
+  - $HOME/.cargo/bin/rustup target add armv7-apple-ios
+  - $HOME/.cargo/bin/rustup target add i386-apple-ios
+  - $HOME/.cargo/bin/rustup target add x86_64-apple-ios
+  - git submodule update --init --recursive
+  - if [[ ! -d Carthage/Build/iOS/Tor.framework ]]; then carthage build --verbose --platform iOS; fi
+script:
+  - xcodebuild $XCODE_ACTION -project "$TRAVIS_XCODE_PROJECT" -scheme "$TRAVIS_XCODE_SCHEME" -sdk "$TRAVIS_XCODE_SDK" -destination "$XCODE_DESTINATION" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+matrix:
+  include:
+    - xcode_scheme: "iCepa-iOS"
+      xcode_sdk: iphonesimulator
+      osx_image: xcode8.1
+      env:
+        - XCODE_ACTION=build
+        - XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 7"

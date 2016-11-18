@@ -465,6 +465,7 @@
 					};
 					D095BFD01BBD621D0077E38B = {
 						CreatedOnToolsVersion = 7.0;
+						ProvisioningStyle = Automatic;
 					};
 					D095BFE11BBD626E0077E38B = {
 						CreatedOnToolsVersion = 7.0;
@@ -474,13 +475,11 @@
 					};
 					D0F2D7CF1BB5CC1B000E1D86 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 87PW93R2ZR;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
 					D0F2D7F71BB5D148000E1D86 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 87PW93R2ZR;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
@@ -697,6 +696,7 @@
 				CODE_SIGN_ENTITLEMENTS = Mac/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -706,7 +706,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepa;
-				PROVISIONING_PROFILE = "c013fb54-9131-4164-85dd-4e4120d786ec";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = Mac/CPABridging.h;
 			};
@@ -721,6 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = Mac/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -911,6 +912,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOS/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -919,8 +921,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepa;
-				PROVISIONING_PROFILE = "dffe49bf-6185-49c4-992a-0089b80ce1e9";
-				PROVISIONING_PROFILE_SPECIFIER = "87PW93R2ZR/Tor Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = iOS/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -937,6 +939,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOS/iCepa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -945,8 +948,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_APPLICATION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepa;
-				PROVISIONING_PROFILE = "dffe49bf-6185-49c4-992a-0089b80ce1e9";
-				PROVISIONING_PROFILE_SPECIFIER = "87PW93R2ZR/Tor Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = iOS/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -961,7 +964,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 87PW93R2ZR;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Carthage/Build/iOS\"",
@@ -974,8 +977,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
-				PROVISIONING_PROFILE = "706a6776-3cac-4704-a238-076233e43a16";
-				PROVISIONING_PROFILE_SPECIFIER = "Tor Extension Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -992,7 +995,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Extension/iCepaTunnel-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 87PW93R2ZR;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Carthage/Build/iOS\"",
@@ -1001,8 +1004,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(CPA_EXTENSION_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = iCepaTunnel;
-				PROVISIONING_PROFILE = "706a6776-3cac-4704-a238-076233e43a16";
-				PROVISIONING_PROFILE_SPECIFIER = "Tor Extension Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Extension/CPABridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
