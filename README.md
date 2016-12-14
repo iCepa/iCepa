@@ -38,7 +38,8 @@ Installing this application on your own iOS device requires some manual set up i
 1. Pick a unique bundle identifier (`com.foo.iCepa`) and generate an `App ID` for it.
 2. Append a new component to that bundle identifier to form the extension's bundle identifier (`com.foo.iCepa.extension`), and generate an `App ID` for that new bundle identifier.
 3. Create an `App Group` (`group.com.foo.iCepa`), and enable that `App Group` on both of the `App ID`s that you just created.
-4. Create two new development `Provisioning Profile`s, one for each `App ID`, and enable the `Network Extension iOS (Dev)` entitlements on both.
+4. Check the `Network Extensions` checkbox on both of the `App ID`s.
+4. Create two new development `Provisioning Profile`s, one for each `App ID`
 5. Place the `App Group` and both `App ID`s in `iCepa-iOS.xcconfig`
 
 ## Contributing
