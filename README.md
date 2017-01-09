@@ -1,8 +1,8 @@
 # iCepa
 
-![Travis CI](https://img.shields.io/travis/iCepa/iCepa.svg)
+[![Travis CI](https://img.shields.io/travis/iCepa/iCepa.svg)](https://travis-ci.org/iCepa/iCepa)
 
-iCepa is an iOS system-wide VPN Tor client. It uses [`Tor.framework`](https://github.com/iCepa/Tor.framework) to manage its Tor instance, and [`tun2tor`](https://github.com/iCepa/tun2tor) to bridge VPN traffic to Tor.
+iCepa is an iOS system-wide VPN [Tor](https://www.torproject.org) client. It uses [`Tor.framework`](https://github.com/iCepa/Tor.framework) to manage its Tor instance, and [`tun2tor`](https://github.com/iCepa/tun2tor) to bridge VPN traffic to Tor.
 
 The project is in progress, and currently alpha-quality.
 
@@ -31,7 +31,7 @@ brew install automake autoconf libtool gettext carthage
 carthage build
 ```
 
-3. iCepa should now build normally from Xcode. If it does not, please [file an issue](https://github.com/iCepa/iCepa/issues/new)!
+3. iCepa should now build normally from Xcode. If it does not, please [file an issue](https://github.com/iCepa/iCepa/issues/new)! iCepa does not work in the iOS Simulator.
 
 ## Installation
 
