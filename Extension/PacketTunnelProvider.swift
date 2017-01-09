@@ -14,6 +14,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         let appGroupDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: CPAAppGroupIdentifier)!
         let dataDirectory = appGroupDirectory.appendingPathComponent("Tor")
         
+        // This is needed because tor loads its cache too aggressively for Jetsam
+        try? FileManager.default.removeItem(at: dataDirectory)
+        
         do {
             try FileManager.default.createDirectory(at: dataDirectory, withIntermediateDirectories: true, attributes: [FileAttributeKey.posixPermissions.rawValue: 0o700])
         } catch let error as NSError {
@@ -21,7 +24,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         }
         
         let configuration = TorConfiguration()
-        configuration.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050"]
+        configuration.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050", "AvoidDiskWrites": "1"]
         configuration.cookieAuthentication = true
         configuration.dataDirectory = dataDirectory
         configuration.controlSocket = dataDirectory.appendingPathComponent("control_port")
@@ -29,53 +32,35 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         return configuration
     }()
     
-    private static let thread: TorThread = {
+    private static let torThread: TorThread = {
         let client = asl_open(nil, "com.apple.console", 0)
         asl_log_descriptor(client, nil, ASL_LEVEL_NOTICE, STDOUT_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
         asl_log_descriptor(client, nil, ASL_LEVEL_ERR, STDERR_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
         asl_close(client)
         
-        let thread = TorThread(configuration: configuration)
-        thread.start()
-        return thread
+        return TorThread(configuration: configuration)
+    }()
+    
+    private lazy var tunThread: TunThread = {
+        return TunThread(packetFlow: self.packetFlow)
     }()
     
     private lazy var controller: TorController = {
         return TorController(socketURL: configuration.controlSocket!)
     }()
-    
-    private lazy var interface: TunnelInterface = {
-        weak var weakSelf = self
-        return TunnelInterface() { (data, proto) -> Void in
-            guard let strongSelf = weakSelf else { return }
-            strongSelf.packetFlow.writePackets([data], withProtocols: [NSNumber(value: proto)])
-        }
-    }()
-    
+
     override var protocolConfiguration: NETunnelProviderProtocol {
         return super.protocolConfiguration as! NETunnelProviderProtocol
-    }
-    
-    override init() {
-        super.init()
-        let _ = PacketTunnelProvider.thread
     }
 
     override func startTunnel(options: [String : NSObject]? = [:], completionHandler: @escaping (Error?) -> Void) {
         let ipv4Settings = NEIPv4Settings(addresses: ["192.168.20.2"], subnetMasks: ["255.255.255.0"])
         ipv4Settings.includedRoutes = [NEIPv4Route.default()]
-
-        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "192.123.45.6")
+        
+        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
         settings.iPv4Settings = ipv4Settings
         settings.dnsSettings = NEDNSSettings(servers: ["8.8.8.8"])
-       
-//        let ipv6Settings = NEIPv6Settings(addresses: ["2001:4860:4860::8888"], networkPrefixLengths: [64])
-//        ipv6Settings.includedRoutes = [NEIPv6Route.defaultRoute()]
-        
-//        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "::1")
-//        settings.IPv6Settings = ipv6Settings
-//        settings.DNSSettings = NEDNSSettings(servers: ["2001:4860:4860::8888"])
-        
+
         let controller = self.controller
         self.setTunnelNetworkSettings(settings) { (error) -> Void in
             if let error = error {
@@ -83,7 +68,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
                 return completionHandler(error)
             }
             
-            DispatchQueue.global().asyncAfter(deadline: .now() + 1, execute: {
+            PacketTunnelProvider.torThread.start()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 do {
                     try controller.connect()
                     let cookie = try Data(contentsOf: PacketTunnelProvider.configuration.dataDirectory!.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
@@ -100,17 +87,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
                             }
                             
                             controller.removeObserver(observer)
+                            
+                            self.tunThread.start()
                             completionHandler(nil)
-                            self.startReadingPackets()
                         })
                         
                         // TODO: Handle circuit establish failure
                     })
                 } catch let error as NSError {
                     NSLog("%@: Error: Cannot connect to tor: %@", self, error.localizedDescription)
-                    completionHandler(error)
+                    completionHandler(nil /* error */)
                 }
-            })
+            }
         }
     }
     
@@ -121,14 +109,5 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
     
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
 
-    }
-    
-    func startReadingPackets() {
-        packetFlow.readPackets(completionHandler: { (packets, _) -> Void in
-            for packet in packets {
-                self.interface.input(packet: packet)
-            }
-            self.startReadingPackets()
-        })
     }
 }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let coordinator = AppCoordinator(window: window)
         window.makeKeyAndVisible()
-        
+
         self.window = window
         self.coordinator = coordinator
         

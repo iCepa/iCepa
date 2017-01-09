@@ -63,9 +63,44 @@ class ControlViewController: UIViewController {
             ])
     }
     
+    func connectController(attempt: UInt = 0) {
+        let controller = self.controller
+        guard !controller.isConnected else { return }
+        do {
+            try controller.connect()
+            let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
+            let cookie = try Data(contentsOf: dataDirectory.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
+            controller.authenticate(with: cookie, completion: { (success, error) -> Void in
+                if let error = error {
+                    NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
+                    return
+                }
+                
+                controller.addObserver() { (established) in
+                    DispatchQueue.main.async {
+                        self.establishedLabel!.text = (established ? "Circuit Established" : "Circuit Not Established")
+                    }
+                }
+                controller.addObserver() { (type, severity, actions, arguments) -> Bool in
+                    print("type \(type) severity \(severity) actions \(actions) arguments \(arguments)")
+                    return false
+                }
+            })
+        } catch POSIXError.ENOENT where attempt < 4  {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.connectController(attempt: attempt + 1)
+            }
+        } catch POSIXError.ECONNREFUSED where attempt < 4 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.connectController(attempt: attempt + 1)
+            }
+        } catch {
+            NSLog("%@: Error: Cannot connect to tor: %@", self, error.localizedDescription)
+        }
+    }
+    
     func enableAndStart() {
         let manager = self.manager
-        let controller = self.controller
         
         let start: ((Void) -> Void) = {
             do {
@@ -74,37 +109,24 @@ class ControlViewController: UIViewController {
                 return print("Error: Could not start manager: \(error)")
             }
             
-            do {
-                try controller.connect()
-                let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
-                let cookie = try Data(contentsOf: dataDirectory.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
-                controller.authenticate(with: cookie, completion: { (success, error) -> Void in
-                    if let error = error {
-                        NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
-                        return
-                    }
-                    
-                    controller.addObserver(forCircuitEstablished: { (established) in
-                        DispatchQueue.main.async {
-                            self.establishedLabel!.text = (established ? "Circuit Established" : "Circuit Not Established")
-                        }
-                    })
-                })
-            } catch let error as NSError {
-                NSLog("%@: Error: Cannot connect to tor: %@", self, error.localizedDescription)
-            }
+            self.connectController()
         }
         
         if manager.isEnabled {
             start()
         } else {
             manager.isEnabled = true
-            manager.saveToPreferences(completionHandler: { (error) in
+            manager.saveToPreferences() { (error) in
                 if let error = error {
                     return print("Error: Could not enable manager: \(error)")
                 }
-                start()
-            })
+                manager.loadFromPreferences() { (error) in
+                    if let error = error {
+                        return print("Error: Could not reload manager: \(error)")
+                    }
+                    start()
+                }
+            }
         }
     }
 }

@@ -26,9 +26,7 @@
 		D01A93741BBEB2830047BB66 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFF81BBD64970077E38B /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D01A93781BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */; };
 		D01A93791BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */; };
-		D01A937B1BC036180047BB66 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
 		D02E7ED41CC344A4000E8934 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
-		D02E7ED51CC344B4000E8934 /* TunnelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A937A1BC036180047BB66 /* TunnelInterface.swift */; };
 		D08892B41DD582F9009DB0CD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08892B31DD582F9009DB0CD /* AppCoordinator.swift */; };
 		D095BFD41BBD621D0077E38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095BFD31BBD621D0077E38B /* AppDelegate.swift */; };
 		D095BFD91BBD621D0077E38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D095BFD71BBD621D0077E38B /* MainMenu.xib */; };
@@ -39,6 +37,8 @@
 		D095BFFB1BBD652E0077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
 		D095BFFC1BBD65300077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
 		D095BFFD1BBD65310077E38B /* CPASharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2D7EB1BB5CD59000E1D86 /* CPASharedConstants.m */; };
+		D09E38051E03D6E500088779 /* TunThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E38041E03D6E500088779 /* TunThread.swift */; };
+		D09E38061E03D6E500088779 /* TunThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E38041E03D6E500088779 /* TunThread.swift */; };
 		D09E544D1C643B15001DB8F8 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E544C1C643B15001DB8F8 /* Tor.framework */; };
 		D0B28C511D53341B00EA635B /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28C501D53341B00EA635B /* FileManager.swift */; };
 		D0B28C521D53341B00EA635B /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B28C501D53341B00EA635B /* FileManager.swift */; };
@@ -143,7 +143,6 @@
 /* Begin PBXFileReference section */
 		D01A936E1BBE9A610047BB66 /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtun2tor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
-		D01A937A1BC036180047BB66 /* TunnelInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelInterface.swift; sourceTree = "<group>"; };
 		D01A937D1BC036300047BB66 /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
 		D08892B31DD582F9009DB0CD /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D095BFD11BBD621D0077E38B /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +158,7 @@
 		D095C0021BBD6B080077E38B /* tun2tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = tun2tor.sh; sourceTree = "<group>"; };
 		D095C0081BBD7C6C0077E38B /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
 		D095C0091BBD89390077E38B /* iCepaTunnel-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iCepaTunnel-iOS.entitlements"; sourceTree = "<group>"; };
+		D09E38041E03D6E500088779 /* TunThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunThread.swift; sourceTree = "<group>"; };
 		D09E544C1C643B15001DB8F8 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/Mac/Tor.framework; sourceTree = "<group>"; };
 		D0B28C501D53341B00EA635B /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		D0E9A7071D6FFA16005B8F5C /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */,
-				D01A937A1BC036180047BB66 /* TunnelInterface.swift */,
+				D09E38041E03D6E500088779 /* TunThread.swift */,
 				D0F2D80E1BB5D1B3000E1D86 /* Supporting Files */,
 				D095C0031BBD6B0B0077E38B /* External */,
 			);
@@ -475,12 +475,12 @@
 					};
 					D0F2D7CF1BB5CC1B000E1D86 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 					D0F2D7F71BB5D148000E1D86 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -577,7 +577,7 @@
 			files = (
 				D095BFFD1BBD65310077E38B /* CPASharedConstants.m in Sources */,
 				D01A93791BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */,
-				D02E7ED51CC344B4000E8934 /* TunnelInterface.swift in Sources */,
+				D09E38061E03D6E500088779 /* TunThread.swift in Sources */,
 				D0B28C541D53341B00EA635B /* FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,7 +602,7 @@
 			files = (
 				D095BFFC1BBD65300077E38B /* CPASharedConstants.m in Sources */,
 				D01A93781BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */,
-				D01A937B1BC036180047BB66 /* TunnelInterface.swift in Sources */,
+				D09E38051E03D6E500088779 /* TunThread.swift in Sources */,
 				D0B28C531D53341B00EA635B /* FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
