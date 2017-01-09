@@ -19,7 +19,6 @@ The project is in progress, and currently alpha-quality.
 curl https://sh.rustup.rs -sSf | sh
 rustup install stable
 rustup target add aarch64-apple-ios
-rustup target add armv7s-apple-ios
 rustup target add armv7-apple-ios
 ```
 
