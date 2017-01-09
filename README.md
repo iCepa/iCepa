@@ -2,7 +2,9 @@
 
 ![Travis CI](https://img.shields.io/travis/iCepa/iCepa.svg)
 
-iCepa is an iOS system-wide VPN Tor client. It uses [`Tor.framework`](https://github.com/iCepa/Tor.framework) to manage its Tor instance, and [`tun2tor`](https://github.com/iCepa/tun2tor) to bridge VPN traffic to Tor. The project does *not* work yet, and is in progress.
+iCepa is an iOS system-wide VPN Tor client. It uses [`Tor.framework`](https://github.com/iCepa/Tor.framework) to manage its Tor instance, and [`tun2tor`](https://github.com/iCepa/tun2tor) to bridge VPN traffic to Tor.
+
+The project is in progress, and currently alpha-quality.
 
 ## Requirements
 
@@ -52,6 +54,6 @@ iCepa is separated into a two components:
 [`Tor.framework`](https://github.com/iCepa/Tor.framework) is used to communicate with and start the `tor` instance from both the app and the extension.
 
 Things that need work:
-- `tun2tor` parses packets and handles DNS traffic correctly, but does not forward TCP streams over SOCKS to tor. Reach out to [@conradev](https://github.com/conradev) if you are interested in helping with `tun2tor`.
-- The UI needs work. The main focus is the control screen which will have controls to start/stop and information about the connection. Taking mockups/pull requests for either! Create Github issues for now.
+- `tun2tor`.
+- The UI. The main focus is the control screen which will have controls to start/stop and information about the connection. Taking mockups/pull requests for either! Create Github issues for now.
 - There is no icon or any branding (the name is not even final).
