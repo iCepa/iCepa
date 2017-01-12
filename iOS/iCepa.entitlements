@@ -8,7 +8,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>$(CPA_APPLICATION_GROUP)</string>
+		<string>group.pw.mxms000.tor</string>
 	</array>
 </dict>
 </plist>

@@ -27,7 +27,10 @@ class ControlViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         NotificationCenter.default.addObserver(forName: .NEVPNStatusDidChange, object: nil, queue: OperationQueue.main) { (note) in
-            
+			if let _ = note.object as? NETunnelProviderSession {
+				// reports connected even when not succesful. relying on tor framework
+			}
+			print("vpn status changed \(note)")
         }
     }
 
@@ -38,7 +41,7 @@ class ControlViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(red: 59/255.0, green: 55/255.0, blue: 77/255.0, alpha: 1.0)
         
         let startButton = FloatingButton()
         startButton.setTitle("Start Tor", for: UIControlState())
@@ -98,7 +101,11 @@ class ControlViewController: UIViewController {
             NSLog("%@: Error: Cannot connect to tor: %@", self, error.localizedDescription)
         }
     }
-    
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
     func enableAndStart() {
         let manager = self.manager
         

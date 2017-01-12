@@ -6,6 +6,6 @@
 //
 //
 
-CPA_APPLICATION_BUNDLE_IDENTIFIER = dk.conra.tor
-CPA_EXTENSION_BUNDLE_IDENTIFIER = dk.conra.tor.extension
-CPA_APPLICATION_GROUP = group.dk.conra.tor
+CPA_APPLICATION_BUNDLE_IDENTIFIER = pw.mxms000.tor
+CPA_EXTENSION_BUNDLE_IDENTIFIER = pw.mxms000.tor.extension
+CPA_APPLICATION_GROUP = group.pw.mxms000.tor
