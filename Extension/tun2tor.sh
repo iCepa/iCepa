@@ -33,7 +33,7 @@ if [[ ${ACTION:-build} = "build" ]]; then
         if [[ $RUST_ARCH = "arm64" ]]; then
             RUST_ARCH="aarch64"
         fi
-        cargo build --lib $RUST_CONFIGURATION_FLAG --target "${RUST_ARCH}-apple-${RUST_TARGET_OS}"
+        env -i PATH="${PATH}" RUST_ARCH="${RUST_ARCH}" RUST_TARGET_OS="${RUST_TARGET_OS}" cargo build --lib $RUST_CONFIGURATION_FLAG --target "${RUST_ARCH}-apple-${RUST_TARGET_OS}"
         LIBRARIES+=("target/${RUST_ARCH}-apple-${RUST_TARGET_OS}/${RUST_CONFIGURATION}/libtun2tor.a")
     done
 
