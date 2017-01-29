@@ -4,7 +4,7 @@ export PATH="${HOME}/.cargo/bin:${PATH}"
 
 mkdir -p ${BUILT_PRODUCTS_DIR}
 
-if [[ ${ACTION:-build} = "build" ]]; then
+if [[ ${ACTION:-build} = "build" ]] || [[ ${ACTION:-build} = "install" ]]; then
     if [[ $PLATFORM_NAME = "macosx" ]]; then
         RUST_TARGET_OS="darwin"
     else
