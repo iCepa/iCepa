@@ -27,7 +27,7 @@ rustup target add armv7-apple-ios
     ```sh
 git submodule update --init --recursive
 brew install automake autoconf libtool gettext carthage
-carthage build
+carthage build --platform iOS
 ```
 
 3. iCepa should now build normally from Xcode. If it does not, please [file an issue](https://github.com/iCepa/iCepa/issues/new)! iCepa does not work in the iOS Simulator.
