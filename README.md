@@ -16,19 +16,19 @@ The project is in progress, and currently alpha-quality.
 1. Because the network extension depends on [`tun2tor`](https://github.com/iCepa/tun2tor), you will need Rust installed. You can install it using [rustup](https://www.rustup.rs):
 
     ```sh
-curl https://sh.rustup.rs -sSf | sh
-rustup install stable
-rustup target add aarch64-apple-ios
-rustup target add armv7-apple-ios
-```
+    curl https://sh.rustup.rs -sSf | sh
+    rustup install stable
+    rustup target add aarch64-apple-ios
+    rustup target add armv7-apple-ios
+    ```
 
 2. iCepa also depends on [`Tor.framework`](https://github.com/iCepa/Tor.framework), which you can build using [`Carthage`](https://github.com/Carthage/Carthage):
 
     ```sh
-git submodule update --init --recursive
-brew install automake autoconf libtool gettext carthage
-carthage build --platform iOS
-```
+    git submodule update --init --recursive
+    brew install automake autoconf libtool gettext carthage
+    carthage build --platform iOS
+    ```
 
 3. iCepa should now build normally from Xcode. If it does not, please [file an issue](https://github.com/iCepa/iCepa/issues/new)! iCepa does not work in the iOS Simulator.
 
