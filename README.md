@@ -42,6 +42,7 @@ Installing this application on your own iOS device requires some manual set up i
 4. Check the `Network Extensions` checkbox on both of the `App ID`s.
 4. Create two new development `Provisioning Profile`s, one for each `App ID`
 5. Place the `App Group` and both `App ID`s in `iCepa-iOS.xcconfig`
+6. Change `CPA_APPLICATION_GROUP` in the project's build setting to the app group you just created(`group.com.foo.iCepa`)
 
 ## Contributing
 
