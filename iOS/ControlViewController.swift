@@ -82,16 +82,16 @@ class ControlViewController: UIViewController {
                     }
                 }
                 controller.addObserver() { (type, severity, actions, arguments) -> Bool in
-                    print("type \(type) severity \(severity) actions \(actions) arguments \(arguments)")
+                    print("type \(type) severity \(severity) actions \(actions) arguments \(String(describing: arguments))")
                     return false
                 }
             })
         } catch POSIXError.ENOENT where attempt < 4  {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.connectController(attempt: attempt + 1)
             }
         } catch POSIXError.ECONNREFUSED where attempt < 4 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.connectController(attempt: attempt + 1)
             }
         } catch {
