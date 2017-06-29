@@ -6,6 +6,6 @@
 //
 //
 
-CPA_APPLICATION_BUNDLE_IDENTIFIER = dk.conra.tor
-CPA_EXTENSION_BUNDLE_IDENTIFIER = dk.conra.tor.extension
-CPA_APPLICATION_GROUP = group.dk.conra.tor
+CPA_APPLICATION_BUNDLE_IDENTIFIER = com.netzarchitekten.iCepa
+CPA_EXTENSION_BUNDLE_IDENTIFIER = com.netzarchitekten.iCepa.extension
+CPA_APPLICATION_GROUP = group.com.netzarchitekten.iCepa
