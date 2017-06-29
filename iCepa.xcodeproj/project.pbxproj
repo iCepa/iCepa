@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A07635A11F055A0100EE97A6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07635A01F055A0100EE97A6 /* NetworkExtension.framework */; };
+		A07635A21F0566CA00EE97A6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07635A01F055A0100EE97A6 /* NetworkExtension.framework */; };
 		D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01A936E1BBE9A610047BB66 /* libtun2tor.a */; };
 		D01A93741BBEB2830047BB66 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095BFF81BBD64970077E38B /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D01A93781BC034D20047BB66 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */; };
@@ -141,6 +143,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A076358E1F05551200EE97A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A07635901F05552400EE97A6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A07635941F05555000EE97A6 /* .gitmodules */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitmodules; sourceTree = "<group>"; };
+		A07635951F05564300EE97A6 /* BUILD.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = BUILD.md; sourceTree = "<group>"; };
+		A07635981F05566100EE97A6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		A076359A1F05567300EE97A6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
+		A07635A01F055A0100EE97A6 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D01A936E1BBE9A610047BB66 /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtun2tor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01A93771BC034D20047BB66 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		D01A937D1BC036300047BB66 /* CPABridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPABridging.h; sourceTree = "<group>"; };
@@ -200,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07635A21F0566CA00EE97A6 /* NetworkExtension.framework in Frameworks */,
 				D095BFF91BBD64970077E38B /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07635A11F055A0100EE97A6 /* NetworkExtension.framework in Frameworks */,
 				D01A936F1BBE9A610047BB66 /* libtun2tor.a in Frameworks */,
 				D095BFFA1BBD64970077E38B /* Tor.framework in Frameworks */,
 			);
@@ -216,6 +227,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A07635971F05564A00EE97A6 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A07635981F05566100EE97A6 /* Cartfile */,
+				A076359A1F05567300EE97A6 /* Cartfile.resolved */,
+				A07635901F05552400EE97A6 /* .gitignore */,
+				A07635941F05555000EE97A6 /* .gitmodules */,
+				A07635951F05564300EE97A6 /* BUILD.md */,
+				A076358E1F05551200EE97A6 /* README.md */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		D095BFD21BBD621D0077E38B /* Mac */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +272,7 @@
 		D0F2D7C71BB5CC1B000E1D86 = {
 			isa = PBXGroup;
 			children = (
+				A07635971F05564A00EE97A6 /* Misc */,
 				D0F2D7D21BB5CC1B000E1D86 /* iOS */,
 				D095BFD21BBD621D0077E38B /* Mac */,
 				D0F2D7FC1BB5D148000E1D86 /* Extension */,
@@ -308,6 +333,7 @@
 		D0F2D7F91BB5D148000E1D86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A07635A01F055A0100EE97A6 /* NetworkExtension.framework */,
 				D09E544C1C643B15001DB8F8 /* Tor.framework */,
 				D095BFF81BBD64970077E38B /* Tor.framework */,
 				D095BFE31BBD626E0077E38B /* Cocoa.framework */,
