@@ -33,9 +33,9 @@ Notes for getting this thing to really build
 
 - Signing:
   - Automatic signing *will not work*!
-  - Do the configuration as described here: https://developer.apple.com/account/ios/certificate/?teamId=W36S8KLY7S
+  - Do the configuration as described here: https://developer.apple.com/account/ios/certificate/
   - Then, load the provisioning profiles into Xcode using Xcode -> Preferences -> Accounts ->
-    <Your Apple-ID> -> Download All Profiles
+    [Your Apple-ID] -> Download All Profiles
 
 
 - Before ever touching the project configuration to select the provisioning profiles, adapt the 
