@@ -22,8 +22,8 @@ The project is in progress, and currently alpha-quality.
 - [Homebrew] or MacPorts (optional but no fun without)
 
 
-- An iOS device (Simulator *not* working!)
-- A paid Apple Developer account (The free account is not enough for the Network Exension!)
+- An iOS device (Simulator *will not* work, due to lack of support of Network Extensions!)
+- A paid Apple Developer account (The free account is not enough for the Network Extension!)
 
 
 ## Prepare signing
