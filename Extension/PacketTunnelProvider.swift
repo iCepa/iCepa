@@ -10,6 +10,9 @@ import NetworkExtension
 
 class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
 
+    private static let ENABLE_LOGGING = false
+    private static var messageQueue: [String: Any] = ["log":[]]
+
     private static let configuration: TorConfiguration = {
         let appGroupDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: CPAAppGroupIdentifier)!
         let dataDirectory = appGroupDirectory.appendingPathComponent("Tor")
@@ -20,7 +23,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         do {
             try FileManager.default.createDirectory(at: dataDirectory, withIntermediateDirectories: true, attributes: [FileAttributeKey(rawValue: FileAttributeKey.posixPermissions.rawValue): 0o700])
         } catch let error as NSError {
-            NSLog("Error: Cannot configure data directory: %@", error.localizedDescription)
+            log("Error: Cannot configure data directory: \(error.localizedDescription)")
         }
         
         let configuration = TorConfiguration()
@@ -33,19 +36,16 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
     }()
     
     private static let torThread: TorThread = {
-        let client = asl_open(nil, "com.apple.console", 0)
-        asl_log_descriptor(client, nil, ASL_LEVEL_NOTICE, STDOUT_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
-        asl_log_descriptor(client, nil, ASL_LEVEL_ERR, STDERR_FILENO, UInt32(ASL_LOG_DESCRIPTOR_WRITE))
-        asl_close(client)
-        
         return TorThread(configuration: configuration)
     }()
-    
-    private lazy var tunThread: TunThread = {
+
+    private var timer: Timer?
+
+    private lazy var tunThread: TunThread? = {
         return TunThread(packetFlow: self.packetFlow)
     }()
     
-    private lazy var controller: TorController = {
+    private lazy var controller: TorController? = {
         return TorController(socketURL: PacketTunnelProvider.configuration.controlSocket!)
     }()
 
@@ -53,10 +53,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         return super.protocolConfiguration as! NETunnelProviderProtocol
     }
 
+    private var hostHandler: ((Data?) -> Void)?
+
     override func startTunnel(options: [String : NSObject]? = [:], completionHandler: @escaping (Error?) -> Void) {
         let ipv4Settings = NEIPv4Settings(addresses: ["192.168.20.2"], subnetMasks: ["255.255.255.0"])
         ipv4Settings.includedRoutes = [NEIPv4Route.default()]
-        
+
+        log("startTunnel, options: \(String(describing: options))")
+
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
         settings.ipv4Settings = ipv4Settings
         settings.dnsSettings = NEDNSSettings(servers: ["8.8.8.8"])
@@ -64,38 +68,52 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         let controller = self.controller
         self.setTunnelNetworkSettings(settings) { (error) -> Void in
             if let error = error {
-                NSLog("%@: Error cannot set tunnel network settings: %@", self, error.localizedDescription)
+                self.log("Error cannot set tunnel network settings: \(error.localizedDescription)")
                 return completionHandler(error)
             }
             
             PacketTunnelProvider.torThread.start()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 do {
-                    try controller.connect()
+                    self.log("startTunnel, before connecting to Tor thread.")
+
+                    // Use this with a recent Tor.framework to tunnel logs from Tor to the app.
+                    //                    TORInstallTorLoggingCallback { (type: OSLogType, message: UnsafePointer<Int8>) in
+                    //                        PacketTunnelProvider.log(String.init(cString: message))
+                    //                    }
+                    //
+                    //                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
+                    //                                                      selector: #selector(self.sendMessages),
+                    //                                                      userInfo: nil, repeats: true)
+
+                    try controller?.connect()
                     let cookie = try Data(contentsOf: PacketTunnelProvider.configuration.dataDirectory!.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
-                    controller.authenticate(with: cookie, completion: { (success, error) -> Void in
+                    controller?.authenticate(with: cookie, completion: { (success, error) -> Void in
                         if let error = error {
-                            NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
+                            self.log("Error: Cannot authenticate with Tor: \(error.localizedDescription)")
                             return completionHandler(error)
                         }
                         
                         var observer: Any? = nil
-                        observer = controller.addObserver(forCircuitEstablished: { (established) -> Void in
+                        observer = controller?.addObserver(forCircuitEstablished: { (established) -> Void in
                             guard established else {
                                 return
                             }
                             
-                            controller.removeObserver(observer)
+                            controller?.removeObserver(observer)
                             
-                            self.tunThread.start()
+                            self.tunThread?.start()
+
+                            self.log("startTunnel, tunnel started.")
+
                             completionHandler(nil)
                         })
                         
                         // TODO: Handle circuit establish failure
                     })
                 } catch let error as NSError {
-                    NSLog("%@: Error: Cannot connect to tor: %@", self, error.localizedDescription)
+                    self.log("Error: Cannot connect to Tor: \(error.localizedDescription)")
                     completionHandler(nil /* error */)
                 }
             }
@@ -103,11 +121,42 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
     }
     
     func stopTunnel(with reason: NEProviderStopReason, completionHandler: () -> Void) {
-        // TODO: Add disconnect handler
+        log("stopTunnel, reason: \(reason)")
+
+        tunThread = nil
+        controller = nil
+
+        self.timer?.invalidate()
+        self.timer = nil
+
         completionHandler()
     }
     
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
+        if PacketTunnelProvider.ENABLE_LOGGING {
+            hostHandler = completionHandler
+        }
+    }
 
+    @objc private func sendMessages() {
+        if PacketTunnelProvider.ENABLE_LOGGING, let handler = hostHandler {
+            let response = NSKeyedArchiver.archivedData(withRootObject: PacketTunnelProvider.messageQueue)
+            PacketTunnelProvider.messageQueue = ["log": []]
+            handler(response)
+            hostHandler = nil
+        }
+    }
+
+    private func log(_ message: String) {
+        PacketTunnelProvider.log(message)
+
+        sendMessages()
+    }
+
+    private static func log(_ message: String) {
+        if ENABLE_LOGGING, var log = messageQueue["log"] as? [String] {
+            log.append("\(self): \(message)")
+            messageQueue["log"] = log
+        }
     }
 }

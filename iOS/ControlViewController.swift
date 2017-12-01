@@ -8,31 +8,30 @@
 
 import UIKit
 import NetworkExtension
-import Tor
 
 class ControlViewController: UIViewController {
     
     let manager: NETunnelProviderManager
-    var controller: TorController
-    
+    let session: NETunnelProviderSession
+
+    weak var startStopButton: FloatingButton?
     weak var establishedLabel: UILabel?
     
     required init(manager: NETunnelProviderManager) {
         self.manager = manager
-        
-        let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
-        let controlSocket = dataDirectory.appendingPathComponent("control_port")
-        self.controller = TorController(socketURL: controlSocket)
-        
+        session = manager.connection as! NETunnelProviderSession
+
         super.init(nibName: nil, bundle: nil)
-        
-        NotificationCenter.default.addObserver(forName: .NEVPNStatusDidChange, object: nil, queue: OperationQueue.main) { (note) in
-            
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange), name: .NEVPNStatusDidChange, object: nil)
     }
     
     override func loadView() {
@@ -40,93 +39,135 @@ class ControlViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        let startButton = FloatingButton()
-        startButton.setTitle("Start Tor", for: UIControlState())
-        startButton.addTarget(self, action: #selector(enableAndStart), for: .touchUpInside)
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.gradient = (UIColor(rgbaValue: 0x00CD86FF), UIColor(rgbaValue: 0x3AB52AFF))
-        view.addSubview(startButton)
+        let button = FloatingButton()
+        button.addTarget(self, action: #selector(enableStartStop), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.gradient = (UIColor(rgbaValue: 0x00CD86FF), UIColor(rgbaValue: 0x3AB52AFF))
+        view.addSubview(button)
+        self.startStopButton = button
         
-        let establishedLabel = UILabel(frame: CGRect.zero)
-        establishedLabel.text = "Circuit Not Established"
-        establishedLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(establishedLabel)
-        self.establishedLabel = establishedLabel
-        
+        let label = UILabel(frame: CGRect.zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        self.establishedLabel = label
+
+        statusDidChange(nil)
+
         NSLayoutConstraint.activate([
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            startButton.widthAnchor.constraint(equalToConstant: 180),
-            startButton.heightAnchor.constraint(equalToConstant: 50),
-            establishedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            NSLayoutConstraint(item: establishedLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.5, constant: 0)
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            button.widthAnchor.constraint(equalToConstant: 180),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.5, constant: 0)
             ])
     }
-    
-    func connectController(attempt: UInt = 0) {
-        let controller = self.controller
-        guard !controller.isConnected else { return }
-        do {
-            try controller.connect()
-            let dataDirectory = FileManager.appGroupDirectory.appendingPathComponent("Tor")
-            let cookie = try Data(contentsOf: dataDirectory.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0))
-            controller.authenticate(with: cookie, completion: { (success, error) -> Void in
-                if let error = error {
-                    NSLog("%@: Error: Cannot authenticate with tor: %@", self, error.localizedDescription)
-                    return
-                }
-                
-                controller.addObserver() { (established) in
-                    DispatchQueue.main.async {
-                        self.establishedLabel!.text = (established ? "Circuit Established" : "Circuit Not Established")
-                    }
-                }
-                controller.addObserver() { (type, severity, actions, arguments) -> Bool in
-                    print("type \(type) severity \(severity) actions \(actions) arguments \(arguments)")
-                    return false
-                }
-            })
-        } catch POSIXError.ENOENT where attempt < 4  {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.connectController(attempt: attempt + 1)
-            }
-        } catch POSIXError.ECONNREFUSED where attempt < 4 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.connectController(attempt: attempt + 1)
-            }
-        } catch {
-            NSLog("%@: Error: Cannot connect to tor: %@", self, error.localizedDescription)
-        }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.removeObserver(self)
     }
     
-    func enableAndStart() {
-        let manager = self.manager
-        
-        let start: ((Void) -> Void) = {
+    @objc func enableStartStop() {
+        let start: (() -> Void) = {
             do {
-                try manager.connection.startVPNTunnel()
+                try self.session.startVPNTunnel()
             } catch let error {
                 return print("Error: Could not start manager: \(error)")
             }
-            
-            self.connectController()
+
+            print("Establish communications channel with extension.")
+            self.commTunnel()
         }
-        
-        if manager.isEnabled {
-            start()
-        } else {
+
+        // If there already is a VPN configuration before we came along, that one will be kept
+        // selected instead of ours. So we first have to enable ours and then we can start
+        // immediately.
+        if !manager.isEnabled {
             manager.isEnabled = true
             manager.saveToPreferences() { (error) in
                 if let error = error {
                     return print("Error: Could not enable manager: \(error)")
                 }
-                manager.loadFromPreferences() { (error) in
+                self.manager.loadFromPreferences() { (error) in
                     if let error = error {
                         return print("Error: Could not reload manager: \(error)")
                     }
                     start()
                 }
             }
+            return
+        }
+
+        switch session.status {
+        case .invalid, .disconnecting, .disconnected:
+            start()
+        default:
+            session.stopVPNTunnel()
+        }
+    }
+
+    @objc func statusDidChange(_ note: Notification?) {
+        let labelText: String
+        let buttonText: String
+
+        switch session.status {
+        case .invalid:
+            labelText = NSLocalizedString("Provider not installed/enabled", comment: "")
+            buttonText = NSLocalizedString("Enable Provider in Settings!", comment: "")
+            self.startStopButton?.isEnabled = false
+        case .connecting:
+            labelText = NSLocalizedString("Circuit Establishing", comment: "")
+            buttonText = NSLocalizedString("Stop Tor", comment: "")
+            self.startStopButton?.isEnabled = true
+        case .connected:
+            labelText = NSLocalizedString("Circuit Established", comment: "")
+            buttonText = NSLocalizedString("Stop Tor", comment: "")
+            self.startStopButton?.isEnabled = true
+        case .reasserting:
+            labelText = NSLocalizedString("Circuit Reestablishing", comment: "")
+            buttonText = NSLocalizedString("Stop Tor", comment: "")
+            self.startStopButton?.isEnabled = true
+        case .disconnecting:
+            labelText = NSLocalizedString("Circuit Disestablishing", comment: "")
+            buttonText = NSLocalizedString("Start Tor", comment: "")
+            self.startStopButton?.isEnabled = true
+        case .disconnected:
+            labelText = NSLocalizedString("Circuit Not Established", comment: "")
+            buttonText = NSLocalizedString("Start Tor", comment: "")
+            self.startStopButton?.isEnabled = true
+        }
+
+        self.establishedLabel?.text = labelText
+        self.startStopButton?.setTitle(buttonText, for: UIControlState())
+
+    }
+
+    private func commTunnel() {
+        if session.status != .invalid {
+            do {
+                try session.sendProviderMessage(Data()) { response in
+                    if let response = response {
+                        if let response = NSKeyedUnarchiver.unarchiveObject(with: response) as? [String: Any] {
+                            if let log = response["log"] as? [String] {
+                                for line in log {
+                                    print(line.trimmingCharacters(in: .whitespacesAndNewlines))
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print("Could not establish communications channel with extension. Error: \(error)")
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.commTunnel)
+        }
+        else {
+            print("Could not establish communications channel with extension. "
+                + "VPN configuration does not exist or is not enabled. "
+                + "No further actions will be taken.")
         }
     }
 }
