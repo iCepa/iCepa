@@ -18,7 +18,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         try? FileManager.default.removeItem(at: dataDirectory)
         
         do {
-            try FileManager.default.createDirectory(at: dataDirectory, withIntermediateDirectories: true, attributes: [FileAttributeKey.posixPermissions.rawValue: 0o700])
+            try FileManager.default.createDirectory(at: dataDirectory, withIntermediateDirectories: true, attributes: [FileAttributeKey(rawValue: FileAttributeKey.posixPermissions.rawValue): 0o700])
         } catch let error as NSError {
             NSLog("Error: Cannot configure data directory: %@", error.localizedDescription)
         }
@@ -46,7 +46,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
     }()
     
     private lazy var controller: TorController = {
-        return TorController(socketURL: configuration.controlSocket!)
+        return TorController(socketURL: PacketTunnelProvider.configuration.controlSocket!)
     }()
 
     override var protocolConfiguration: NETunnelProviderProtocol {
@@ -58,7 +58,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
         ipv4Settings.includedRoutes = [NEIPv4Route.default()]
         
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
-        settings.iPv4Settings = ipv4Settings
+        settings.ipv4Settings = ipv4Settings
         settings.dnsSettings = NEDNSSettings(servers: ["8.8.8.8"])
 
         let controller = self.controller
