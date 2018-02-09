@@ -56,7 +56,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider, URLSessionDelegate {
     private var hostHandler: ((Data?) -> Void)?
 
     override func startTunnel(options: [String : NSObject]? = [:], completionHandler: @escaping (Error?) -> Void) {
-        let ipv4Settings = NEIPv4Settings(addresses: ["172.30.20.2"], subnetMasks: ["255.255.255.0"])
+        let ipv4Settings = NEIPv4Settings(addresses: ["192.168.20.2"], subnetMasks: ["255.255.255.0"])
         ipv4Settings.includedRoutes = [NEIPv4Route.default()]
 
         log("startTunnel, options: \(String(describing: options))")
