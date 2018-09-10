@@ -35,7 +35,7 @@ The project is in progress, and currently alpha-quality.
     2. An extension bundle ID (`com.example.iCepa.extension`)
     3. A group ID (`group.com.example.iCepa`)
 
-- *Before* ever touching the project configuration, update `Shared/iCepa-iOS.xcconfig` with these. 
+- *Before* ever touching the project configuration, update `iCepa-iOS.xcconfig` with these. 
     Xcode will mess up your configuration, otherwise.
 
 - Automatic signing *will not work*, instead it requires some manual set up in Apple's 
