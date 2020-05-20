@@ -1,7 +1,0 @@
-xcuserdata
-Carthage/Build
-*.xccheckout
-*.xcscmblueprint
-
-# MacOS
-.DS_Store
