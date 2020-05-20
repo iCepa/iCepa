@@ -8,3 +8,9 @@ target 'iCepa' do
   # Pods for iCepa
 
 end
+
+target 'TorVPN' do
+  use_frameworks!
+
+  pod 'OBTun2Socks', git: 'https://github.com/tladesignz/OBTun2Socks.git'
+end

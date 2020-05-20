@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3471AAE38F72786BE9A0ECB4 /* Pods_iCepa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46341A60375BD76E71AC359D /* Pods_iCepa.framework */; };
+		31E151BC94D5763DF8D173E8 /* Pods_TorVPN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6E47E342E2CBFC3A05A241 /* Pods_TorVPN.framework */; };
 		A05B73B424755CE600930C40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05B73B324755CE600930C40 /* AppDelegate.swift */; };
 		A05B73B824755CE600930C40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05B73B724755CE600930C40 /* ViewController.swift */; };
 		A05B73BB24755CE600930C40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05B73B924755CE600930C40 /* Main.storyboard */; };
@@ -21,6 +21,20 @@
 		A0A735E2247566CD00073C81 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E0247566CD00073C81 /* Config.m */; };
 		A0A735E42475679800073C81 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E32475679800073C81 /* Config.swift */; };
 		A0A735E52475679800073C81 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E32475679800073C81 /* Config.swift */; };
+		A0A735EA24756CA200073C81 /* CloseCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E724756CA200073C81 /* CloseCircuitsMessage.swift */; };
+		A0A735EB24756CA200073C81 /* CloseCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E724756CA200073C81 /* CloseCircuitsMessage.swift */; };
+		A0A735EC24756CA200073C81 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E824756CA200073C81 /* Message.swift */; };
+		A0A735ED24756CA200073C81 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E824756CA200073C81 /* Message.swift */; };
+		A0A735EE24756CA200073C81 /* GetCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E924756CA200073C81 /* GetCircuitsMessage.swift */; };
+		A0A735EF24756CA200073C81 /* GetCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E924756CA200073C81 /* GetCircuitsMessage.swift */; };
+		A0A735F224756D6B00073C81 /* FileManager+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */; };
+		A0A735F324756D6B00073C81 /* FileManager+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */; };
+		A0A735F524757FA400073C81 /* ProgressMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F424757FA400073C81 /* ProgressMessage.swift */; };
+		A0A735F624757FA400073C81 /* ProgressMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F424757FA400073C81 /* ProgressMessage.swift */; };
+		A0A735F82475804800073C81 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = A0A735F72475804800073C81 /* .gitmodules */; };
+		A0A735F92475804800073C81 /* .gitmodules in Resources */ = {isa = PBXBuildFile; fileRef = A0A735F72475804800073C81 /* .gitmodules */; };
+		A0A735FF2475832900073C81 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A735FE2475832900073C81 /* Tor.framework */; };
+		A5445C28740CC946E8C5C0FA /* Pods_iCepa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C078DF9171B7034766397E7 /* Pods_iCepa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		46341A60375BD76E71AC359D /* Pods_iCepa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCepa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D6E47E342E2CBFC3A05A241 /* Pods_TorVPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorVPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C078DF9171B7034766397E7 /* Pods_iCepa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCepa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05B73B024755CE600930C40 /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05B73B324755CE600930C40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A05B73B724755CE600930C40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,8 +86,18 @@
 		A0A735DF247566CD00073C81 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		A0A735E0247566CD00073C81 /* Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		A0A735E32475679800073C81 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A0A735E724756CA200073C81 /* CloseCircuitsMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseCircuitsMessage.swift; sourceTree = "<group>"; };
+		A0A735E824756CA200073C81 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A0A735E924756CA200073C81 /* GetCircuitsMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCircuitsMessage.swift; sourceTree = "<group>"; };
+		A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Helpers.swift"; sourceTree = "<group>"; };
+		A0A735F424757FA400073C81 /* ProgressMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressMessage.swift; sourceTree = "<group>"; };
+		A0A735F72475804800073C81 /* .gitmodules */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitmodules; sourceTree = "<group>"; };
+		A0A735FA247581B600073C81 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A735FE2475832900073C81 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B97A8F56E0F8DD7206C1FA14 /* Pods-iCepa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCepa.debug.xcconfig"; path = "Target Support Files/Pods-iCepa/Pods-iCepa.debug.xcconfig"; sourceTree = "<group>"; };
+		BA3E6397C157544CEA3CA28D /* Pods-TorVPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorVPN.release.xcconfig"; path = "Target Support Files/Pods-TorVPN/Pods-TorVPN.release.xcconfig"; sourceTree = "<group>"; };
 		CB2AC54866A669B1EF53DA4E /* Pods-iCepa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCepa.release.xcconfig"; path = "Target Support Files/Pods-iCepa/Pods-iCepa.release.xcconfig"; sourceTree = "<group>"; };
+		FC6B77D8E3D9B67DE283B98C /* Pods-TorVPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorVPN.debug.xcconfig"; path = "Target Support Files/Pods-TorVPN/Pods-TorVPN.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3471AAE38F72786BE9A0ECB4 /* Pods_iCepa.framework in Frameworks */,
 				A0A735C224755DF700073C81 /* NetworkExtension.framework in Frameworks */,
+				A5445C28740CC946E8C5C0FA /* Pods_iCepa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A735FF2475832900073C81 /* Tor.framework in Frameworks */,
 				A0A735DB2475623700073C81 /* NetworkExtension.framework in Frameworks */,
+				31E151BC94D5763DF8D173E8 /* Pods_TorVPN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A0A735C624755F2200073C81 /* .gitignore */,
+				A0A735F72475804800073C81 /* .gitmodules */,
 				A0A735C524755E2100073C81 /* Podfile */,
 				A0A735C424755E2100073C81 /* Podfile.lock */,
 			);
@@ -157,6 +185,8 @@
 		A0A735DA2475621400073C81 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A0A735E624756C8E00073C81 /* Messages */,
+				A0A735F024756D5600073C81 /* Helpers */,
 				A0A735DC2475628F00073C81 /* Config.xcconfig */,
 				A0A735DF247566CD00073C81 /* Config.h */,
 				A0A735E0247566CD00073C81 /* Config.m */,
@@ -165,11 +195,32 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		A0A735E624756C8E00073C81 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				A0A735E724756CA200073C81 /* CloseCircuitsMessage.swift */,
+				A0A735F424757FA400073C81 /* ProgressMessage.swift */,
+				A0A735E924756CA200073C81 /* GetCircuitsMessage.swift */,
+				A0A735E824756CA200073C81 /* Message.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		A0A735F024756D5600073C81 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A53EFD1654E1809EC93A8DBC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				B97A8F56E0F8DD7206C1FA14 /* Pods-iCepa.debug.xcconfig */,
 				CB2AC54866A669B1EF53DA4E /* Pods-iCepa.release.xcconfig */,
+				FC6B77D8E3D9B67DE283B98C /* Pods-TorVPN.debug.xcconfig */,
+				BA3E6397C157544CEA3CA28D /* Pods-TorVPN.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -177,8 +228,11 @@
 		B492266852BAC9D548C91D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0A735FE2475832900073C81 /* Tor.framework */,
+				A0A735FA247581B600073C81 /* Tor.framework */,
 				A0A735C124755DF700073C81 /* NetworkExtension.framework */,
-				46341A60375BD76E71AC359D /* Pods_iCepa.framework */,
+				2D6E47E342E2CBFC3A05A241 /* Pods_TorVPN.framework */,
+				8C078DF9171B7034766397E7 /* Pods_iCepa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,6 +249,7 @@
 				A05B73AD24755CE600930C40 /* Frameworks */,
 				A05B73AE24755CE600930C40 /* Resources */,
 				A0A735D9247561F200073C81 /* Embed App Extensions */,
+				5726CD5B59754819A2F13507 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,6 +265,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0A735D6247561F200073C81 /* Build configuration list for PBXNativeTarget "TorVPN" */;
 			buildPhases = (
+				E106A27B8D0B93AAA622196B /* [CP] Check Pods Manifest.lock */,
 				A0A735C9247561F200073C81 /* Sources */,
 				A0A735CA247561F200073C81 /* Frameworks */,
 				A0A735CB247561F200073C81 /* Resources */,
@@ -269,6 +325,7 @@
 			files = (
 				A05B73C024755CE700930C40 /* LaunchScreen.storyboard in Resources */,
 				A05B73BD24755CE700930C40 /* Assets.xcassets in Resources */,
+				A0A735F82475804800073C81 /* .gitmodules in Resources */,
 				A05B73BB24755CE600930C40 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,12 +334,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A735F92475804800073C81 /* .gitmodules in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5726CD5B59754819A2F13507 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iCepa/Pods-iCepa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iCepa/Pods-iCepa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iCepa/Pods-iCepa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E4701B3DB5DDBD970B64164 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,6 +380,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E106A27B8D0B93AAA622196B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TorVPN-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -312,9 +409,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A735EA24756CA200073C81 /* CloseCircuitsMessage.swift in Sources */,
 				A05B73B824755CE600930C40 /* ViewController.swift in Sources */,
+				A0A735EE24756CA200073C81 /* GetCircuitsMessage.swift in Sources */,
 				A0A735E1247566CD00073C81 /* Config.m in Sources */,
+				A0A735EC24756CA200073C81 /* Message.swift in Sources */,
+				A0A735F224756D6B00073C81 /* FileManager+Helpers.swift in Sources */,
 				A0A735E42475679800073C81 /* Config.swift in Sources */,
+				A0A735F524757FA400073C81 /* ProgressMessage.swift in Sources */,
 				A05B73B424755CE600930C40 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +427,11 @@
 			files = (
 				A0A735D0247561F200073C81 /* PacketTunnelProvider.swift in Sources */,
 				A0A735E2247566CD00073C81 /* Config.m in Sources */,
+				A0A735F624757FA400073C81 /* ProgressMessage.swift in Sources */,
+				A0A735EF24756CA200073C81 /* GetCircuitsMessage.swift in Sources */,
+				A0A735F324756D6B00073C81 /* FileManager+Helpers.swift in Sources */,
+				A0A735ED24756CA200073C81 /* Message.swift in Sources */,
+				A0A735EB24756CA200073C81 /* CloseCircuitsMessage.swift in Sources */,
 				A0A735E52475679800073C81 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +635,7 @@
 		};
 		A0A735D7247561F200073C81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC6B77D8E3D9B67DE283B98C /* Pods-TorVPN.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TorVPN/TorVPN.entitlements;
@@ -553,6 +661,7 @@
 		};
 		A0A735D8247561F200073C81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA3E6397C157544CEA3CA28D /* Pods-TorVPN.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TorVPN/TorVPN.entitlements;

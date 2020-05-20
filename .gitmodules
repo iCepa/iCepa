@@ -1,0 +1,3 @@
+[submodule "Tor.framework"]
+	path = Tor.framework
+	url = git@github.com:iCepa/Tor.framework.git

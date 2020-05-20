@@ -5,6 +5,9 @@
       location = "group:iCepa.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Tor.framework/Tor.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
