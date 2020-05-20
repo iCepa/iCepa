@@ -1,0 +1,30 @@
+//
+//  Config.xcconfig
+//  iCepa
+//
+//  Created by Benjamin Erhart on 20.05.20.
+//  Copyright © 2020 Guardian Project. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Avoid accidental checkins:
+// git update-index --skip-worktree Shared/Config.xcconfig
+// git update-index --no-skip-worktree Shared/Config.xcconfig
+
+APP_BUNDLE_ID[config=Debug] =
+EXT_BUNDLE_ID[config=Debug] =
+APP_GROUP[config=Debug] =
+DEVELOPMENT_TEAM[config=Debug] =
+APP_PROVISIONING_PROFILE_SPECIFIER[config=Debug] =
+EXT_PROVISIONING_PROFILE_SPECIFIER[config=Debug] =
+
+APP_BUNDLE_ID[config=Release] = dk.conra.tor
+EXT_BUNDLE_ID[config=Release] = dk.conra.tor.extension
+APP_GROUP[config=Release] = group.dk.conra.tor
+DEVELOPMENT_TEAM[config=Release] =
+APP_PROVISIONING_PROFILE_SPECIFIER[config=Release] =
+EXT_PROVISIONING_PROFILE_SPECIFIER[config=Release] =
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) EXT_BUNDLE_ID="$(EXT_BUNDLE_ID)" APP_GROUP="$(APP_GROUP)"
