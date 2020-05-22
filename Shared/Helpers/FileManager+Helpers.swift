@@ -14,15 +14,27 @@ extension FileManager {
 		return containerURL(forSecurityApplicationGroupIdentifier: Config.groupId)
 	}
 
-	var logfile: URL? {
+	var vpnLogfile: URL? {
 		return groupFolder?.appendingPathComponent("log")
 	}
 
-	var log: String? {
-		if let logfile = logfile {
+    var torLogfile: URL? {
+        return groupFolder?.appendingPathComponent("tor.log")
+    }
+
+	var vpnLog: String? {
+		if let logfile = vpnLogfile {
 			return try? String(contentsOf: logfile)
 		}
 
 		return nil
 	}
+
+    var torLog: String? {
+        if let logfile = torLogfile {
+            return try? String(contentsOf: logfile)
+        }
+
+        return nil
+    }
 }

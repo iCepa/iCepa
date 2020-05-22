@@ -147,17 +147,37 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
             self.log("#startTunnel before dispatch")
 
-            self.controllerQueue.asyncAfter(deadline: .now() + 0.75) {
+            self.controllerQueue.asyncAfter(deadline: .now() + 0.65) {
                 self.log("#startTunnel try to connect to Tor thread=\(String(describing: self.torThread))")
 
-// Use this with a recent Tor.framework to tunnel logs from Tor to the app.
-//                if PacketTunnelProvider.ENABLE_LOGGING {
-//                    TORInstallTorLoggingCallback { (type: OSLogType, message: UnsafePointer<Int8>) in
-//                        if type == .default || type == .error || type == .fault {
-//                            PacketTunnelProvider.log(String(cString: message))
-//                        }
-//                    }
-//                }
+                if PacketTunnelProvider.ENABLE_LOGGING {
+                    TORInstallTorLoggingCallback { (type: OSLogType, message: UnsafePointer<Int8>) in
+                        let header: String
+
+                        switch type {
+//                        case .debug:
+//                            header = "[debug] "
+
+                        case .default:
+                            header = "[default] "
+
+                        case .error:
+                            header = "[error] "
+
+                        case .fault:
+                            header = "[fault] "
+
+                        case .info:
+                            header = "[info] "
+
+                        default:
+                            return
+                        }
+
+                        PacketTunnelProvider.log(header.appending(String(cString: message)),
+                                                 to: PacketTunnelProvider.torLogfile)
+                    }
+                }
 
                 if self.torController == nil {
                     self.torController = TorController(
@@ -299,19 +319,13 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
 
     private func log(_ message: String) {
-        PacketTunnelProvider.log(message)
+        PacketTunnelProvider.log(message, to: PacketTunnelProvider.vpnLogfile)
     }
 
-    private static var logfile: URL? = {
-        let fm = FileManager.default
-
-        if let url = fm.logfile {
-
-            if fm.fileExists(atPath: url.path) {
-                try? fm.removeItem(at: url)
-            }
-
-            fm.createFile(atPath: url.path, contents: nil)
+    private static var vpnLogfile: URL? = {
+        if let url = FileManager.default.vpnLogfile {
+            // Reset log on first write.
+            try? "".write(to: url, atomically: true, encoding: .utf8)
 
             return url
         }
@@ -319,21 +333,30 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         return nil
     }()
 
-    private static func log(_ message: String) {
-        if ENABLE_LOGGING {
-            let msg = message.trimmingCharacters(in: .whitespacesAndNewlines)
+    private static var torLogfile: URL? = {
+        if let url = FileManager.default.torLogfile {
+            // Reset log on first write.
+            try? "".write(to: url, atomically: true, encoding: .utf8)
 
-            NSLog(msg)
-
-            if let data = "\(msg)\n".data(using: .utf8),
-                let url = logfile,
-                let fh = try? FileHandle(forUpdating: url) {
-
-                fh.seekToEndOfFile()
-                fh.write(data)
-                fh.closeFile()
-            }
+            return url
         }
-    }
 
+        return nil
+    }()
+
+    private static func log(_ message: String, to: URL?) {
+        guard ENABLE_LOGGING,
+            let url = to,
+            let data = message.trimmingCharacters(in: .whitespacesAndNewlines).appending("\n").data(using: .utf8),
+            let fh = try? FileHandle(forUpdating: url) else {
+                return
+        }
+
+        defer {
+            fh.closeFile()
+        }
+
+        fh.seekToEndOfFile()
+        fh.write(data)
+    }
 }

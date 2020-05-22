@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private enum Info: Int {
+        case vpnLog = 0
+        case torLog = 1
+        case circuits = 2
+    }
+
     @IBOutlet weak var confStatusLb: UILabel!
     @IBOutlet weak var confBt: UIButton!
     @IBOutlet weak var errorLb: UILabel!
@@ -35,12 +41,8 @@ class ViewController: UIViewController {
         nc.addObserver(self, selector: #selector(updateUi), name: .vpnStatusChanged, object: nil)
         nc.addObserver(self, selector: #selector(updateUi), name: .vpnProgress, object: nil)
 
-        // Reset log.
-        if let logfile = FileManager.default.logfile {
-            try? "".write(to: logfile, atomically: true, encoding: .utf8)
-        }
-
-        updateUi()
+        clear()
+        updateLog(continuous: true)
     }
 
 
@@ -52,6 +54,18 @@ class ViewController: UIViewController {
         }
 
         UIApplication.shared.open(url, options: [:])
+    }
+
+    @IBAction func clear() {
+        if let logfile = FileManager.default.vpnLogfile {
+            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+        }
+
+        if let logfile = FileManager.default.torLogfile {
+            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+        }
+
+        updateUi()
     }
 
     @IBAction func changeConf() {
@@ -81,7 +95,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func switchInfo() {
-        if segmentedControl.selectedSegmentIndex > 0 {
+        if segmentedControl.selectedSegmentIndex == Info.circuits.rawValue {
             logTv.text = ""
 
             VpnManager.shared.getCircuits { [weak self] circuits, error in
@@ -93,8 +107,7 @@ class ViewController: UIViewController {
             }
         }
         else {
-            logTv.text = FileManager.default.log
-            logTv.scrollToBottom()
+            updateLog()
         }
     }
 
@@ -143,9 +156,29 @@ class ViewController: UIViewController {
             sessionBt.isEnabled = false
         }
 
-        if segmentedControl.selectedSegmentIndex <= 0 {
-            logTv.text = FileManager.default.log
-            logTv.scrollToBottom()
+        updateLog()
+    }
+
+    private var running = false
+
+    private func updateLog(continuous: Bool = false) {
+        if !running {
+            running = true
+
+            if segmentedControl.selectedSegmentIndex < Info.circuits.rawValue {
+                logTv.text = segmentedControl.selectedSegmentIndex == Info.torLog.rawValue
+                    ? FileManager.default.torLog
+                    : FileManager.default.vpnLog
+                logTv.scrollToBottom()
+            }
+
+            running = false
+        }
+
+        if continuous {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.updateLog(continuous: true)
+            }
         }
     }
 
