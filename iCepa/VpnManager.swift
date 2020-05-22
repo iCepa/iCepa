@@ -62,7 +62,17 @@ class VpnManager {
         case enabled
     }
 
-    enum Errors: Error {
+    enum Errors: LocalizedError {
+        public var errorDescription: String? {
+            switch self {
+            case .noConfiguration:
+                return NSLocalizedString("No VPN configuration set.", comment: "")
+
+            case .couldNotConnect:
+                return NSLocalizedString("Could not connect.", comment: "")
+            }
+        }
+
         case noConfiguration
         case couldNotConnect
     }
