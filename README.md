@@ -15,6 +15,7 @@ It uses 2 dependencies:
 git clone git@github.com:tladesignz/iCepa.git
 cd iCepa
 git checkout restart
+git submodule update --recursive
 pod install # or `update`
 open iCepa.xcworkspace
 ```
