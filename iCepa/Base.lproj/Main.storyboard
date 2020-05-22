@@ -91,7 +91,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="iCepa" id="zMH-CW-kWH"/>
+                    <navigationItem key="navigationItem" title="iCepa" id="zMH-CW-kWH">
+                        <barButtonItem key="rightBarButtonItem" title="Check" id="fDO-vW-QMh">
+                            <connections>
+                                <action selector="check" destination="BYZ-38-t0r" id="Lev-Yg-6lq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="confBt" destination="EfP-eZ-eNK" id="LDK-9D-yOU"/>
                         <outlet property="confStatusLb" destination="1VZ-5A-rvF" id="uiW-K6-ixS"/>

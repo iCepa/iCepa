@@ -46,6 +46,14 @@ class ViewController: UIViewController {
 
     // MARK: Actions
 
+    @IBAction func check() {
+        guard let url = URL(string: "https://check.torproject.org/") else {
+            return
+        }
+
+        UIApplication.shared.open(url, options: [:])
+    }
+
     @IBAction func changeConf() {
         switch VpnManager.shared.confStatus {
         case .notInstalled:
