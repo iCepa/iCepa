@@ -6,8 +6,8 @@ It's still an experiment and doesn't work, yet.
 
 It uses 2 dependencies:
 
-- Tor.framework, which is directly integrated into the workspace, to ease debugging.
-- OBTun2Socks, which is fetched via CocoaPods.
+- [Tor.framework](https://github.com/iCepa/Tor.framework), which is directly integrated into the workspace, to ease debugging.
+- [OBTun2Socks](https://github.com/tladesignz/OBTun2Socks), which is fetched via CocoaPods.
 
 ## Getting started
 
