@@ -171,57 +171,64 @@ class VpnManager {
         session?.stopTunnel()
     }
 
-    func getCircuits(_ callback: @escaping ((_ circuits: [TorCircuit]) -> Void)) {
-        guard let request = try? NSKeyedArchiver.archivedData(
-            withRootObject: GetCircuitsMessage(), requiringSecureCoding: true) else {
+    func getCircuits(_ callback: @escaping ((_ circuits: [TorCircuit], _ error: Error?) -> Void)) {
+        let request: Data
 
-                print("[\(String(describing: type(of: self)))]#getCircuits error=Could not create request.")
-                return callback([])
+        do {
+            request = try NSKeyedArchiver.archivedData(withRootObject: GetCircuitsMessage(), requiringSecureCoding: true)
+        }
+        catch let error {
+            return callback([], error)
         }
 
         do {
             try session?.sendProviderMessage(request) { response in
-                if let response = response,
-                    let circuits = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(response) as? [TorCircuit] {
 
-                    callback(circuits)
+                guard let response = response else {
+                    return callback([], nil)
                 }
-                else {
-                    print("[\(String(describing: type(of: self)))]#getCircuits error=Could not decode response.")
-                    callback([])
+
+                do {
+                    let circuits = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(response) as? [TorCircuit]
+                    callback(circuits ?? [], nil)
+                }
+                catch let error {
+                    callback([], error)
                 }
             }
         }
         catch let error {
-            print("[\(String(describing: type(of: self)))]#getCircuits error=\(error)")
-            callback([])
+            callback([], error)
         }
     }
 
-    func closeCircuits(_ circuits: [TorCircuit], _ callback: @escaping ((_ success: Bool) -> Void)) {
-        guard let request = try? NSKeyedArchiver.archivedData(
-            withRootObject: CloseCircuitsMessage(circuits), requiringSecureCoding: true) else {
+    func closeCircuits(_ circuits: [TorCircuit], _ callback: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+        let request: Data
 
-                print("[\(String(describing: type(of: self)))]#closeCircuits error=Could not create request.")
-                return callback(false)
+        do {
+            request = try NSKeyedArchiver.archivedData(withRootObject: CloseCircuitsMessage(circuits), requiringSecureCoding: true)
+        }
+        catch let error {
+            return callback(false, error)
         }
 
         do {
             try session?.sendProviderMessage(request) { response in
-                if let response = response,
-                    let success = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(response) as? Bool {
-
-                    callback(success)
+                guard let response = response else {
+                    return callback(false, nil)
                 }
-                else {
-                    print("[\(String(describing: type(of: self)))]#closeCircuits error=Could not decode response.")
-                    callback(false)
+
+                do {
+                    let success = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(response) as? Bool
+                    callback(success ?? false, nil)
+                }
+                catch let error {
+                    callback(false, error)
                 }
             }
         }
         catch let error {
-            print("[\(String(describing: type(of: self)))]#closeCircuits error=\(error)")
-            callback(false)
+            callback(false, error)
         }
     }
 

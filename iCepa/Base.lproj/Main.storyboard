@@ -48,14 +48,37 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NMi-zG-000">
+                                <rect key="frame" x="16" y="152" width="288" height="32"/>
+                                <segments>
+                                    <segment title="VPN Log"/>
+                                    <segment title="Circuits"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchInfo" destination="BYZ-38-t0r" eventType="valueChanged" id="aYe-TB-b1h"/>
+                                </connections>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-Eg-V1S">
+                                <rect key="frame" x="16" y="191" width="288" height="377"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="NMi-zG-000" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="06d-1N-QTA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PlS-Eg-V1S" secondAttribute="trailing" constant="16" id="3C2-Xp-RC0"/>
                             <constraint firstItem="gfg-d4-gTq" firstAttribute="top" secondItem="4dJ-VF-05V" secondAttribute="bottom" constant="16" id="52o-37-S8P"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PoX-1r-5fw" secondAttribute="trailing" constant="16" id="7lA-je-GCG"/>
                             <constraint firstItem="4dJ-VF-05V" firstAttribute="top" secondItem="1VZ-5A-rvF" secondAttribute="bottom" constant="16" id="FON-nG-qb6"/>
+                            <constraint firstItem="PlS-Eg-V1S" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="HpA-zC-mLW"/>
                             <constraint firstItem="1VZ-5A-rvF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MgR-pd-C4s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gfg-d4-gTq" secondAttribute="trailing" constant="16" id="UQx-ij-D9s"/>
+                            <constraint firstItem="NMi-zG-000" firstAttribute="top" secondItem="gfg-d4-gTq" secondAttribute="bottom" constant="8" id="YOj-Xo-R7x"/>
+                            <constraint firstItem="PlS-Eg-V1S" firstAttribute="top" secondItem="NMi-zG-000" secondAttribute="bottom" constant="8" id="aqn-U8-Eae"/>
+                            <constraint firstItem="PlS-Eg-V1S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ciL-0i-PZ0"/>
                             <constraint firstItem="EfP-eZ-eNK" firstAttribute="leading" secondItem="1VZ-5A-rvF" secondAttribute="trailing" constant="8" id="e3R-9H-PsC"/>
                             <constraint firstItem="EfP-eZ-eNK" firstAttribute="centerY" secondItem="1VZ-5A-rvF" secondAttribute="centerY" id="es4-yn-VcN"/>
                             <constraint firstItem="EfP-eZ-eNK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="gyo-ia-KXE"/>
@@ -63,6 +86,7 @@
                             <constraint firstItem="PoX-1r-5fw" firstAttribute="centerY" secondItem="4dJ-VF-05V" secondAttribute="centerY" id="n7V-J4-hnz"/>
                             <constraint firstItem="4dJ-VF-05V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="nD7-0z-pWr"/>
                             <constraint firstItem="PoX-1r-5fw" firstAttribute="leading" secondItem="4dJ-VF-05V" secondAttribute="trailing" constant="8" id="tGa-XN-cFd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NMi-zG-000" secondAttribute="trailing" constant="16" id="uje-xk-mHg"/>
                             <constraint firstItem="gfg-d4-gTq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="zKT-g8-xOW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,6 +96,8 @@
                         <outlet property="confBt" destination="EfP-eZ-eNK" id="LDK-9D-yOU"/>
                         <outlet property="confStatusLb" destination="1VZ-5A-rvF" id="uiW-K6-ixS"/>
                         <outlet property="errorLb" destination="gfg-d4-gTq" id="uf7-wa-j0h"/>
+                        <outlet property="logTv" destination="PlS-Eg-V1S" id="fVW-rB-6pC"/>
+                        <outlet property="segmentedControl" destination="NMi-zG-000" id="v8w-Gi-PYy"/>
                         <outlet property="sessionBt" destination="PoX-1r-5fw" id="Veq-gy-d7b"/>
                         <outlet property="sessionStatusLb" destination="4dJ-VF-05V" id="QMp-zn-U6I"/>
                     </connections>

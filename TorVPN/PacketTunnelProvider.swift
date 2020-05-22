@@ -220,8 +220,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
                         TunnelInterface.setup(with: self.packetFlow)
                         TunnelInterface.startTun2Socks(PacketTunnelProvider.torProxyPort,
-                                                       withUsername: "onionbrowser",
-                                                       andPassword: "onionbrowser");
+                                                       withUsername: "iCepa",
+                                                       andPassword: "iCepa");
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             TunnelInterface.processPackets()

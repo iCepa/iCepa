@@ -15,7 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var errorLb: UILabel!
     @IBOutlet weak var sessionStatusLb: UILabel!
     @IBOutlet weak var sessionBt: UIButton!
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var logTv: UITextView!
+    
     private static let nf: NumberFormatter = {
         let nf = NumberFormatter()
         nf.numberStyle = .percent
@@ -32,6 +34,11 @@ class ViewController: UIViewController {
 
         nc.addObserver(self, selector: #selector(updateUi), name: .vpnStatusChanged, object: nil)
         nc.addObserver(self, selector: #selector(updateUi), name: .vpnProgress, object: nil)
+
+        // Reset log.
+        if let logfile = FileManager.default.logfile {
+            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+        }
 
         updateUi()
     }
@@ -65,6 +72,24 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func switchInfo() {
+        if segmentedControl.selectedSegmentIndex > 0 {
+            logTv.text = ""
+
+            VpnManager.shared.getCircuits { [weak self] circuits, error in
+                if let error = error {
+                    self?.setError(error)
+                }
+
+                self?.logTv.text = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
+            }
+        }
+        else {
+            logTv.text = FileManager.default.log
+            logTv.scrollToBottom()
+        }
+    }
+
 
     // MARK: Observers
 
@@ -83,14 +108,7 @@ class ViewController: UIViewController {
             confBt.setTitle(NSLocalizedString("Disable", comment: ""))
         }
 
-        if let error = VpnManager.shared.error {
-            errorLb.isHidden = false
-            errorLb.text = String(format: NSLocalizedString("Error: %@", comment: ""),
-                                  error.localizedDescription)
-        }
-        else {
-            errorLb.isHidden = true
-        }
+        setError(VpnManager.shared.error)
 
         var progress = ""
 
@@ -115,6 +133,25 @@ class ViewController: UIViewController {
 
         default:
             sessionBt.isEnabled = false
+        }
+
+        if segmentedControl.selectedSegmentIndex <= 0 {
+            logTv.text = FileManager.default.log
+            logTv.scrollToBottom()
+        }
+    }
+
+
+    // MARK: Private Methods
+
+    private func setError(_ error: Error?) {
+        if let error = error {
+            errorLb.isHidden = false
+            errorLb.text = String(format: NSLocalizedString("Error: %@", comment: ""),
+                                  error.localizedDescription)
+        }
+        else {
+            errorLb.isHidden = true
         }
     }
 }
