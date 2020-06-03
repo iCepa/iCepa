@@ -42,6 +42,8 @@
 		A0A736062475851D00073C81 /* Bundle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A736042475851D00073C81 /* Bundle+Helpers.swift */; };
 		A0A73608247587D300073C81 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A73607247587D300073C81 /* UIButton+Helpers.swift */; };
 		A0A73609247587D300073C81 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A73607247587D300073C81 /* UIButton+Helpers.swift */; };
+		A0AFFCF02487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */; };
+		A0AFFCF12487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */; };
 		A5445C28740CC946E8C5C0FA /* Pods_iCepa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C078DF9171B7034766397E7 /* Pods_iCepa.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +131,7 @@
 		A0A73602247584EE00073C81 /* VpnManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VpnManager.swift; sourceTree = "<group>"; };
 		A0A736042475851D00073C81 /* Bundle+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Helpers.swift"; sourceTree = "<group>"; };
 		A0A73607247587D300073C81 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
+		A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEProviderStopReason+Helpers.swift"; sourceTree = "<group>"; };
 		B97A8F56E0F8DD7206C1FA14 /* Pods-iCepa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCepa.debug.xcconfig"; path = "Target Support Files/Pods-iCepa/Pods-iCepa.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3E6397C157544CEA3CA28D /* Pods-TorVPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorVPN.release.xcconfig"; path = "Target Support Files/Pods-TorVPN/Pods-TorVPN.release.xcconfig"; sourceTree = "<group>"; };
 		CB2AC54866A669B1EF53DA4E /* Pods-iCepa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCepa.release.xcconfig"; path = "Target Support Files/Pods-iCepa/Pods-iCepa.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 				A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */,
 				A0A73607247587D300073C81 /* UIButton+Helpers.swift */,
 				A06470172477F7E900311CBE /* UITextView+Helpers.swift */,
+				A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -463,6 +467,7 @@
 				A0A735E42475679800073C81 /* Config.swift in Sources */,
 				A0A735F524757FA400073C81 /* ProgressMessage.swift in Sources */,
 				A05B73B424755CE600930C40 /* AppDelegate.swift in Sources */,
+				A0AFFCF02487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +485,7 @@
 				A0A735ED24756CA200073C81 /* Message.swift in Sources */,
 				A0A735EB24756CA200073C81 /* CloseCircuitsMessage.swift in Sources */,
 				A0A736062475851D00073C81 /* Bundle+Helpers.swift in Sources */,
+				A0AFFCF12487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */,
 				A0A735E52475679800073C81 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,16 +10,18 @@ import NetworkExtension
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
 
+    static let ENABLE_LOGGING = true
+
     private enum Errors: Error {
         case cookieUnreadable
     }
 
-    private static let ENABLE_LOGGING = true
     private static var messageQueue = [Message]()
 
+    private static let localhost = "127.0.0.1"
     private static let torProxyPort: Int32 = 39050
     private static let torControlPort: UInt16 = 39060
-    private static let localhost = "127.0.0.1"
+    private static let dnsPort = 39053
 
     private var hostHandler: ((Data?) -> Void)?
 
@@ -36,7 +38,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             try? FileManager.default.removeItem(at: dataDirectory)
         }
 
-        conf.options = ["DNSPort": "\(PacketTunnelProvider.localhost):53",
+        conf.options = ["DNSPort": "\(PacketTunnelProvider.localhost):\(PacketTunnelProvider.dnsPort)",
                         "AutomapHostsOnResolve": "1",
                         "ClientOnly": "1",
 //                        "HTTPTunnelPort": "\(PacketTunnelProvider.localhost):\(PacketTunnelProvider.torProxyPort)",
@@ -257,6 +259,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+        log("#stopTunnel reason=\(reason)")
+
         TunnelInterface.stop()
 
         torController?.disconnect()
