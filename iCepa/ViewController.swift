@@ -166,10 +166,14 @@ class ViewController: UIViewController {
             running = true
 
             if segmentedControl.selectedSegmentIndex < Info.circuits.rawValue {
-                logTv.text = segmentedControl.selectedSegmentIndex == Info.torLog.rawValue
+                let text = segmentedControl.selectedSegmentIndex == Info.torLog.rawValue
                     ? FileManager.default.torLog
                     : FileManager.default.vpnLog
-                logTv.scrollToBottom()
+
+                if logTv.text != text {
+                    logTv.text = text
+                    logTv.scrollToBottom()
+                }
             }
 
             running = false
