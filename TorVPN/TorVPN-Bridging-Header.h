@@ -4,5 +4,5 @@
 
 #import "Config.h"
 #import <OBTun2Socks/TunnelInterface.h>
-#import <Tun2socks/Tun2socks.h>
+//#import <Tun2socks/Tun2socks.h>
 #import <Tor/Tor.h>
