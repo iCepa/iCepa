@@ -6,7 +6,7 @@
 //  Copyright © 2020 Guardian Project. All rights reserved.
 //
 
-import Foundation
+import NetworkExtension
 
 /**
  Uses another tun2socks implementation written in Go:
