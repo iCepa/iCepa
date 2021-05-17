@@ -21,7 +21,7 @@ class OBT2SPTProvider: BasePTProvider {
 
     override func startTun2Socks() {
         TunnelInterface.setup(with: packetFlow)
-        TunnelInterface.startTun2Socks(Int32(BasePTProvider.torProxyPort),
+        TunnelInterface.startTun2Socks(Int32(TorManager.torProxyPort),
                                        withUsername: "iCepa",
                                        andPassword: "iCepa");
 

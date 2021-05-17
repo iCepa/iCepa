@@ -30,8 +30,8 @@ class OGoT2SPTProvider: BasePTProvider {
     override func startTun2Socks() {
         tunnel = Tun2socksConnectShadowsocksTunnel(
             tunWriter,
-            BasePTProvider.localhost,
-            Int(BasePTProvider.torProxyPort),
+            TorManager.localhost,
+            Int(TorManager.torProxyPort),
             "onion",
             nil,
             false, &error)

@@ -24,8 +24,8 @@ class GoT2SPTProvider: BasePTProvider {
     private lazy var t2sPacketFlow = PacketFlow(packetFlow)
 
     override func startTun2Socks() {
-        Tun2socksStartSocks(t2sPacketFlow, BasePTProvider.localhost,
-                            Int(BasePTProvider.torProxyPort))
+        Tun2socksStartSocks(t2sPacketFlow, TorManager.localhost,
+                            Int(TorManager.torProxyPort))
     }
 
     override func stopTun2Socks() {
