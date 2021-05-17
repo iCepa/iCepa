@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ViewController: UIViewController {
 
@@ -53,7 +54,7 @@ class ViewController: UIViewController {
             return
         }
 
-        UIApplication.shared.open(url, options: [:])
+        present(SFSafariViewController(url: url, configuration: .init()), animated: true)
     }
 
     @IBAction func clear() {
