@@ -21,7 +21,7 @@ class BasePTProvider: NEPacketTunnelProvider {
     static let localhost = "127.0.0.1"
     static let torProxyPort: UInt16 = 39050
     private static let torControlPort: UInt16 = 39060
-    private static let dnsPort = 39053
+    static let dnsPort: Int32 = 39053
 
     private var hostHandler: ((Data?) -> Void)?
 

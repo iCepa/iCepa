@@ -1,3 +1,6 @@
 [submodule "Tor.framework"]
 	path = Tor.framework
 	url = https://github.com/iCepa/Tor.framework.git
+[submodule "tun2tor"]
+	path = tun2tor
+	url = https://github.com/tladesignz/tun2tor
