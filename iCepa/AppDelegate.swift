@@ -14,7 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        if Config.torInApp {
+            TorManager.shared.start { progress in
+                print("Progress: \(progress)")
+            } _: { error in
+                if let error = error {
+                    print("Tor start failed: \(error)")
+                }
+                else {
+                    print("Tor started successfully!")
+                }
+            }
+        }
+
         return true
     }
 }

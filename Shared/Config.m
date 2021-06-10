@@ -21,4 +21,8 @@
     return MACRO_STRING(APP_GROUP);
 }
 
++ (BOOL) torInApp {
+    return NO;
+}
+
 @end

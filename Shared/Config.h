@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (class, nonatomic, assign, readonly, nonnull) NSString *groupId NS_REFINED_FOR_SWIFT;
 
+@property (class, readonly) BOOL torInApp;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -58,14 +58,7 @@ class BasePTProvider: NEPacketTunnelProvider {
                 return completionHandler(error)
             }
 
-            self.log("#startTunnel before start Tor thread")
-
-            TorManager.shared.start(
-                { progress in
-                    BasePTProvider.messageQueue.append(ProgressMessage(Float(progress) / 100))
-                    self.sendMessages()
-                }
-            ) { error in
+            let completion = { (error: Error?) -> Void in
                 if let error = error {
                     return completionHandler(error)
                 }
@@ -75,6 +68,18 @@ class BasePTProvider: NEPacketTunnelProvider {
                 self.log("#startTunnel successful")
 
                 completionHandler(nil)
+            }
+
+            if Config.torInApp {
+                completion(nil)
+            }
+            else {
+                self.log("#startTunnel before start Tor thread")
+
+                TorManager.shared.start({ progress in
+                    BasePTProvider.messageQueue.append(ProgressMessage(Float(progress) / 100))
+                    self.sendMessages()
+                }, completion)
             }
         }
     }

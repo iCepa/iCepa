@@ -38,9 +38,11 @@ class TorManager {
 
         conf.options = ["DNSPort": "\(TorManager.localhost):\(TorManager.dnsPort)",
                         "AutomapHostsOnResolve": "1",
+                        "Log": "notice stdout",
+                        "SafeLogging": "0",
                         "ClientOnly": "1",
 //                        "HTTPTunnelPort": "\(PacketTunnelProvider.localhost):\(PacketTunnelProvider.torProxyPort)",
-                        "SocksPort": "\(TorManager.torProxyPort)",
+                        "SocksPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
                         "ControlPort": "\(TorManager.localhost):\(TorManager.torControlPort)",
                         "AvoidDiskWrites": "1",
                         "MaxMemInQueues": "5MB" /* For reference, no impact seen so far */]
