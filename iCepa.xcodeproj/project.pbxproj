@@ -13,6 +13,26 @@
 		A01F34DF2652D082008F9912 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DE2652D082008F9912 /* Logger.swift */; };
 		A01F34E02652D082008F9912 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DE2652D082008F9912 /* Logger.swift */; };
 		A0534496264C35180077560D /* T2TPTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0534495264C35180077560D /* T2TPTProvider.swift */; };
+		A05399342682293500A19969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05399332682293500A19969 /* AppDelegate.swift */; };
+		A05399362682293500A19969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05399352682293500A19969 /* ViewController.swift */; };
+		A05399382682293700A19969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05399372682293700A19969 /* Assets.xcassets */; };
+		A053993B2682293700A19969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05399392682293700A19969 /* Main.storyboard */; };
+		A0539941268229E800A19969 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E0247566CD00073C81 /* Config.m */; };
+		A0539942268229EB00A19969 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E32475679800073C81 /* Config.swift */; };
+		A0539944268229FB00A19969 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0539943268229FB00A19969 /* Tor.framework */; };
+		A0539945268229FB00A19969 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0539943268229FB00A19969 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A053994726822A8400A19969 /* TorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DB2652C7D6008F9912 /* TorManager.swift */; };
+		A053994826822A9300A19969 /* FileManager+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */; };
+		A053994926822A9C00A19969 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DE2652D082008F9912 /* Logger.swift */; };
+		A053994F26822C4F00A19969 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053994E26822C4F00A19969 /* URL+Helpers.swift */; };
+		A053995026822C4F00A19969 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053994E26822C4F00A19969 /* URL+Helpers.swift */; };
+		A053995126822C4F00A19969 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053994E26822C4F00A19969 /* URL+Helpers.swift */; };
+		A053995326822D8600A19969 /* VpnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A73602247584EE00073C81 /* VpnManager.swift */; };
+		A053995426822DB100A19969 /* ProgressMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F424757FA400073C81 /* ProgressMessage.swift */; };
+		A053995526822DC200A19969 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E824756CA200073C81 /* Message.swift */; };
+		A053995626822DDA00A19969 /* Bundle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A736042475851D00073C81 /* Bundle+Helpers.swift */; };
+		A053995726822DE800A19969 /* GetCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E924756CA200073C81 /* GetCircuitsMessage.swift */; };
+		A053995826822DF800A19969 /* CloseCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E724756CA200073C81 /* CloseCircuitsMessage.swift */; };
 		A05B73B424755CE600930C40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05B73B324755CE600930C40 /* AppDelegate.swift */; };
 		A05B73B824755CE600930C40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05B73B724755CE600930C40 /* ViewController.swift */; };
 		A05B73BB24755CE600930C40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05B73B924755CE600930C40 /* Main.storyboard */; };
@@ -65,6 +85,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A0539946268229FB00A19969 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A0539945268229FB00A19969 /* Tor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A06470132477D66500311CBE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +137,16 @@
 		A01F34DB2652C7D6008F9912 /* TorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorManager.swift; sourceTree = "<group>"; };
 		A01F34DE2652D082008F9912 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A0534495264C35180077560D /* T2TPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T2TPTProvider.swift; sourceTree = "<group>"; };
+		A05399282682252F00A19969 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A05399312682293500A19969 /* iCepa-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iCepa-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A05399332682293500A19969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A05399352682293500A19969 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A05399372682293700A19969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A053993A2682293700A19969 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A053993C2682293700A19969 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A053993D2682293700A19969 /* iCepa_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iCepa_Mac.entitlements; sourceTree = "<group>"; };
+		A0539943268229FB00A19969 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A053994E26822C4F00A19969 /* URL+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
 		A057A06025377D45004B3D18 /* TunWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunWriter.swift; sourceTree = "<group>"; };
 		A05B73B024755CE600930C40 /* iCepa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCepa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05B73B324755CE600930C40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1214,6 +1255,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A053992E2682293500A19969 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0539944268229FB00A19969 /* Tor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A05B73AD24755CE600930C40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1239,11 +1288,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A05399322682293500A19969 /* iCepa-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				A05399332682293500A19969 /* AppDelegate.swift */,
+				A05399352682293500A19969 /* ViewController.swift */,
+				A05399372682293700A19969 /* Assets.xcassets */,
+				A05399392682293700A19969 /* Main.storyboard */,
+				A053993C2682293700A19969 /* Info.plist */,
+				A053993D2682293700A19969 /* iCepa_Mac.entitlements */,
+			);
+			path = "iCepa-Mac";
+			sourceTree = "<group>";
+		};
 		A05B73A724755CE600930C40 = {
 			isa = PBXGroup;
 			children = (
 				A0A735C324755E0C00073C81 /* Build */,
 				A05B73B224755CE600930C40 /* iCepa */,
+				A05399322682293500A19969 /* iCepa-Mac */,
 				A0A735DA2475621400073C81 /* Shared */,
 				A0A735CE247561F200073C81 /* TorVPN */,
 				A0E794A626529D940052E32E /* tun2tor */,
@@ -1258,6 +1321,7 @@
 			children = (
 				A05B73B024755CE600930C40 /* iCepa.app */,
 				A0A735CD247561F200073C81 /* TorVPN.appex */,
+				A05399312682293500A19969 /* iCepa-Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1267,11 +1331,9 @@
 			children = (
 				A05B73B324755CE600930C40 /* AppDelegate.swift */,
 				A05B73B724755CE600930C40 /* ViewController.swift */,
-				A0A73602247584EE00073C81 /* VpnManager.swift */,
 				A05B73BC24755CE700930C40 /* Assets.xcassets */,
 				A05B73B924755CE600930C40 /* Main.storyboard */,
 				A05B73BE24755CE700930C40 /* LaunchScreen.storyboard */,
-				A0A735DD247566CC00073C81 /* iCepa-Bridging-Header.h */,
 				A05B73C124755CE700930C40 /* Info.plist */,
 				A0A735C024755DCB00073C81 /* iCepa.entitlements */,
 			);
@@ -1317,8 +1379,10 @@
 				A0A735DF247566CD00073C81 /* Config.h */,
 				A0A735E0247566CD00073C81 /* Config.m */,
 				A0A735E32475679800073C81 /* Config.swift */,
-				A01F34DB2652C7D6008F9912 /* TorManager.swift */,
 				A01F34DE2652D082008F9912 /* Logger.swift */,
+				A01F34DB2652C7D6008F9912 /* TorManager.swift */,
+				A0A73602247584EE00073C81 /* VpnManager.swift */,
+				A0A735DD247566CC00073C81 /* iCepa-Bridging-Header.h */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1339,9 +1403,10 @@
 			children = (
 				A0A736042475851D00073C81 /* Bundle+Helpers.swift */,
 				A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */,
+				A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */,
 				A0A73607247587D300073C81 /* UIButton+Helpers.swift */,
 				A06470172477F7E900311CBE /* UITextView+Helpers.swift */,
-				A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */,
+				A053994E26822C4F00A19969 /* URL+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -4233,6 +4298,8 @@
 		B492266852BAC9D548C91D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0539943268229FB00A19969 /* Tor.framework */,
+				A05399282682252F00A19969 /* Tor.framework */,
 				A0E79E5526529EC70052E32E /* libtun2tor.a */,
 				A08DA30F252DE0F9006B0DC1 /* Tun2socks.framework */,
 				A064700D2477D54700311CBE /* Tor.framework */,
@@ -4246,6 +4313,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A05399302682293500A19969 /* iCepa-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A053993E2682293700A19969 /* Build configuration list for PBXNativeTarget "iCepa-Mac" */;
+			buildPhases = (
+				A053992D2682293500A19969 /* Sources */,
+				A053992E2682293500A19969 /* Frameworks */,
+				A053992F2682293500A19969 /* Resources */,
+				A0539946268229FB00A19969 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iCepa-Mac";
+			productName = "iCepa-Mac";
+			productReference = A05399312682293500A19969 /* iCepa-Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A05B73AF24755CE600930C40 /* iCepa */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A05B73C424755CE700930C40 /* Build configuration list for PBXNativeTarget "iCepa" */;
@@ -4293,10 +4378,13 @@
 		A05B73A824755CE600930C40 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Guardian Project";
 				TargetAttributes = {
+					A05399302682293500A19969 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					A05B73AF24755CE600930C40 = {
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1140;
@@ -4322,11 +4410,21 @@
 			targets = (
 				A05B73AF24755CE600930C40 /* iCepa */,
 				A0A735CC247561F200073C81 /* TorVPN */,
+				A05399302682293500A19969 /* iCepa-Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A053992F2682293500A19969 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A05399382682293700A19969 /* Assets.xcassets in Resources */,
+				A053993B2682293700A19969 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A05B73AE24755CE600930C40 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4411,6 +4509,27 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A053992D2682293500A19969 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A05399362682293500A19969 /* ViewController.swift in Sources */,
+				A0539942268229EB00A19969 /* Config.swift in Sources */,
+				A053995726822DE800A19969 /* GetCircuitsMessage.swift in Sources */,
+				A053995426822DB100A19969 /* ProgressMessage.swift in Sources */,
+				A053995326822D8600A19969 /* VpnManager.swift in Sources */,
+				A053995826822DF800A19969 /* CloseCircuitsMessage.swift in Sources */,
+				A0539941268229E800A19969 /* Config.m in Sources */,
+				A05399342682293500A19969 /* AppDelegate.swift in Sources */,
+				A053994926822A9C00A19969 /* Logger.swift in Sources */,
+				A053994726822A8400A19969 /* TorManager.swift in Sources */,
+				A053995526822DC200A19969 /* Message.swift in Sources */,
+				A053994826822A9300A19969 /* FileManager+Helpers.swift in Sources */,
+				A053995626822DDA00A19969 /* Bundle+Helpers.swift in Sources */,
+				A053995126822C4F00A19969 /* URL+Helpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A05B73AC24755CE600930C40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4431,6 +4550,7 @@
 				A05B73B424755CE600930C40 /* AppDelegate.swift in Sources */,
 				A0AFFCF02487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */,
 				A01F34DC2652C7D6008F9912 /* TorManager.swift in Sources */,
+				A053994F26822C4F00A19969 /* URL+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4443,6 +4563,7 @@
 				A06470192477F7E900311CBE /* UITextView+Helpers.swift in Sources */,
 				A01F34DD2652C7D6008F9912 /* TorManager.swift in Sources */,
 				A0A735E2247566CD00073C81 /* Config.m in Sources */,
+				A053995026822C4F00A19969 /* URL+Helpers.swift in Sources */,
 				A0A735F624757FA400073C81 /* ProgressMessage.swift in Sources */,
 				A0A735EF24756CA200073C81 /* GetCircuitsMessage.swift in Sources */,
 				A0A735F324756D6B00073C81 /* FileManager+Helpers.swift in Sources */,
@@ -4467,6 +4588,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A05399392682293700A19969 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A053993A2682293700A19969 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		A05B73B924755CE600930C40 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4486,6 +4615,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A053993F2682293700A19969 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iCepa-Mac/iCepa_Mac.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
+				INFOPLIST_FILE = "iCepa-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A05399402682293700A19969 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iCepa-Mac/iCepa_Mac.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
+				INFOPLIST_FILE = "iCepa-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		A05B73C224755CE700930C40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0A735DC2475628F00073C81 /* Config.xcconfig */;
@@ -4627,7 +4804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER)";
-				SWIFT_OBJC_BRIDGING_HEADER = "iCepa/iCepa-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4657,7 +4834,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER)";
-				SWIFT_OBJC_BRIDGING_HEADER = "iCepa/iCepa-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4719,6 +4896,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A053993E2682293700A19969 /* Build configuration list for PBXNativeTarget "iCepa-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A053993F2682293700A19969 /* Debug */,
+				A05399402682293700A19969 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A05B73AB24755CE600930C40 /* Build configuration list for PBXProject "iCepa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

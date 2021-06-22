@@ -6,7 +6,7 @@
 //  Copyright © 2020 Guardian Project. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol Message: NSObject, NSSecureCoding {
 }

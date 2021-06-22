@@ -1,15 +1,14 @@
 //
 //  ViewController.swift
-//  iCepa
+//  iCepa-Mac
 //
-//  Created by Benjamin Erhart on 20.05.20.
-//  Copyright © 2020 Guardian Project. All rights reserved.
+//  Created by Benjamin Erhart on 22.06.21.
+//  Copyright © 2021 Guardian Project. All rights reserved.
 //
 
-import UIKit
-import SafariServices
+import Cocoa
 
-class ViewController: UIViewController {
+class ViewController: NSViewController {
 
     private enum Info: Int {
         case vpnLog = 0
@@ -17,14 +16,14 @@ class ViewController: UIViewController {
         case circuits = 2
     }
 
-    @IBOutlet weak var confStatusLb: UILabel!
-    @IBOutlet weak var confBt: UIButton!
-    @IBOutlet weak var errorLb: UILabel!
-    @IBOutlet weak var sessionStatusLb: UILabel!
-    @IBOutlet weak var sessionBt: UIButton!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var logTv: UITextView!
-    
+    @IBOutlet weak var confStatusLb: NSTextField!
+    @IBOutlet weak var confBt: NSButton!
+    @IBOutlet weak var errorLb: NSTextField!
+    @IBOutlet weak var sessionStatusLb: NSTextField!
+    @IBOutlet weak var sessionBt: NSButton!
+    @IBOutlet weak var segmentedControl: NSSegmentedControl!
+    @IBOutlet weak var logTv: NSTextField!
+
     private static let nf: NumberFormatter = {
         let nf = NumberFormatter()
         nf.numberStyle = .percent
@@ -49,11 +48,11 @@ class ViewController: UIViewController {
 
     // MARK: Actions
 
-    @IBAction func check() {
-        present(SFSafariViewController(url: URL.checkTor, configuration: .init()), animated: true)
+    @IBAction func check(_ sender: Any) {
+        NSWorkspace.shared.open(URL.checkTor)
     }
 
-    @IBAction func clear() {
+    @IBAction func clear(_ sender: Any? = nil) {
         if let logfile = FileManager.default.vpnLogfile {
             try? "".write(to: logfile, atomically: true, encoding: .utf8)
         }
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
         updateUi()
     }
 
-    @IBAction func changeConf() {
+    @IBAction func changeConf(_ sender: Any) {
         switch VpnManager.shared.confStatus {
         case .notInstalled:
             VpnManager.shared.install()
@@ -78,7 +77,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func changeSession() {
+    @IBAction func changeSession(_ sender: Any) {
         switch VpnManager.shared.sessionStatus {
         case .connected, .connecting:
             VpnManager.shared.disconnect()
@@ -91,16 +90,16 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func switchInfo() {
-        if segmentedControl.selectedSegmentIndex == Info.circuits.rawValue {
-            logTv.text = ""
+    @IBAction func switchInfo(_ sender: Any) {
+        if segmentedControl.indexOfSelectedItem == Info.circuits.rawValue {
+            logTv.stringValue = ""
 
             VpnManager.shared.getCircuits { [weak self] circuits, error in
                 if let error = error {
                     self?.setError(error)
                 }
 
-                self?.logTv.text = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
+                self?.logTv.stringValue = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
             }
         }
         else {
@@ -112,18 +111,18 @@ class ViewController: UIViewController {
     // MARK: Observers
 
     @objc func updateUi(_ notification: Notification? = nil) {
-        confStatusLb.text = String(format: NSLocalizedString("VPN Configuration: %@", comment: ""),
+        confStatusLb.stringValue = String(format: NSLocalizedString("VPN Configuration: %@", comment: ""),
                                    VpnManager.shared.confStatus.description)
 
         switch VpnManager.shared.confStatus {
         case .notInstalled:
-            confBt.setTitle(NSLocalizedString("Install", comment: ""))
+            confBt.title = NSLocalizedString("Install", comment: "")
 
         case .disabled:
-            confBt.setTitle(NSLocalizedString("Enable", comment: ""))
+            confBt.title = NSLocalizedString("Enable", comment: "")
 
         case .enabled:
-            confBt.setTitle(NSLocalizedString("Disable", comment: ""))
+            confBt.title = NSLocalizedString("Disable", comment: "")
         }
 
         setError(VpnManager.shared.error)
@@ -137,16 +136,16 @@ class ViewController: UIViewController {
 
         }
 
-        sessionStatusLb.text = String(format: NSLocalizedString("Session: %@", comment: ""),
+        sessionStatusLb.stringValue = String(format: NSLocalizedString("Session: %@", comment: ""),
                                       [VpnManager.shared.sessionStatus.description, progress].joined(separator: " "))
 
         switch VpnManager.shared.sessionStatus {
         case .connected, .connecting:
-            sessionBt.setTitle(NSLocalizedString("Disconnect", comment: ""))
+            sessionBt.title = NSLocalizedString("Disconnect", comment: "")
             sessionBt.isEnabled = true
 
         case .disconnected, .disconnecting:
-            sessionBt.setTitle(NSLocalizedString("Connect", comment: ""))
+            sessionBt.title = NSLocalizedString("Connect", comment: "")
             sessionBt.isEnabled = true
 
         default:
@@ -162,14 +161,14 @@ class ViewController: UIViewController {
         if !running {
             running = true
 
-            if segmentedControl.selectedSegmentIndex < Info.circuits.rawValue {
-                let text = segmentedControl.selectedSegmentIndex == Info.torLog.rawValue
+            if segmentedControl.indexOfSelectedItem < Info.circuits.rawValue {
+                let text = segmentedControl.indexOfSelectedItem == Info.torLog.rawValue
                     ? FileManager.default.torLog
                     : FileManager.default.vpnLog
 
-                if logTv.text != text {
-                    logTv.text = text
-                    logTv.scrollToBottom()
+                if logTv.stringValue != text {
+                    logTv.stringValue = text ?? ""
+//                    logTv.scrollToEndOfDocument(nil)
                 }
             }
 
@@ -189,7 +188,7 @@ class ViewController: UIViewController {
     private func setError(_ error: Error?) {
         if let error = error {
             errorLb.isHidden = false
-            errorLb.text = String(format: NSLocalizedString("Error: %@", comment: ""),
+            errorLb.stringValue = String(format: NSLocalizedString("Error: %@", comment: ""),
                                   error.localizedDescription)
         }
         else {
