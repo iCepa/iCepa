@@ -691,16 +691,12 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <toolbar key="toolbar" implicitIdentifier="553CF43F-6043-4B9D-8CCB-EF2D58325412" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="86j-oL-Chv">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="83A25F3A-D2FD-4FA9-A599-1C1ADD8AD039" label="Clear Log" paletteLabel="Clear Log" tag="-1" image="trash" catalog="system" bordered="YES" id="DBC-by-p2e">
-                                    <size key="minSize" width="27" height="25"/>
-                                    <size key="maxSize" width="27" height="25"/>
+                                <toolbarItem implicitItemIdentifier="83A25F3A-D2FD-4FA9-A599-1C1ADD8AD039" label="Clear Log" paletteLabel="Clear Log" tag="-1" image="trash" catalog="system" bordered="YES" sizingBehavior="auto" id="DBC-by-p2e">
                                     <connections>
                                         <action selector="clear:" target="Oky-zY-oP4" id="FjV-Yt-NCR"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="B461D291-EE55-47FF-8866-52E44EE99797" label="Check" paletteLabel="Check" tag="-1" image="checkmark.icloud" catalog="system" bordered="YES" id="VBy-1x-mGB">
-                                    <size key="minSize" width="30" height="25"/>
-                                    <size key="maxSize" width="30" height="25"/>
+                                <toolbarItem implicitItemIdentifier="B461D291-EE55-47FF-8866-52E44EE99797" label="Check" paletteLabel="Check" tag="-1" image="checkmark.icloud" catalog="system" bordered="YES" sizingBehavior="auto" id="VBy-1x-mGB">
                                     <connections>
                                         <action selector="check:" target="Oky-zY-oP4" id="qeZ-nh-gOf"/>
                                     </connections>
