@@ -23,6 +23,12 @@ class BasePTProvider: NEPacketTunnelProvider {
 
         NSKeyedUnarchiver.setClass(GetCircuitsMessage.self, forClassName:
             "iCepa.\(String(describing: GetCircuitsMessage.self))")
+
+        NSKeyedUnarchiver.setClass(CloseCircuitsMessage.self, forClassName:
+            "iCepa_Mac.\(String(describing: CloseCircuitsMessage.self))")
+
+        NSKeyedUnarchiver.setClass(GetCircuitsMessage.self, forClassName:
+            "iCepa_Mac.\(String(describing: GetCircuitsMessage.self))")
     }
 
 

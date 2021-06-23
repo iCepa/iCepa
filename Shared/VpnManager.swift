@@ -105,6 +105,9 @@ class VpnManager {
         NSKeyedUnarchiver.setClass(ProgressMessage.self, forClassName:
             "TorVPN.\(String(describing: ProgressMessage.self))")
 
+        NSKeyedUnarchiver.setClass(ProgressMessage.self, forClassName:
+            "TorVPN_Mac.\(String(describing: ProgressMessage.self))")
+
         NotificationCenter.default.addObserver(
             self, selector: #selector(statusDidChange),
             name: .NEVPNStatusDidChange, object: nil)
