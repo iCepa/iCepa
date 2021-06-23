@@ -11,9 +11,6 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if Config.torInApp {
             TorManager.shared.start { progress in
@@ -27,12 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+
+        print("Group Folder: \(FileManager.default.groupFolder?.path ?? "nil")")
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        if Config.torInApp {
+            TorManager.shared.stop()
+        }
     }
-
-
 }
-
