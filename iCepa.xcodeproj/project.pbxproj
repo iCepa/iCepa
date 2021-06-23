@@ -70,6 +70,23 @@
 		A0A73609247587D300073C81 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A73607247587D300073C81 /* UIButton+Helpers.swift */; };
 		A0AFFCF02487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */; };
 		A0AFFCF12487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */; };
+		A0E1F1A626834C0400111461 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A735C124755DF700073C81 /* NetworkExtension.framework */; };
+		A0E1F1AE26834C0400111461 /* TorVPN-Mac.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A0E1F1A526834C0400111461 /* TorVPN-Mac.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A0E1F1B326834C3E00111461 /* BasePTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735CF247561F200073C81 /* BasePTProvider.swift */; };
+		A0E1F1B426834C7D00111461 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E824756CA200073C81 /* Message.swift */; };
+		A0E1F1B526834C8200111461 /* CloseCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E724756CA200073C81 /* CloseCircuitsMessage.swift */; };
+		A0E1F1B626834C8900111461 /* GetCircuitsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E924756CA200073C81 /* GetCircuitsMessage.swift */; };
+		A0E1F1B726834C8F00111461 /* TorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DB2652C7D6008F9912 /* TorManager.swift */; };
+		A0E1F1B826834C9B00111461 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E0247566CD00073C81 /* Config.m */; };
+		A0E1F1B926834C9E00111461 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E32475679800073C81 /* Config.swift */; };
+		A0E1F1BA26834CA600111461 /* ProgressMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F424757FA400073C81 /* ProgressMessage.swift */; };
+		A0E1F1BB26834CB200111461 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DE2652D082008F9912 /* Logger.swift */; };
+		A0E1F1BD26834D8B00111461 /* T2TPTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0534495264C35180077560D /* T2TPTProvider.swift */; };
+		A0E1F1BE26834DDD00111461 /* FileManager+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735F124756D6B00073C81 /* FileManager+Helpers.swift */; };
+		A0E1F1C026834E0A00111461 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E1F1BF26834E0A00111461 /* Tor.framework */; };
+		A0E1F1C126834E0A00111461 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0E1F1BF26834E0A00111461 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0E1F1C626834FA200111461 /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E1F1C526834F8100111461 /* libtun2tor.a */; };
+		A0E1F1C8268353C300111461 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E1F1C7268353C300111461 /* NetworkExtension.framework */; };
 		A0E79E572652A2C60052E32E /* libtun2tor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E79E5526529EC70052E32E /* libtun2tor.a */; };
 		A5445C28740CC946E8C5C0FA /* Pods_iCepa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C078DF9171B7034766397E7 /* Pods_iCepa.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +98,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A0A735CC247561F200073C81;
 			remoteInfo = TorVPN;
+		};
+		A0E1F1AC26834C0400111461 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A05B73A824755CE600930C40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0E1F1A426834C0400111461;
+			remoteInfo = "TorVPN-Mac";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -127,6 +151,28 @@
 				A0A735D5247561F200073C81 /* TorVPN.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0E1F1AF26834C0400111461 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A0E1F1AE26834C0400111461 /* TorVPN-Mac.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0E1F1C226834E0A00111461 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A0E1F1C126834E0A00111461 /* Tor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -188,6 +234,13 @@
 		A0A73607247587D300073C81 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
 		A0AFFCEF2487D7CD00F0E221 /* NEProviderStopReason+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEProviderStopReason+Helpers.swift"; sourceTree = "<group>"; };
 		A0DD8CDD252CB794006750DF /* PacketFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketFlow.swift; sourceTree = "<group>"; };
+		A0E1F1A526834C0400111461 /* TorVPN-Mac.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TorVPN-Mac.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0E1F1AA26834C0400111461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0E1F1AB26834C0400111461 /* TorVPN_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TorVPN_Mac.entitlements; sourceTree = "<group>"; };
+		A0E1F1BF26834E0A00111461 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0E1F1C326834EDD00111461 /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtun2tor.a; path = "$(BUILT_PRODUCTS_DIR)/libtun2tor.a"; sourceTree = "<group>"; };
+		A0E1F1C526834F8100111461 /* libtun2tor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtun2tor.a; path = "$(BUILT_PRODUCTS_DIR)/libtun2tor.a"; sourceTree = "<group>"; };
+		A0E1F1C7268353C300111461 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/NetworkExtension.framework; sourceTree = DEVELOPER_DIR; };
 		A0E794A726529D940052E32E /* build-tun2tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-tun2tor.sh"; sourceTree = "<group>"; };
 		A0E794A826529D940052E32E /* Cargo.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cargo.lock; sourceTree = "<group>"; };
 		A0E794AB26529D940052E32E /* UPGRADING */ = {isa = PBXFileReference; lastKnownFileType = text; path = UPGRADING; sourceTree = "<group>"; };
@@ -1260,6 +1313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0539944268229FB00A19969 /* Tor.framework in Frameworks */,
+				A0E1F1C8268353C300111461 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,6 +1339,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0E1F1A226834C0400111461 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0E1F1C026834E0A00111461 /* Tor.framework in Frameworks */,
+				A0E1F1A626834C0400111461 /* NetworkExtension.framework in Frameworks */,
+				A0E1F1C626834FA200111461 /* libtun2tor.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1306,9 +1370,10 @@
 			children = (
 				A0A735C324755E0C00073C81 /* Build */,
 				A05B73B224755CE600930C40 /* iCepa */,
-				A05399322682293500A19969 /* iCepa-Mac */,
-				A0A735DA2475621400073C81 /* Shared */,
 				A0A735CE247561F200073C81 /* TorVPN */,
+				A05399322682293500A19969 /* iCepa-Mac */,
+				A0E1F1A726834C0400111461 /* TorVPN-Mac */,
+				A0A735DA2475621400073C81 /* Shared */,
 				A0E794A626529D940052E32E /* tun2tor */,
 				A05B73B124755CE600930C40 /* Products */,
 				A53EFD1654E1809EC93A8DBC /* Pods */,
@@ -1322,6 +1387,7 @@
 				A05B73B024755CE600930C40 /* iCepa.app */,
 				A0A735CD247561F200073C81 /* TorVPN.appex */,
 				A05399312682293500A19969 /* iCepa-Mac.app */,
+				A0E1F1A526834C0400111461 /* TorVPN-Mac.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1356,14 +1422,11 @@
 		A0A735CE247561F200073C81 /* TorVPN */ = {
 			isa = PBXGroup;
 			children = (
-				A0A735CF247561F200073C81 /* BasePTProvider.swift */,
 				A08DA309252DDC49006B0DC1 /* OBT2SPTProvider.swift */,
 				A08DA307252DDC26006B0DC1 /* GoT2SPTProvider.swift */,
 				A0E9915525375EFA0051AB88 /* OGoT2SPTProvider.swift */,
-				A0534495264C35180077560D /* T2TPTProvider.swift */,
 				A0DD8CDD252CB794006750DF /* PacketFlow.swift */,
 				A057A06025377D45004B3D18 /* TunWriter.swift */,
-				A0A735DE247566CC00073C81 /* TorVPN-Bridging-Header.h */,
 				A0A735D1247561F200073C81 /* Info.plist */,
 				A0A735D2247561F200073C81 /* TorVPN.entitlements */,
 			);
@@ -1373,6 +1436,7 @@
 		A0A735DA2475621400073C81 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A0E1F1BC26834D7300111461 /* Tunnel */,
 				A0A735E624756C8E00073C81 /* Messages */,
 				A0A735F024756D5600073C81 /* Helpers */,
 				A0A735DC2475628F00073C81 /* Config.xcconfig */,
@@ -1383,6 +1447,7 @@
 				A01F34DB2652C7D6008F9912 /* TorManager.swift */,
 				A0A73602247584EE00073C81 /* VpnManager.swift */,
 				A0A735DD247566CC00073C81 /* iCepa-Bridging-Header.h */,
+				A0A735DE247566CC00073C81 /* TorVPN-Bridging-Header.h */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1409,6 +1474,24 @@
 				A053994E26822C4F00A19969 /* URL+Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A0E1F1A726834C0400111461 /* TorVPN-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				A0E1F1AA26834C0400111461 /* Info.plist */,
+				A0E1F1AB26834C0400111461 /* TorVPN_Mac.entitlements */,
+			);
+			path = "TorVPN-Mac";
+			sourceTree = "<group>";
+		};
+		A0E1F1BC26834D7300111461 /* Tunnel */ = {
+			isa = PBXGroup;
+			children = (
+				A0A735CF247561F200073C81 /* BasePTProvider.swift */,
+				A0534495264C35180077560D /* T2TPTProvider.swift */,
+			);
+			path = Tunnel;
 			sourceTree = "<group>";
 		};
 		A0E794A626529D940052E32E /* tun2tor */ = {
@@ -4298,6 +4381,10 @@
 		B492266852BAC9D548C91D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0E1F1C7268353C300111461 /* NetworkExtension.framework */,
+				A0E1F1C326834EDD00111461 /* libtun2tor.a */,
+				A0E1F1C526834F8100111461 /* libtun2tor.a */,
+				A0E1F1BF26834E0A00111461 /* Tor.framework */,
 				A0539943268229FB00A19969 /* Tor.framework */,
 				A05399282682252F00A19969 /* Tor.framework */,
 				A0E79E5526529EC70052E32E /* libtun2tor.a */,
@@ -4321,10 +4408,12 @@
 				A053992E2682293500A19969 /* Frameworks */,
 				A053992F2682293500A19969 /* Resources */,
 				A0539946268229FB00A19969 /* Embed Frameworks */,
+				A0E1F1AF26834C0400111461 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A0E1F1AD26834C0400111461 /* PBXTargetDependency */,
 			);
 			name = "iCepa-Mac";
 			productName = "iCepa-Mac";
@@ -4372,6 +4461,25 @@
 			productReference = A0A735CD247561F200073C81 /* TorVPN.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		A0E1F1A426834C0400111461 /* TorVPN-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0E1F1B226834C0400111461 /* Build configuration list for PBXNativeTarget "TorVPN-Mac" */;
+			buildPhases = (
+				A0E1F1C426834F1E00111461 /* ShellScript */,
+				A0E1F1A126834C0400111461 /* Sources */,
+				A0E1F1A226834C0400111461 /* Frameworks */,
+				A0E1F1A326834C0400111461 /* Resources */,
+				A0E1F1C226834E0A00111461 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TorVPN-Mac";
+			productName = "TorVPN-Mac";
+			productReference = A0E1F1A526834C0400111461 /* TorVPN-Mac.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -4393,6 +4501,9 @@
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1140;
 					};
+					A0E1F1A426834C0400111461 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 				};
 			};
 			buildConfigurationList = A05B73AB24755CE600930C40 /* Build configuration list for PBXProject "iCepa" */;
@@ -4411,6 +4522,7 @@
 				A05B73AF24755CE600930C40 /* iCepa */,
 				A0A735CC247561F200073C81 /* TorVPN */,
 				A05399302682293500A19969 /* iCepa-Mac */,
+				A0E1F1A426834C0400111461 /* TorVPN-Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -4442,6 +4554,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0E1F1A326834C0400111461 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -4466,6 +4585,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A0E1F1C426834F1E00111461 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/tun2tor/build-tun2tor.sh\n";
 		};
 		A0E794A526528ECD0052E32E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4577,6 +4713,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0E1F1A126834C0400111461 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0E1F1B826834C9B00111461 /* Config.m in Sources */,
+				A0E1F1BD26834D8B00111461 /* T2TPTProvider.swift in Sources */,
+				A0E1F1B426834C7D00111461 /* Message.swift in Sources */,
+				A0E1F1B626834C8900111461 /* GetCircuitsMessage.swift in Sources */,
+				A0E1F1BE26834DDD00111461 /* FileManager+Helpers.swift in Sources */,
+				A0E1F1B526834C8200111461 /* CloseCircuitsMessage.swift in Sources */,
+				A0E1F1BB26834CB200111461 /* Logger.swift in Sources */,
+				A0E1F1B926834C9E00111461 /* Config.swift in Sources */,
+				A0E1F1B326834C3E00111461 /* BasePTProvider.swift in Sources */,
+				A0E1F1BA26834CA600111461 /* ProgressMessage.swift in Sources */,
+				A0E1F1B726834C8F00111461 /* TorManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -4584,6 +4738,11 @@
 			isa = PBXTargetDependency;
 			target = A0A735CC247561F200073C81 /* TorVPN */;
 			targetProxy = A0A735D3247561F200073C81 /* PBXContainerItemProxy */;
+		};
+		A0E1F1AD26834C0400111461 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0E1F1A426834C0400111461 /* TorVPN-Mac */;
+			targetProxy = A0E1F1AC26834C0400111461 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4618,6 +4777,7 @@
 		A053993F2682293700A19969 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iCepa-Mac/iCepa_Mac.entitlements";
@@ -4632,7 +4792,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER_MAC)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -4642,6 +4802,7 @@
 		A05399402682293700A19969 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iCepa-Mac/iCepa_Mac.entitlements";
@@ -4656,7 +4817,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER_MAC)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -4860,7 +5021,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROVISIONING_PROFILE_SPECIFIER)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "TorVPN/TorVPN-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/TorVPN-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4887,9 +5048,55 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "TorVPN/TorVPN-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/TorVPN-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A0E1F1B026834C0400111461 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "TorVPN-Mac/TorVPN_Mac.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
+				INFOPLIST_FILE = "TorVPN-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(EXT_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROVISIONING_PROFILE_SPECIFIER_MAC)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/TorVPN-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A0E1F1B126834C0400111461 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "TorVPN-Mac/TorVPN_Mac.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
+				INFOPLIST_FILE = "TorVPN-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(EXT_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROVISIONING_PROFILE_SPECIFIER_MAC)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/TorVPN-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -4928,6 +5135,15 @@
 			buildConfigurations = (
 				A0A735D7247561F200073C81 /* Debug */,
 				A0A735D8247561F200073C81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0E1F1B226834C0400111461 /* Build configuration list for PBXNativeTarget "TorVPN-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0E1F1B026834C0400111461 /* Debug */,
+				A0E1F1B126834C0400111461 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
