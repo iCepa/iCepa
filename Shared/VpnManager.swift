@@ -299,7 +299,7 @@ class VpnManager {
 
                             for message in response {
                                 if let pm = message as? ProgressMessage {
-                                    print("[\(String(describing: type(of: self)))] ProgressMessage=\(pm.progress)")
+                                    NSLog("[\(String(describing: type(of: self)))] ProgressMessage=\(pm.progress)")
 
                                     DispatchQueue.main.async {
                                         NotificationCenter.default.post(name: .vpnProgress, object: pm.progress)
@@ -311,7 +311,7 @@ class VpnManager {
                 }
             }
             catch {
-                print("[\(String(describing: type(of: self)))] "
+                NSLog("[\(String(describing: type(of: self)))] "
                     + "Could not establish communications channel with extension. "
                     + "Error: \(error)")
             }
@@ -321,7 +321,7 @@ class VpnManager {
             }
         }
         else {
-            print("[\(String(describing: type(of: self)))] "
+            NSLog("[\(String(describing: type(of: self)))] "
                 + "Could not establish communications channel with extension. "
                 + "VPN configuration does not exist or is not enabled. "
                 + "No further actions will be taken.")

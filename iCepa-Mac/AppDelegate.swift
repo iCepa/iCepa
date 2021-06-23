@@ -17,13 +17,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if Config.torInApp {
             TorManager.shared.start { progress in
-                print("Progress: \(progress)")
+                NSLog("Progress: \(progress)")
             } _: { error in
                 if let error = error {
-                    print("Tor start failed: \(error)")
+                    NSLog("Tor start failed: \(error)")
                 }
                 else {
-                    print("Tor started successfully!")
+                    NSLog("Tor started successfully!")
                 }
             }
         }
