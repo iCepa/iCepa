@@ -14,7 +14,9 @@ class ViewController: UIViewController {
     private enum Info: Int {
         case vpnLog = 0
         case torLog = 1
-        case circuits = 2
+        case leafLog = 2
+        case leafConf = 3
+        case circuits = 4
     }
 
     @IBOutlet weak var confStatusLb: UILabel!
@@ -58,11 +60,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func clear() {
-        if let logfile = FileManager.default.vpnLogfile {
+        if let logfile = FileManager.default.vpnLogFile {
             try? "".write(to: logfile, atomically: true, encoding: .utf8)
         }
 
-        if let logfile = FileManager.default.torLogfile {
+        if let logfile = FileManager.default.torLogFile {
+            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+        }
+
+        if let logfile = FileManager.default.leafLogFile {
             try? "".write(to: logfile, atomically: true, encoding: .utf8)
         }
 
@@ -167,9 +173,21 @@ class ViewController: UIViewController {
             running = true
 
             if segmentedControl.selectedSegmentIndex < Info.circuits.rawValue {
-                let text = segmentedControl.selectedSegmentIndex == Info.torLog.rawValue
-                    ? FileManager.default.torLog
-                    : FileManager.default.vpnLog
+                let text: String?
+                let idx = segmentedControl.selectedSegmentIndex
+
+                if idx == Info.torLog.rawValue {
+                    text = FileManager.default.torLog
+                }
+                else if idx == Info.vpnLog.rawValue {
+                    text = FileManager.default.vpnLog
+                }
+                else if idx == Info.leafLog.rawValue {
+                    text = FileManager.default.leafLog
+                }
+                else {
+                    text = FileManager.default.leafConf
+                }
 
                 if logTv.text != text {
                     logTv.text = text

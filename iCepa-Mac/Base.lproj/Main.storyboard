@@ -701,10 +701,18 @@
                                         <action selector="check:" target="Oky-zY-oP4" id="qeZ-nh-gOf"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="5D648097-FE69-4C87-8AFC-5797AB299BA6" label="DDG" paletteLabel="DDG" tag="-1" image="network" catalog="system" bordered="YES" id="ynp-JE-7Mq">
+                                    <size key="minSize" width="27" height="25"/>
+                                    <size key="maxSize" width="27" height="25"/>
+                                    <connections>
+                                        <action selector="ddgOnion:" target="Oky-zY-oP4" id="ryy-95-bjc"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="DBC-by-p2e"/>
                                 <toolbarItem reference="VBy-1x-mGB"/>
+                                <toolbarItem reference="ynp-JE-7Mq"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -724,11 +732,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="iCepa_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="542"/>
+                        <rect key="frame" x="0.0" y="0.0" width="503" height="542"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-CA-ZKY">
-                                <rect key="frame" x="18" y="506" width="380" height="16"/>
+                                <rect key="frame" x="18" y="506" width="403" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="VPN Configuration: %@" id="3bR-cD-dcd">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -736,7 +744,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YOG-l5-azP">
-                                <rect key="frame" x="397" y="495" width="70" height="32"/>
+                                <rect key="frame" x="420" y="495" width="70" height="32"/>
                                 <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8nI-BZ-16j">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -746,7 +754,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HQm-wZ-Aab">
-                                <rect key="frame" x="18" y="482" width="364" height="16"/>
+                                <rect key="frame" x="18" y="482" width="387" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Session: %@" id="v0J-xE-EIj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -754,7 +762,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BRT-fv-wdB">
-                                <rect key="frame" x="381" y="473" width="86" height="32"/>
+                                <rect key="frame" x="404" y="473" width="86" height="32"/>
                                 <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zzh-Zq-WQ5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -764,7 +772,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-qg-jSI">
-                                <rect key="frame" x="18" y="458" width="444" height="16"/>
+                                <rect key="frame" x="18" y="458" width="467" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error: %@" id="U8h-Y9-aVP">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -772,13 +780,15 @@
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rs1-7B-aBi">
-                                <rect key="frame" x="18" y="427" width="444" height="24"/>
+                                <rect key="frame" x="18" y="427" width="467" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="1RB-Jy-5Wd">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="VPN Log" width="144"/>
-                                        <segment label="Tor Log" width="144" selected="YES" tag="1"/>
-                                        <segment label="Circuits" width="144"/>
+                                        <segment label="VPN Log" width="88"/>
+                                        <segment label="Tor Log" width="88" selected="YES" tag="1"/>
+                                        <segment label="Leaf Log" width="88"/>
+                                        <segment label="Leaf Conf" width="88"/>
+                                        <segment label="Circuits" width="88"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
@@ -786,7 +796,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hmQ-11-KHY">
-                                <rect key="frame" x="20" y="20" width="440" height="400"/>
+                                <rect key="frame" x="20" y="20" width="463" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="7eQ-mM-als"/>
                                 </constraints>
@@ -837,6 +847,7 @@
     </scenes>
     <resources>
         <image name="checkmark.icloud" catalog="system" width="18" height="14"/>
+        <image name="network" catalog="system" width="15" height="15"/>
         <image name="trash" catalog="system" width="15" height="17"/>
     </resources>
 </document>

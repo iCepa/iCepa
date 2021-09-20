@@ -22,7 +22,7 @@
 }
 
 + (BOOL) torInApp {
-    return NO;
+    return YES;
 }
 
 @end

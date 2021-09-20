@@ -4,3 +4,6 @@
 [submodule "tun2tor"]
 	path = tun2tor
 	url = https://github.com/tladesignz/tun2tor
+[submodule "leaf"]
+	path = leaf
+	url = https://github.com/eycorsican/leaf.git

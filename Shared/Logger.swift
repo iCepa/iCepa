@@ -13,7 +13,7 @@ class Logger {
     static let ENABLE_LOGGING = true
 
     static var vpnLogfile: URL? = {
-        if let url = FileManager.default.vpnLogfile {
+        if let url = FileManager.default.vpnLogFile {
             // Reset log on first write.
             try? "".write(to: url, atomically: true, encoding: .utf8)
 
@@ -24,7 +24,7 @@ class Logger {
     }()
 
     static var torLogfile: URL? = {
-        if let url = FileManager.default.torLogfile {
+        if let url = FileManager.default.torLogFile {
             // Reset log on first write.
             try? "".write(to: url, atomically: true, encoding: .utf8)
 

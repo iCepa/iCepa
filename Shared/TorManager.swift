@@ -19,7 +19,8 @@ class TorManager {
     static let localhost = "127.0.0.1"
 
     static let torProxyPort: UInt16 = 39050
-    static let dnsPort: Int32 = 39053
+    static let dnsPort: UInt16 = 39053
+    static let leafProxyPort: UInt16 = 39080
 
     private static let torControlPort: UInt16 = 39060
 
@@ -41,11 +42,14 @@ class TorManager {
                         "Log": "notice stdout",
                         "SafeLogging": "0",
                         "ClientOnly": "1",
-                        "HTTPTunnelPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
-//                        "SocksPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
+                        "SocksPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
                         "ControlPort": "\(TorManager.localhost):\(TorManager.torControlPort)",
                         "AvoidDiskWrites": "1",
                         "MaxMemInQueues": "5MB" /* For reference, no impact seen so far */]
+
+        if Config.torInApp {
+            conf.options["Socks5Proxy"] = "\(TorManager.localhost):\(TorManager.leafProxyPort)"
+        }
 
         conf.cookieAuthentication = true
         conf.dataDirectory = dataDirectory
@@ -119,8 +123,8 @@ class TorManager {
                     let header: String
 
                     switch type {
-//                        case .debug:
-//                            header = "[debug] "
+//                    case .debug:
+//                        header = "[debug] "
 
                     case .default:
                         header = "[default] "
@@ -131,8 +135,8 @@ class TorManager {
                     case .fault:
                         header = "[fault] "
 
-                    case .info:
-                        header = "[info] "
+//                    case .info:
+//                        header = "[info] "
 
                     default:
                         return

@@ -14,16 +14,28 @@ extension FileManager {
 		return containerURL(forSecurityApplicationGroupIdentifier: Config.groupId)
 	}
 
-	var vpnLogfile: URL? {
+	var vpnLogFile: URL? {
 		return groupFolder?.appendingPathComponent("log")
 	}
 
-    var torLogfile: URL? {
+    var torLogFile: URL? {
         return groupFolder?.appendingPathComponent("tor.log")
     }
 
+    var leafLogFile: URL? {
+        return groupFolder?.appendingPathComponent("leaf.log")
+    }
+
+    var leafConfFile: URL? {
+        return groupFolder?.appendingPathComponent("leaf.conf")
+    }
+
+    var leafConfTemplateFile: URL? {
+        return Bundle.main.url(forResource: "template", withExtension: "conf")
+    }
+
 	var vpnLog: String? {
-		if let logfile = vpnLogfile {
+		if let logfile = vpnLogFile {
 			return try? String(contentsOf: logfile)
 		}
 
@@ -31,8 +43,32 @@ extension FileManager {
 	}
 
     var torLog: String? {
-        if let logfile = torLogfile {
+        if let logfile = torLogFile {
             return try? String(contentsOf: logfile)
+        }
+
+        return nil
+    }
+
+    var leafLog: String? {
+        if let logfile = leafLogFile {
+            return try? String(contentsOf: logfile)
+        }
+
+        return nil
+    }
+
+    var leafConfTemplate: String? {
+        if let templateFile = leafConfTemplateFile {
+            return try? String(contentsOf: templateFile)
+        }
+
+        return nil
+    }
+
+    var leafConf: String? {
+        if let confFile = leafConfFile {
+            return try? String(contentsOf: confFile)
         }
 
         return nil
