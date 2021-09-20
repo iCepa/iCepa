@@ -53,6 +53,10 @@ class ViewController: UIViewController {
         present(SFSafariViewController(url: URL.checkTor, configuration: .init()), animated: true)
     }
 
+    @IBAction func ddgOnion(_ sender: Any) {
+        present(SFSafariViewController(url: URL.ddgOnion, configuration: .init()), animated: true)
+    }
+
     @IBAction func clear() {
         if let logfile = FileManager.default.vpnLogfile {
             try? "".write(to: logfile, atomically: true, encoding: .utf8)

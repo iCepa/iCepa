@@ -11,4 +11,8 @@ import Foundation
 extension URL {
 
     static var checkTor = URL(string: "https://check.torproject.org/")!
+
+    static var ddgOnion = URL(string: "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/")!
+
+    static var fbOnion = URL(string: "https://facebookcorewwwi.onion")!
 }

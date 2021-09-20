@@ -52,6 +52,10 @@ class ViewController: NSViewController {
         NSWorkspace.shared.open(URL.checkTor)
     }
 
+    @IBAction func ddgOnion(_ sender: Any) {
+        NSWorkspace.shared.open(URL.ddgOnion)
+    }
+
     @IBAction func clear(_ sender: Any? = nil) {
         if let logfile = FileManager.default.vpnLogfile {
             try? "".write(to: logfile, atomically: true, encoding: .utf8)
