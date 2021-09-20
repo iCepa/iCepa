@@ -19,7 +19,7 @@ class T2TPTProvider: BasePTProvider {
         }
 
         override func main() {
-            if let fd = packetFlow.value(forKeyPath: "socket.fileDescriptor") as? Int32 {
+            if let fd = tunnelFd {
                 tun2tor_run(fd, TorManager.dnsPort, Int32(TorManager.torProxyPort))
             }
         }
