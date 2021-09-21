@@ -11,7 +11,7 @@ import NetworkExtension
 /**
  Uses a tun2socks implementation written in Go:
 
- https://github.com/eycorsican/go-tun2socks-mobile
+ https://github.com/eycorsican/go-tun2socks
 
  Problems:
  - No working DNS via Tor.
