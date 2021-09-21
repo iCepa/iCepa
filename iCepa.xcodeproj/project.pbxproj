@@ -208,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07635A21F0566CA00EE97A6 /* NetworkExtension.framework in Frameworks */,
 				D095BFF91BBD64970077E38B /* Tor.framework in Frameworks */,
 				A0B6898B1FC468B900A761CF /* NetworkExtension.framework in Frameworks */,
 			);
@@ -227,6 +228,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A07635971F05564A00EE97A6 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A07635981F05566100EE97A6 /* Cartfile */,
+				A076359A1F05567300EE97A6 /* Cartfile.resolved */,
+				A07635901F05552400EE97A6 /* .gitignore */,
+				A07635941F05555000EE97A6 /* .gitmodules */,
+				A07635951F05564300EE97A6 /* BUILD.md */,
+				A076358E1F05551200EE97A6 /* README.md */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		D095BFD21BBD621D0077E38B /* Mac */ = {
 			isa = PBXGroup;
 			children = (
