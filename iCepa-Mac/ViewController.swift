@@ -24,7 +24,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var sessionStatusLb: NSTextField!
     @IBOutlet weak var sessionBt: NSButton!
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
-    @IBOutlet weak var logTv: NSTextField!
+    @IBOutlet weak var logTv: NSTextView!
 
     private static let nf: NumberFormatter = {
         let nf = NumberFormatter()
@@ -102,14 +102,14 @@ class ViewController: NSViewController {
 
     @IBAction func switchInfo(_ sender: Any) {
         if segmentedControl.indexOfSelectedItem == Info.circuits.rawValue {
-            logTv.stringValue = ""
+            logTv.string = ""
 
             VpnManager.shared.getCircuits { [weak self] circuits, error in
                 if let error = error {
                     self?.setError(error)
                 }
 
-                self?.logTv.stringValue = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
+                self?.logTv.string = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
             }
         }
         else {
@@ -188,9 +188,9 @@ class ViewController: NSViewController {
                     text = FileManager.default.leafConf
                 }
 
-                if logTv.stringValue != text {
-                    logTv.stringValue = text ?? ""
-//                    logTv.scrollToEndOfDocument(nil)
+                if logTv.string != text {
+                    logTv.string = text ?? ""
+                    logTv.scrollToEndOfDocument(nil)
                 }
             }
 
