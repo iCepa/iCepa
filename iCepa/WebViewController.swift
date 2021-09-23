@@ -11,23 +11,21 @@ import WebKit
 
 class WebViewController: UIViewController, WKNavigationDelegate {
 
-    @IBOutlet weak var webView: WKWebView! {
-        didSet {
-            webView.navigationDelegate = self
-        }
-    }
+    @IBOutlet weak var webView: WKWebView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ddg()
+        webView?.navigationDelegate = self
+
+        check()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super .viewWillDisappear(animated)
 
-        webView.stopLoading()
-        webView.navigationDelegate = nil
+        webView?.stopLoading()
+        webView?.navigationDelegate = nil
         webView = nil
     }
     
@@ -91,11 +89,11 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     // MARK: Private Methods
 
     private func load(_ url: URL) {
-        webView.stopLoading()
+        webView?.stopLoading()
 
         navigationItem.title = url.host
 
-        webView.load(URLRequest(url: url))
+        webView?.load(URLRequest(url: url))
     }
 
     private func log(_ msg: String) {
