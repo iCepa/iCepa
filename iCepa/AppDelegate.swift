@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private var backgroundTaskId = UIBackgroundTaskIdentifier.invalid
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         if Config.torInApp {
@@ -30,5 +32,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-}
 
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        if Config.torInApp {
+            let app = UIApplication.shared
+
+            // Delay stop of our app as long as possible to keep Tor running.
+
+            backgroundTaskId = app.beginBackgroundTask(expirationHandler: endHandler)
+
+            DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + app.backgroundTimeRemaining - 10) {
+                if self.backgroundTaskId != .invalid {
+                    TorManager.shared.stop()
+                }
+
+                self.endHandler()
+            }
+        }
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        endHandler()
+    }
+
+    private func endHandler() {
+        if backgroundTaskId != .invalid {
+            UIApplication.shared.endBackgroundTask(backgroundTaskId)
+            backgroundTaskId = .invalid
+        }
+    }
+}
