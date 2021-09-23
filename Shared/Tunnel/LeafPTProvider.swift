@@ -30,7 +30,6 @@ class LeafPTProvider: BasePTProvider {
         setenv("LOG_NO_COLOR", "true", 1)
 
         DispatchQueue.global(qos: .userInteractive).async {
-            signal(SIGPIPE, SIG_IGN)
             leaf_run(LeafPTProvider.leafId, file?.path)
         }
     }
