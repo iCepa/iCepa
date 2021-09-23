@@ -26,6 +26,7 @@
 		A0507D0226F9FC2600F91105 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0507D0026F9FC2600F91105 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0507D0526F9FC2C00F91105 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507D0426F9FC2C00F91105 /* Tor.framework */; };
 		A0507D0626F9FC2C00F91105 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0507D0426F9FC2C00F91105 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0507D0926FA303800F91105 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0507D0826FA303800F91105 /* WebViewController.swift */; };
 		A05399342682293500A19969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05399332682293500A19969 /* AppDelegate.swift */; };
 		A05399362682293500A19969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05399352682293500A19969 /* ViewController.swift */; };
 		A05399382682293700A19969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05399372682293700A19969 /* Assets.xcassets */; };
@@ -596,6 +597,7 @@
 		A0507CFC26F9FC1700F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0507D0026F9FC2600F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0507D0426F9FC2C00F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0507D0826FA303800F91105 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A0534495264C35180077560D /* T2TPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T2TPTProvider.swift; sourceTree = "<group>"; };
 		A05399312682293500A19969 /* iCepa-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iCepa-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05399332682293500A19969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1855,6 +1857,7 @@
 			children = (
 				A05B73B324755CE600930C40 /* AppDelegate.swift */,
 				A05B73B724755CE600930C40 /* ViewController.swift */,
+				A0507D0826FA303800F91105 /* WebViewController.swift */,
 				A05B73BC24755CE700930C40 /* Assets.xcassets */,
 				A05B73B924755CE600930C40 /* Main.storyboard */,
 				A05B73BE24755CE700930C40 /* LaunchScreen.storyboard */,
@@ -2259,6 +2262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A735EA24756CA200073C81 /* CloseCircuitsMessage.swift in Sources */,
+				A0507D0926FA303800F91105 /* WebViewController.swift in Sources */,
 				A0A73608247587D300073C81 /* UIButton+Helpers.swift in Sources */,
 				A0A736052475851D00073C81 /* Bundle+Helpers.swift in Sources */,
 				A05B73B824755CE600930C40 /* ViewController.swift in Sources */,

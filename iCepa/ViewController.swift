@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class ViewController: UIViewController {
 
@@ -50,14 +49,6 @@ class ViewController: UIViewController {
 
 
     // MARK: Actions
-
-    @IBAction func check() {
-        present(SFSafariViewController(url: URL.checkTor, configuration: .init()), animated: true)
-    }
-
-    @IBAction func ddgOnion(_ sender: Any) {
-        present(SFSafariViewController(url: URL.ddgOnion, configuration: .init()), animated: true)
-    }
 
     @IBAction func clear() {
         if let logfile = FileManager.default.vpnLogFile {

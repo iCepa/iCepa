@@ -101,18 +101,11 @@
                                 <action selector="clear" destination="BYZ-38-t0r" id="WAN-Wt-zAP"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="DDG" id="p2Q-jC-Rbo">
-                                <connections>
-                                    <action selector="ddgOnion:" destination="BYZ-38-t0r" id="cPM-bF-oOs"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Check" id="fDO-vW-QMh">
-                                <connections>
-                                    <action selector="check" destination="BYZ-38-t0r" id="Lev-Yg-6lq"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="globe" catalog="system" id="fDO-vW-QMh">
+                            <connections>
+                                <segue destination="jYA-dm-nIX" kind="show" id="mmD-sA-ga4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="confBt" destination="EfP-eZ-eNK" id="LDK-9D-yOU"/>
@@ -127,6 +120,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.25" y="137.32394366197184"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="d0t-Hs-yGt">
+            <objects>
+                <viewController id="jYA-dm-nIX" customClass="WebViewController" customModule="iCepa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="otY-Yz-heB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIm-NQ-9Rx">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vhj-78-nuw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uIm-NQ-9Rx" firstAttribute="top" secondItem="Vhj-78-nuw" secondAttribute="top" id="gSH-an-gnb"/>
+                            <constraint firstItem="uIm-NQ-9Rx" firstAttribute="bottom" secondItem="otY-Yz-heB" secondAttribute="bottom" id="tEy-Cu-NSv"/>
+                            <constraint firstItem="uIm-NQ-9Rx" firstAttribute="leading" secondItem="otY-Yz-heB" secondAttribute="leading" id="vUc-dH-eRy"/>
+                            <constraint firstItem="uIm-NQ-9Rx" firstAttribute="trailing" secondItem="otY-Yz-heB" secondAttribute="trailing" id="xpX-HR-hqw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lEy-8P-ie0">
+                        <rightBarButtonItems>
+                            <barButtonItem title="N" id="QfE-ek-aGg">
+                                <connections>
+                                    <action selector="neverSsl" destination="jYA-dm-nIX" id="NRy-ie-Kb0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="F" id="ykQ-ZL-pdu">
+                                <connections>
+                                    <action selector="fb" destination="jYA-dm-nIX" id="imK-fI-SRe"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="D" id="rjP-pl-gnr">
+                                <connections>
+                                    <action selector="ddg" destination="jYA-dm-nIX" id="ukD-od-u6N"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="C" id="GAq-6U-5gc">
+                                <connections>
+                                    <action selector="check" destination="jYA-dm-nIX" id="JC5-jN-S6R"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="uIm-NQ-9Rx" id="nzh-Xc-Sdr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dmh-tq-JIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036.875" y="135.21126760563379"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dcy-1L-Z2H">
@@ -146,6 +197,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="globe" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

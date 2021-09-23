@@ -58,6 +58,14 @@ class ViewController: NSViewController {
         NSWorkspace.shared.open(URL.ddgOnion)
     }
 
+    @IBAction func fbOnion(_ sender: Any) {
+        NSWorkspace.shared.open(URL.fbOnion)
+    }
+
+    @IBAction func neverSsl(_ sender: Any) {
+        NSWorkspace.shared.open(URL.neverSsl)
+    }
+
     @IBAction func clear(_ sender: Any? = nil) {
         if let logfile = FileManager.default.vpnLogFile {
             try? "".write(to: logfile, atomically: true, encoding: .utf8)

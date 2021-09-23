@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -693,19 +694,33 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="83A25F3A-D2FD-4FA9-A599-1C1ADD8AD039" label="Clear Log" paletteLabel="Clear Log" tag="-1" image="trash" catalog="system" bordered="YES" sizingBehavior="auto" id="DBC-by-p2e">
                                     <connections>
-                                        <action selector="clear:" target="Oky-zY-oP4" id="FjV-Yt-NCR"/>
+                                        <action selector="clear:" target="Oky-zY-oP4" id="yGP-4Q-sbA"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="B461D291-EE55-47FF-8866-52E44EE99797" label="Check" paletteLabel="Check" tag="-1" image="checkmark.icloud" catalog="system" bordered="YES" sizingBehavior="auto" id="VBy-1x-mGB">
                                     <connections>
-                                        <action selector="check:" target="Oky-zY-oP4" id="qeZ-nh-gOf"/>
+                                        <action selector="check:" target="Oky-zY-oP4" id="4H1-JJ-1Se"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="5D648097-FE69-4C87-8AFC-5797AB299BA6" label="DDG" paletteLabel="DDG" tag="-1" image="network" catalog="system" bordered="YES" id="ynp-JE-7Mq">
                                     <size key="minSize" width="27" height="25"/>
                                     <size key="maxSize" width="27" height="25"/>
                                     <connections>
-                                        <action selector="ddgOnion:" target="Oky-zY-oP4" id="ryy-95-bjc"/>
+                                        <action selector="ddgOnion:" target="Oky-zY-oP4" id="zur-cQ-ag8"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="09195DB0-29A0-4BFD-B675-77B14E1EE2B4" label="FB" paletteLabel="FB" tag="-1" image="face.smiling" catalog="system" bordered="YES" id="0QT-7i-cic">
+                                    <size key="minSize" width="27" height="25"/>
+                                    <size key="maxSize" width="27" height="25"/>
+                                    <connections>
+                                        <action selector="fbOnion:" target="Oky-zY-oP4" id="Wz7-VG-l0B"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="0416A2A6-29DE-4F6F-BDE2-0FE8B258E283" label="NeverSSL" paletteLabel="NeverSSL" tag="-1" image="NSLockUnlockedTemplate" bordered="YES" id="HJH-iz-3xw">
+                                    <size key="minSize" width="29" height="25"/>
+                                    <size key="maxSize" width="29" height="25"/>
+                                    <connections>
+                                        <action selector="neverSsl:" target="Oky-zY-oP4" id="tyH-xc-jkT"/>
                                     </connections>
                                 </toolbarItem>
                             </allowedToolbarItems>
@@ -713,6 +728,8 @@
                                 <toolbarItem reference="DBC-by-p2e"/>
                                 <toolbarItem reference="VBy-1x-mGB"/>
                                 <toolbarItem reference="ynp-JE-7Mq"/>
+                                <toolbarItem reference="0QT-7i-cic"/>
+                                <toolbarItem reference="HJH-iz-3xw"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -807,7 +824,7 @@
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="448" height="400"/>
-                                            <size key="maxSize" width="455" height="10000000"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
@@ -861,7 +878,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSLockUnlockedTemplate" width="17" height="15"/>
         <image name="checkmark.icloud" catalog="system" width="18" height="14"/>
+        <image name="face.smiling" catalog="system" width="15" height="15"/>
         <image name="network" catalog="system" width="15" height="15"/>
         <image name="trash" catalog="system" width="15" height="17"/>
     </resources>
