@@ -13,6 +13,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if Config.torInApp {
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(handleTor), name: .vpnStatusChanged, object: nil)
+        }
+
+        print("Group Folder: \(FileManager.default.groupFolder?.path ?? "nil")")
+    }
+
+    func applicationWillTerminate(_ aNotification: Notification) {
+        if Config.torInApp {
+            TorManager.shared.stop()
+        }
+    }
+
+    @objc
+    private func handleTor(_ notification: Notification? = nil) {
+        switch VpnManager.shared.sessionStatus {
+        case .connected:
             TorManager.shared.start { progress in
                 NSLog("Progress: \(progress)")
             } _: { error in
@@ -23,14 +40,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     NSLog("Tor started successfully!")
                 }
             }
-        }
 
-        print("Group Folder: \(FileManager.default.groupFolder?.path ?? "nil")")
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        if Config.torInApp {
+        case .disconnecting:
             TorManager.shared.stop()
+
+        default:
+            break
         }
     }
 }

@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (class, readonly) BOOL torInApp;
 
+@property (class, readonly) BOOL useObfs4;
+
 @end
 
 NS_ASSUME_NONNULL_END

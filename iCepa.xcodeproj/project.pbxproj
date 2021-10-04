@@ -615,6 +615,7 @@
 		A05B73BC24755CE700930C40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A05B73BF24755CE700930C40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A05B73C124755CE700930C40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A05FDFCC270B42FC00A3D46E /* iCepa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCepa-Bridging-Header.h"; sourceTree = "<group>"; };
 		A06470172477F7E900311CBE /* UITextView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Helpers.swift"; sourceTree = "<group>"; };
 		A064701A2478170F00311CBE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A064701B24781C5400311CBE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -1819,6 +1820,7 @@
 				A05399352682293500A19969 /* ViewController.swift */,
 				A05399372682293700A19969 /* Assets.xcassets */,
 				A05399392682293700A19969 /* Main.storyboard */,
+				A05FDFCC270B42FC00A3D46E /* iCepa-Bridging-Header.h */,
 				A053993C2682293700A19969 /* Info.plist */,
 				A053993D2682293700A19969 /* iCepa_Mac.entitlements */,
 			);
@@ -1861,6 +1863,7 @@
 				A05B73BC24755CE700930C40 /* Assets.xcassets */,
 				A05B73B924755CE600930C40 /* Main.storyboard */,
 				A05B73BE24755CE700930C40 /* LaunchScreen.storyboard */,
+				A0A735DD247566CC00073C81 /* iCepa-Bridging-Header.h */,
 				A05B73C124755CE700930C40 /* Info.plist */,
 				A0A735C024755DCB00073C81 /* iCepa.entitlements */,
 			);
@@ -1908,7 +1911,6 @@
 				A01F34DE2652D082008F9912 /* Logger.swift */,
 				A01F34DB2652C7D6008F9912 /* TorManager.swift */,
 				A0A73602247584EE00073C81 /* VpnManager.swift */,
-				A0A735DD247566CC00073C81 /* iCepa-Bridging-Header.h */,
 				A0A735DE247566CC00073C81 /* TorVPN-Bridging-Header.h */,
 				A0FD91A226F35FB2002C317C /* template.conf */,
 			);
@@ -2390,7 +2392,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER_MAC)";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "iCepa-Mac/iCepa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -2419,7 +2421,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER_MAC)";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "iCepa-Mac/iCepa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -2569,7 +2571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "iCepa/iCepa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2603,7 +2605,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROVISIONING_PROFILE_SPECIFIER)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Shared/iCepa-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "iCepa/iCepa-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

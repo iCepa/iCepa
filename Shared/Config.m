@@ -25,4 +25,8 @@
     return YES;
 }
 
++ (BOOL) useObfs4 {
+    return YES;
+}
+
 @end
