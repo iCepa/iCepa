@@ -112,12 +112,23 @@ class ViewController: NSViewController {
         if segmentedControl.indexOfSelectedItem == Info.circuits.rawValue {
             logTv.string = ""
 
-            VpnManager.shared.getCircuits { [weak self] circuits, error in
-                if let error = error {
-                    self?.setError(error)
+            let showCircuits = { [weak self] (circuits: [TorCircuit]) -> Void in
+                DispatchQueue.main.async {
+                    self?.logTv.string = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
                 }
+            }
 
-                self?.logTv.string = circuits.map { $0.raw ?? "" }.joined(separator: "\n")
+            if Config.torInApp {
+                TorManager.shared.getCircuits(showCircuits)
+            }
+            else {
+                VpnManager.shared.getCircuits { [weak self] circuits, error in
+                    if let error = error {
+                        self?.setError(error)
+                    }
+
+                    showCircuits(circuits)
+                }
             }
         }
         else {
