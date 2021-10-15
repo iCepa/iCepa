@@ -12,8 +12,10 @@
 		A01F34DD2652C7D6008F9912 /* TorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DB2652C7D6008F9912 /* TorManager.swift */; };
 		A01F34DF2652D082008F9912 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DE2652D082008F9912 /* Logger.swift */; };
 		A01F34E02652D082008F9912 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F34DE2652D082008F9912 /* Logger.swift */; };
+		A023D82B271986FB00A634B7 /* template-ne.conf in Resources */ = {isa = PBXBuildFile; fileRef = A023D82A271983C000A634B7 /* template-ne.conf */; };
+		A023D82C271986FC00A634B7 /* template-ne.conf in Resources */ = {isa = PBXBuildFile; fileRef = A023D82A271983C000A634B7 /* template-ne.conf */; };
 		A04F2A4726F8DA5C00C660B0 /* libleaf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FD91A426F36199002C317C /* libleaf.a */; };
-		A04F2A4826F8E3AA00C660B0 /* template.conf in Resources */ = {isa = PBXBuildFile; fileRef = A0FD91A226F35FB2002C317C /* template.conf */; };
+		A04F2A4826F8E3AA00C660B0 /* template-app.conf in Resources */ = {isa = PBXBuildFile; fileRef = A0FD91A226F35FB2002C317C /* template-app.conf */; };
 		A0507CF326F9FB8200F91105 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF226F9FB8200F91105 /* NetworkExtension.framework */; };
 		A0507CF426F9FB8C00F91105 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF226F9FB8200F91105 /* NetworkExtension.framework */; };
 		A0507CF626F9FB9400F91105 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF526F9FB9400F91105 /* NetworkExtension.framework */; };
@@ -89,7 +91,7 @@
 		A0FD91A126F35E5A002C317C /* LeafPTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD91A026F35E5A002C317C /* LeafPTProvider.swift */; };
 		A0FD91A626F36199002C317C /* libleaf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FD91A426F36199002C317C /* libleaf.a */; };
 		A0FD91A926F368BB002C317C /* LeafPTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD91A026F35E5A002C317C /* LeafPTProvider.swift */; };
-		A0FD91AF26F36A61002C317C /* template.conf in Resources */ = {isa = PBXBuildFile; fileRef = A0FD91A226F35FB2002C317C /* template.conf */; };
+		A0FD91AF26F36A61002C317C /* template-app.conf in Resources */ = {isa = PBXBuildFile; fileRef = A0FD91A226F35FB2002C317C /* template-app.conf */; };
 		A5445C28740CC946E8C5C0FA /* Pods_iCepa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C078DF9171B7034766397E7 /* Pods_iCepa.framework */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +186,7 @@
 		8C078DF9171B7034766397E7 /* Pods_iCepa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCepa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01F34DB2652C7D6008F9912 /* TorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorManager.swift; sourceTree = "<group>"; };
 		A01F34DE2652D082008F9912 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A023D82A271983C000A634B7 /* template-ne.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-ne.conf"; sourceTree = "<group>"; };
 		A04F285926F8D46400C660B0 /* Cross.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cross.toml; sourceTree = "<group>"; };
 		A04F285B26F8D46500C660B0 /* build_cross.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_cross.sh; sourceTree = "<group>"; };
 		A04F285D26F8D46500C660B0 /* Cargo.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cargo.toml; sourceTree = "<group>"; };
@@ -651,7 +654,7 @@
 		A0E1F1AB26834C0400111461 /* TorVPN_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TorVPN_Mac.entitlements; sourceTree = "<group>"; };
 		A0E9915525375EFA0051AB88 /* OGoT2SPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGoT2SPTProvider.swift; sourceTree = "<group>"; };
 		A0FD91A026F35E5A002C317C /* LeafPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeafPTProvider.swift; sourceTree = "<group>"; };
-		A0FD91A226F35FB2002C317C /* template.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = template.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.yaml; };
+		A0FD91A226F35FB2002C317C /* template-app.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "template-app.conf"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.yaml; };
 		A0FD91A426F36199002C317C /* libleaf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libleaf.a; path = "$(BUILT_PRODUCTS_DIR)/libleaf.a"; sourceTree = "<group>"; };
 		A0FD91A526F36199002C317C /* leaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leaf.h; sourceTree = "<group>"; };
 		B97A8F56E0F8DD7206C1FA14 /* Pods-iCepa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCepa.debug.xcconfig"; path = "Target Support Files/Pods-iCepa/Pods-iCepa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1912,7 +1915,8 @@
 				A01F34DB2652C7D6008F9912 /* TorManager.swift */,
 				A0A73602247584EE00073C81 /* VpnManager.swift */,
 				A0A735DE247566CC00073C81 /* TorVPN-Bridging-Header.h */,
-				A0FD91A226F35FB2002C317C /* template.conf */,
+				A0FD91A226F35FB2002C317C /* template-app.conf */,
+				A023D82A271983C000A634B7 /* template-ne.conf */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -2142,7 +2146,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04F2A4826F8E3AA00C660B0 /* template.conf in Resources */,
+				A023D82B271986FB00A634B7 /* template-ne.conf in Resources */,
+				A04F2A4826F8E3AA00C660B0 /* template-app.conf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2150,7 +2155,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0FD91AF26F36A61002C317C /* template.conf in Resources */,
+				A023D82C271986FC00A634B7 /* template-ne.conf in Resources */,
+				A0FD91AF26F36A61002C317C /* template-app.conf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2553,7 +2559,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iCepa/iCepa.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2587,7 +2592,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iCepa/iCepa.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2664,7 +2668,7 @@
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(EXT_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROVISIONING_PROFILE_SPECIFIER)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/TorVPN-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
