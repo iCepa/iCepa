@@ -138,10 +138,20 @@ class VpnManager {
             self?.error = error
 
             if error == nil {
-                self?.manager = manager
-            }
+                // Need to re-load the manager from preferences,
+                // otherwise it will stay invalid and can't be used for
+                // connecting right away.
+                manager.loadFromPreferences { error in
+                    self?.error = error
 
-            self?.postChange()
+                    self?.manager = manager
+
+                    self?.postChange()
+                }
+            }
+            else {
+                self?.postChange()
+            }
         }
     }
 
