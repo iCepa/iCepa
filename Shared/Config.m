@@ -7,6 +7,7 @@
 //
 
 #import "Config.h"
+#import <TargetConditionals.h>
 
 #define MACRO_STRING_(m) #m
 #define MACRO_STRING(m) @MACRO_STRING_(m)
@@ -26,7 +27,13 @@
 }
 
 + (BOOL) useObfs4 {
-    return YES;
+    BOOL useObfs4 = YES;
+
+#if TARGET_OS_OSX
+    useObfs4 = NO;  // Unavailable on macOS.
+#endif
+
+    return useObfs4;
 }
 
 @end

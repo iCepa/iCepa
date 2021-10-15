@@ -49,17 +49,11 @@ class TorManager {
                         "AvoidDiskWrites": "1",
                         "MaxMemInQueues": "5MB" /* For reference, no impact seen so far */]
 
-        var useObfs4 = Config.useObfs4
-
-        #if os(macOS)
-            useObfs4 = false // Unavailable on macOS.
-        #endif
-
-        if Config.torInApp && !useObfs4 {
+        if Config.torInApp && !Config.useObfs4 {
             conf.options["Socks5Proxy"] = "\(TorManager.localhost):\(TorManager.leafProxyPort)"
         }
 
-        if useObfs4 {
+        if Config.useObfs4 {
             conf.options["ClientTransportPlugin"] = "obfs4 socks5 \(TorManager.localhost):\(TorManager.obfs4ProxyPort)"
             conf.options["UseBridges"] = "1"
 
