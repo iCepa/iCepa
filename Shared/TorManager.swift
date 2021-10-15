@@ -41,7 +41,10 @@ class TorManager {
 
         conf.options = ["DNSPort": "\(TorManager.localhost):\(TorManager.dnsPort)",
                         "AutomapHostsOnResolve": "1",
-                        "Log": "notice stdout",
+//                        "VirtualAddrNetworkIPv4": "19.0.0.0/8", // "10.192.0.0/10",
+//                        "VirtualAddrNetworkIPv6": "[FC00::]/7",
+                        "Log": "[~circ,~guard]info stdout",
+                        "LogMessageDomains": "1",
                         "SafeLogging": "0",
                         "ClientOnly": "1",
                         "SocksPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
@@ -82,6 +85,12 @@ class TorManager {
             "--allow-missing-torrc",
             "--ignore-missing-torrc",
         ]
+
+        if Logger.ENABLE_LOGGING,
+           let logfile = Logger.torLogfile?.path
+        {
+            conf.arguments += ["--Log", "[~circ,~guard]info file \(logfile)"]
+        }
 
         return conf
     }()
@@ -141,37 +150,6 @@ class TorManager {
 
         controllerQueue.asyncAfter(deadline: .now() + 0.65) {
             self.log("#startTunnel try to connect to Tor thread=\(String(describing: self.torThread))")
-
-// Disabled - will crash Tor on stop.
-//
-//            if Logger.ENABLE_LOGGING {
-//                TORInstallTorLoggingCallback { (type: OSLogType, message: UnsafePointer<Int8>) in
-//                    let header: String
-//
-//                    switch type {
-////                    case .debug:
-////                        header = "[debug] "
-//
-//                    case .default:
-//                        header = "[default] "
-//
-//                    case .error:
-//                        header = "[error] "
-//
-//                    case .fault:
-//                        header = "[fault] "
-//
-////                    case .info:
-////                        header = "[info] "
-//
-//                    default:
-//                        return
-//                    }
-//
-//                    Logger.log(header.appending(String(cString: message)),
-//                               to: Logger.torLogfile)
-//                }
-//            }
 
             if self.torController == nil {
                 self.torController = TorController(
