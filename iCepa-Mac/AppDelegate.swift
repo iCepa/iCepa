@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func handleTor(_ notification: Notification? = nil) {
         switch VpnManager.shared.sessionStatus {
         case .connected:
-            TorManager.shared.start { progress in
+            TorManager.shared.start(.direct, nil) { progress in
                 NSLog("Progress: \(progress)")
             } _: { error in
                 if let error = error {

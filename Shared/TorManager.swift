@@ -6,8 +6,12 @@
 //  Copyright © 2021 Guardian Project. All rights reserved.
 //
 
-import IPtProxy
 import NetworkExtension
+
+#if os(iOS)
+import IPtProxy
+#endif
+
 
 class TorManager {
 
@@ -207,6 +211,7 @@ class TorManager {
             conf.options["Socks5Proxy"] = "\(TorManager.localhost):\(TorManager.leafProxyPort)"
         }
 
+#if os(iOS)
         if transport == .obfs4 {
             conf.options["ClientTransportPlugin"] = "obfs4 socks5 \(TorManager.localhost):\(port ?? IPtProxyObfs4Port())"
             conf.options["UseBridges"] = "1"
@@ -233,6 +238,7 @@ class TorManager {
             conf.options["UseBridges"] = "1"
             conf.options["Bridge"] = "snowflake 192.0.2.3:1 2B280B23E1107BB62ABFC40DDCC8824814F80A72"
         }
+#endif
 
         conf.cookieAuthentication = true
         conf.dataDirectory = dataDirectory

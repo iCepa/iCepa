@@ -7,7 +7,10 @@
 //
 
 import NetworkExtension
+
+#if os(iOS)
 import IPtProxy
+#endif
 
 class BasePTProvider: NEPacketTunnelProvider {
 
@@ -94,6 +97,7 @@ class BasePTProvider: NEPacketTunnelProvider {
 
                 var port: Int? = nil
 
+#if os(iOS)
                 switch self.transport {
                 case .obfs4:
                     #if DEBUG
@@ -117,6 +121,7 @@ class BasePTProvider: NEPacketTunnelProvider {
                 default:
                     break
                 }
+#endif
 
                 TorManager.shared.start(self.transport, port, { progress in
                     BasePTProvider.messageQueue.append(ProgressMessage(Float(progress) / 100))
@@ -131,6 +136,7 @@ class BasePTProvider: NEPacketTunnelProvider {
 
         TorManager.shared.stop()
 
+#if os(iOS)
         if !Config.torInApp {
             switch transport {
             case .obfs4:
@@ -143,6 +149,7 @@ class BasePTProvider: NEPacketTunnelProvider {
                 break
             }
         }
+#endif
 
         stopTun2Socks()
 
