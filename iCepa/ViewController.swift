@@ -20,10 +20,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var confStatusLb: UILabel!
     @IBOutlet weak var confBt: UIButton!
+    @IBOutlet weak var transportSc: UISegmentedControl!
     @IBOutlet weak var errorLb: UILabel!
     @IBOutlet weak var sessionStatusLb: UILabel!
     @IBOutlet weak var sessionBt: UIButton!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var logSc: UISegmentedControl!
     @IBOutlet weak var logTv: UITextView!
     
     private static let nf: NumberFormatter = {
@@ -79,6 +80,10 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func changeTransport() {
+        VpnManager.shared.switch(to: .init(rawValue: transportSc.selectedSegmentIndex) ?? .direct)
+    }
+
     @IBAction func changeSession() {
         switch VpnManager.shared.sessionStatus {
         case .connected, .connecting:
@@ -93,7 +98,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func switchInfo() {
-        if segmentedControl.selectedSegmentIndex == Info.circuits.rawValue {
+        if logSc.selectedSegmentIndex == Info.circuits.rawValue {
             logTv.text = ""
 
             let showCircuits = { [weak self] (circuits: [TorCircuit]) -> Void in
@@ -138,7 +143,7 @@ class ViewController: UIViewController {
             confBt.setTitle(NSLocalizedString("Disable", comment: ""))
         }
 
-        setError(VpnManager.shared.error)
+        transportSc.selectedSegmentIndex = VpnManager.shared.transport.rawValue
 
         var progress = ""
 
@@ -154,16 +159,21 @@ class ViewController: UIViewController {
 
         switch VpnManager.shared.sessionStatus {
         case .connected, .connecting:
+            transportSc.isEnabled = false
             sessionBt.setTitle(NSLocalizedString("Disconnect", comment: ""))
             sessionBt.isEnabled = true
 
         case .disconnected, .disconnecting:
+            transportSc.isEnabled = true
             sessionBt.setTitle(NSLocalizedString("Connect", comment: ""))
             sessionBt.isEnabled = true
 
         default:
+            transportSc.isEnabled = false
             sessionBt.isEnabled = false
         }
+
+        setError(VpnManager.shared.error)
 
         updateLog()
     }
@@ -174,9 +184,9 @@ class ViewController: UIViewController {
         if !running {
             running = true
 
-            if segmentedControl.selectedSegmentIndex < Info.circuits.rawValue {
+            if logSc.selectedSegmentIndex < Info.circuits.rawValue {
                 let text: String?
-                let idx = segmentedControl.selectedSegmentIndex
+                let idx = logSc.selectedSegmentIndex
 
                 if idx == Info.torLog.rawValue {
                     text = FileManager.default.torLog

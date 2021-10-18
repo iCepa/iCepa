@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkExtension
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -58,7 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func handleTor(_ notification: Notification? = nil) {
         switch VpnManager.shared.sessionStatus {
         case .connected:
-            if Config.useObfs4 {
+            // Snowflake doesn't support a proxy behind itself, so we can
+            // only run that in the extension, not here in the app.
+            // So it's either direct or Obfs4.
+            var transport = NETunnelProviderProtocol.Transport.direct
+            var port: Int? = nil
+
+            if VpnManager.shared.transport == .obfs4 {
                 #if DEBUG
                 let ennableLogging = true
                 #else
@@ -69,24 +76,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     "DEBUG", ennableLogging, true,
                     "socks5://\(TorManager.localhost):\(TorManager.leafProxyPort)")
 
-                TorManager.obfs4ProxyPort = IPtProxyObfs4Port()
+                transport = .obfs4
+                port = IPtProxyObfs4Port()
             }
 
-            TorManager.shared.start { progress in
-                NSLog("Progress: \(progress)")
+            TorManager.shared.start(transport, port) { progress in
+                print("Progress: \(progress)")
             } _: { error in
                 if let error = error {
-                    NSLog("Tor start failed: \(error)")
+                    print("Tor start failed: \(error)")
                 }
                 else {
-                    NSLog("Tor started successfully!")
+                    print("Tor started successfully!")
                 }
             }
 
         case .disconnecting:
             TorManager.shared.stop()
 
-            if Config.useObfs4 {
+            if VpnManager.shared.transport == .obfs4 {
                 IPtProxyStopObfs4Proxy()
             }
 

@@ -7,12 +7,12 @@
 //
 
 import NetworkExtension
+import IPtProxy
 
 class BasePTProvider: NEPacketTunnelProvider {
 
     private static var messageQueue = [Message]()
 
-    private var hostHandler: ((Data?) -> Void)?
 
     var tunnelFd: Int32? {
         var buf = [CChar](repeating: 0, count: Int(IFNAMSIZ))
@@ -26,6 +26,13 @@ class BasePTProvider: NEPacketTunnelProvider {
         }
 
         return packetFlow.value(forKey: "socket.fileDescriptor") as? Int32
+    }
+
+
+    private var hostHandler: ((Data?) -> Void)?
+
+    private var transport: NETunnelProviderProtocol.Transport {
+        return (protocolConfiguration as? NETunnelProviderProtocol)?.transport ?? .direct
     }
 
 
@@ -85,7 +92,33 @@ class BasePTProvider: NEPacketTunnelProvider {
             else {
                 self.log("#startTunnel before start Tor thread")
 
-                TorManager.shared.start({ progress in
+                var port: Int? = nil
+
+                switch self.transport {
+                case .obfs4:
+                    #if DEBUG
+                    let ennableLogging = true
+                    #else
+                    let ennableLogging = false
+                    #endif
+
+                    IPtProxyStartObfs4Proxy("DEBUG", ennableLogging, true, nil)
+
+                    port = IPtProxyObfs4Port()
+
+                case .snowflake:
+                    IPtProxyStartSnowflake(
+                        "stun:stun.l.google.com:19302,stun:stun.voip.blackberry.com:3478,stun:stun.altar.com.pl:3478,stun:stun.antisip.com:3478,stun:stun.bluesip.net:3478,stun:stun.dus.net:3478,stun:stun.epygi.com:3478,stun:stun.sonetel.com:3478,stun:stun.sonetel.net:3478,stun:stun.stunprotocol.org:3478,stun:stun.uls.co.za:3478,stun:stun.voipgate.com:3478,stun:stun.voys.nl:3478",
+                        "https://snowflake-broker.torproject.net.global.prod.fastly.net/",
+                        "cdn.sstatic.net", nil, true, false, true, 1)
+
+                    port = IPtProxySnowflakePort()
+
+                default:
+                    break
+                }
+
+                TorManager.shared.start(self.transport, port, { progress in
                     BasePTProvider.messageQueue.append(ProgressMessage(Float(progress) / 100))
                     self.sendMessages()
                 }, completion)
@@ -96,9 +129,22 @@ class BasePTProvider: NEPacketTunnelProvider {
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         log("#stopTunnel reason=\(reason)")
 
-        stopTun2Socks()
-
         TorManager.shared.stop()
+
+        if !Config.torInApp {
+            switch transport {
+            case .obfs4:
+                IPtProxyStopObfs4Proxy()
+
+            case .snowflake:
+                IPtProxyStopSnowflake()
+
+            default:
+                break
+            }
+        }
+
+        stopTun2Socks()
 
         completionHandler()
     }

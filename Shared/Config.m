@@ -23,17 +23,7 @@
 }
 
 + (BOOL) torInApp {
-    return YES;
-}
-
-+ (BOOL) useObfs4 {
-    BOOL useObfs4 = YES;
-
-#if TARGET_OS_OSX
-    useObfs4 = NO;  // Unavailable on macOS.
-#endif
-
-    return useObfs4;
+    return NO;
 }
 
 @end

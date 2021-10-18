@@ -14,5 +14,6 @@ end
 target 'TorVPN' do
   use_frameworks!
 
+  pod 'IPtProxy', '~> 1.2'
 #  pod 'OBTun2Socks', git: 'https://github.com/tladesignz/OBTun2Socks.git'
 end

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Guardian Project. All rights reserved.
 //
 
-import Foundation
 import NetworkExtension
 
 extension Notification.Name {
@@ -91,6 +90,10 @@ class VpnManager {
         return manager == nil ? .notInstalled : manager!.isEnabled ? .enabled : .disabled
     }
 
+    var transport: NETunnelProviderProtocol.Transport {
+        return manager?.transport ?? .direct
+    }
+
     var sessionStatus: NEVPNStatus {
         if confStatus != .enabled {
             return .invalid
@@ -114,44 +117,67 @@ class VpnManager {
 
         NETunnelProviderManager.loadAllFromPreferences { [weak self] managers, error in
             self?.error = error
-            self?.manager = managers?.first
+            self?.manager = managers?.first(where: { $0.isEnabled }) ?? managers?.first
 
             self?.postChange()
         }
     }
 
+    private var transportIterator: IndexingIterator<[NETunnelProviderProtocol.Transport]>? = nil
+
     func install() {
-        let conf = NETunnelProviderProtocol()
-        conf.providerBundleIdentifier = Config.extBundleId
-        conf.serverAddress = "Tor" // Needs to be set to something, otherwise error.
+        if transportIterator == nil {
+            transportIterator = NETunnelProviderProtocol.Transport.allCases.makeIterator()
+            error = nil
+        }
 
-        let manager = NETunnelProviderManager()
-        manager.protocolConfiguration = conf
-        manager.localizedDescription = Bundle.main.displayName
-        manager.isEnabled = true
+        if error != nil {
+            transportIterator = nil
 
-        // Add a "always connect" rule to avoid leakage after the network
-        // extension got killed.
-        manager.onDemandRules = [NEOnDemandRuleConnect()]
+            postChange()
 
-        manager.saveToPreferences { [weak self] error in
-            self?.error = error
+            return
+        }
 
-            if error == nil {
-                // Need to re-load the manager from preferences,
-                // otherwise it will stay invalid and can't be used for
-                // connecting right away.
-                manager.loadFromPreferences { error in
-                    self?.error = error
+        let transport = transportIterator?.next()
 
-                    self?.manager = manager
+        if let transport = transport {
+            let conf = NETunnelProviderProtocol()
+            conf.providerBundleIdentifier = Config.extBundleId
+            conf.serverAddress = transport.description // Needs to be set to something, otherwise error.
+            conf.transport = transport
 
-                    self?.postChange()
-                }
+            let manager = NETunnelProviderManager()
+            manager.protocolConfiguration = conf
+            manager.localizedDescription = "\(Bundle.main.displayName) (\(transport.description))"
+
+            // Add a "always connect" rule to avoid leakage after the network
+            // extension got killed.
+            manager.onDemandRules = [NEOnDemandRuleConnect()]
+
+            manager.saveToPreferences { [weak self] error in
+                self?.error = error
+
+                // Install next one.
+                self?.install()
             }
-            else {
-                self?.postChange()
+        }
+        else {
+            // Always re-load the manager from preferences.
+            // If we use one of the created ones, it will stay invalid and can't
+            // be used for connecting right away.
+
+            NETunnelProviderManager.loadAllFromPreferences { [weak self] managers, error in
+                self?.error = error
+
+                // After install, we use and enable the direct (no) transport at first.
+                self?.manager = managers?.first(where: { $0.transport == .direct }) ?? managers?.first
+                self?.manager?.isEnabled = true
+
+                self?.save()
             }
+
+            transportIterator = nil
         }
     }
 
@@ -165,6 +191,17 @@ class VpnManager {
         manager?.isEnabled = false
 
         save()
+    }
+
+    func `switch`(to transport: NETunnelProviderProtocol.Transport) {
+        NETunnelProviderManager.loadAllFromPreferences { [weak self] managers, error in
+            self?.error = error
+
+            self?.manager = managers?.first(where: { $0.transport == transport })
+            self?.manager?.isEnabled = true
+
+            self?.save()
+        }
     }
 
     func connect() {
