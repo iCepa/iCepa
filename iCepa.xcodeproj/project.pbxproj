@@ -31,7 +31,6 @@
 		A0507D0926FA303800F91105 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0507D0826FA303800F91105 /* WebViewController.swift */; };
 		A05399342682293500A19969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05399332682293500A19969 /* AppDelegate.swift */; };
 		A05399362682293500A19969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05399352682293500A19969 /* ViewController.swift */; };
-		A05399382682293700A19969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05399372682293700A19969 /* Assets.xcassets */; };
 		A053993B2682293700A19969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05399392682293700A19969 /* Main.storyboard */; };
 		A0539941268229E800A19969 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E0247566CD00073C81 /* Config.m */; };
 		A0539942268229EB00A19969 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E32475679800073C81 /* Config.swift */; };
@@ -54,6 +53,7 @@
 		A05B73C024755CE700930C40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05B73BE24755CE700930C40 /* LaunchScreen.storyboard */; };
 		A06470182477F7E900311CBE /* UITextView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06470172477F7E900311CBE /* UITextView+Helpers.swift */; };
 		A06470192477F7E900311CBE /* UITextView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06470172477F7E900311CBE /* UITextView+Helpers.swift */; };
+		A0956913271F2AC30089BDB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05B73BC24755CE700930C40 /* Assets.xcassets */; };
 		A0A735D0247561F200073C81 /* BasePTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A735CF247561F200073C81 /* BasePTProvider.swift */; };
 		A0A735D5247561F200073C81 /* TorVPN.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A0A735CD247561F200073C81 /* TorVPN.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A0A735E1247566CD00073C81 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A735E0247566CD00073C81 /* Config.m */; };
@@ -613,7 +613,6 @@
 		A05399312682293500A19969 /* iCepa-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iCepa-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05399332682293500A19969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A05399352682293500A19969 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A05399372682293700A19969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A053993A2682293700A19969 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A053993C2682293700A19969 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A053993D2682293700A19969 /* iCepa_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iCepa_Mac.entitlements; sourceTree = "<group>"; };
@@ -1831,7 +1830,6 @@
 			children = (
 				A05399332682293500A19969 /* AppDelegate.swift */,
 				A05399352682293500A19969 /* ViewController.swift */,
-				A05399372682293700A19969 /* Assets.xcassets */,
 				A05399392682293700A19969 /* Main.storyboard */,
 				A05FDFCC270B42FC00A3D46E /* iCepa-Bridging-Header.h */,
 				A053993C2682293700A19969 /* Info.plist */,
@@ -1873,7 +1871,6 @@
 				A05B73B324755CE600930C40 /* AppDelegate.swift */,
 				A05B73B724755CE600930C40 /* ViewController.swift */,
 				A0507D0826FA303800F91105 /* WebViewController.swift */,
-				A05B73BC24755CE700930C40 /* Assets.xcassets */,
 				A05B73B924755CE600930C40 /* Main.storyboard */,
 				A05B73BE24755CE700930C40 /* LaunchScreen.storyboard */,
 				A0A735DD247566CC00073C81 /* iCepa-Bridging-Header.h */,
@@ -1927,6 +1924,7 @@
 				A0A735DE247566CC00073C81 /* TorVPN-Bridging-Header.h */,
 				A0FD91A226F35FB2002C317C /* template-app.conf */,
 				A023D82A271983C000A634B7 /* template-ne.conf */,
+				A05B73BC24755CE700930C40 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -2139,7 +2137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A05399382682293700A19969 /* Assets.xcassets in Resources */,
+				A0956913271F2AC30089BDB6 /* Assets.xcassets in Resources */,
 				A053993B2682293700A19969 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2400,6 +2398,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "iCepa-Mac/iCepa_Mac.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2429,6 +2428,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "iCepa-Mac/iCepa_Mac.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2576,6 +2576,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iCepa/iCepa.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -2609,6 +2610,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iCepa/iCepa.entitlements;
 				CODE_SIGN_STYLE = Manual;
