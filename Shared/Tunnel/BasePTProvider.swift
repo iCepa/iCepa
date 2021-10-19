@@ -62,10 +62,16 @@ class BasePTProvider: NEPacketTunnelProvider {
         let ipv4 = NEIPv4Settings(addresses: ["192.168.20.2"], subnetMasks: ["255.255.255.0"])
         ipv4.includedRoutes = [NEIPv4Route.default()]
 
+        let ipv6 = NEIPv6Settings(addresses: ["FC00::0001"], networkPrefixLengths: [7])
+        ipv6.includedRoutes = [NEIPv6Route.default()]
+
+        let dns = NEDNSSettings(servers: ["1.1.1.1"])
+        dns.matchDomains = [""]
 
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: TorManager.localhost)
         settings.ipv4Settings = ipv4
-        settings.dnsSettings = NEDNSSettings(servers: ["1.1.1.1"])
+        settings.ipv6Settings = ipv6
+        settings.dnsSettings = dns
 
         log("#startTunnel before setTunnelNetworkSettings")
 
