@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Tor
 
 class CloseCircuitsMessage: NSObject, Message {
 

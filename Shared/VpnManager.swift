@@ -7,6 +7,7 @@
 //
 
 import NetworkExtension
+import Tor
 
 extension Notification.Name {
     static let vpnStatusChanged = Notification.Name("vpn-status-changed")
