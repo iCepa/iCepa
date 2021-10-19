@@ -51,6 +51,23 @@ class WebViewController: UIViewController, WKNavigationDelegate {
 
     // MARK: WKNavigationDelegate
 
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences)
+    async -> (WKNavigationActionPolicy, WKWebpagePreferences)
+    {
+        log("#decidePolicyFor: \(navigationAction) preferences: \(preferences)")
+
+        return (.allow, preferences)
+    }
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse)
+    async -> WKNavigationResponsePolicy
+    {
+        log("#decidePolicyForNavigationResponse: \(navigationResponse)")
+
+        return .allow
+    }
+
+
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         log("#didStartProvisionalNavigation")
     }
@@ -60,7 +77,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        log(error.localizedDescription)
+        log("#didFailProvisionalNavigation:withError: \(error)")
     }
 
     @available(iOS 15.0, *)
@@ -82,7 +99,25 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        log(error.localizedDescription)
+        log("#didFail:withError: \(error.localizedDescription)")
+    }
+
+    func webView(_ webView: WKWebView, respondTo challenge: URLAuthenticationChallenge)
+    async -> (URLSession.AuthChallengeDisposition, URLCredential?)
+    {
+        log("#respondTo \(challenge)")
+
+        return (.useCredential, nil)
+    }
+
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        log("#webViewWebContentProcessDidTerminate")
+    }
+
+    func webView(_ webView: WKWebView, shouldAllowDeprecatedTLSFor challenge: URLAuthenticationChallenge) async -> Bool {
+        log("#shouldAllowDeprecatedTLSFor \(challenge)")
+
+        return true
     }
 
 
