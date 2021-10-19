@@ -346,8 +346,7 @@ class VpnManager {
             do {
                 try session?.sendProviderMessage(Data()) { response in
                     if let response = response {
-                        if let response = NSKeyedUnarchiver.unarchiveObject(with: response) as? [Message] {
-
+                        if let response = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(response) as? [Message] {
                             for message in response {
                                 if let pm = message as? ProgressMessage {
                                     NSLog("[\(String(describing: type(of: self)))] ProgressMessage=\(pm.progress)")
