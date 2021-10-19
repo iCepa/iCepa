@@ -188,11 +188,12 @@ class TorManager {
 
         let dataDirectory = FileManager.default.groupFolder?.appendingPathComponent("tor")
 
-        if let dataDirectory = dataDirectory {
-            // Need to clean out, so data doesn't grow too big. Otherwise
-            // we get killed by Jetsam because Tor will use too much memory.
-            try? FileManager.default.removeItem(at: dataDirectory)
-        }
+        // Should not be needed anymore with 50 MB RAM limit.
+//        if let dataDirectory = dataDirectory {
+//            // Need to clean out, so data doesn't grow too big. Otherwise
+//            // we get killed by Jetsam because Tor will use too much memory.
+//            try? FileManager.default.removeItem(at: dataDirectory)
+//        }
 
         conf.options = ["DNSPort": "\(TorManager.localhost):\(TorManager.dnsPort)",
                         "AutomapHostsOnResolve": "1",
