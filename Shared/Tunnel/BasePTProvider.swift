@@ -66,7 +66,10 @@ class BasePTProvider: NEPacketTunnelProvider {
         ipv6.includedRoutes = [NEIPv6Route.default()]
 
         let dns = NEDNSSettings(servers: ["1.1.1.1"])
-        dns.matchDomains = [""]
+        // https://developer.apple.com/forums/thread/116033
+        // Mention special Tor domains here, so the OS doesn't drop onion domain
+        // resolve requests immediately.
+        dns.matchDomains = ["", "onion", "exit"]
 
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: TorManager.localhost)
         settings.ipv4Settings = ipv4

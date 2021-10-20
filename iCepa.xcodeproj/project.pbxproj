@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,10 +20,6 @@
 		A0507CF426F9FB8C00F91105 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF226F9FB8200F91105 /* NetworkExtension.framework */; };
 		A0507CF626F9FB9400F91105 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF526F9FB9400F91105 /* NetworkExtension.framework */; };
 		A0507CF726F9FB9B00F91105 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF526F9FB9400F91105 /* NetworkExtension.framework */; };
-		A0507CF926F9FC0F00F91105 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF826F9FC0F00F91105 /* Tor.framework */; };
-		A0507CFA26F9FC0F00F91105 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CF826F9FC0F00F91105 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A0507CFD26F9FC1700F91105 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CFC26F9FC1700F91105 /* Tor.framework */; };
-		A0507CFE26F9FC1700F91105 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0507CFC26F9FC1700F91105 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0507D0126F9FC2600F91105 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507D0026F9FC2600F91105 /* Tor.framework */; };
 		A0507D0226F9FC2600F91105 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0507D0026F9FC2600F91105 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0507D0526F9FC2C00F91105 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0507D0426F9FC2C00F91105 /* Tor.framework */; };
@@ -121,28 +117,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A0507CFB26F9FC0F00F91105 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A0507CFA26F9FC0F00F91105 /* Tor.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0507CFF26F9FC1700F91105 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A0507CFE26F9FC1700F91105 /* Tor.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A0507D0326F9FC2600F91105 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -604,8 +578,6 @@
 		A04F2A4626F8D4F500C660B0 /* build-leaf.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-leaf.sh"; sourceTree = "<group>"; };
 		A0507CF226F9FB8200F91105 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A0507CF526F9FB9400F91105 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/NetworkExtension.framework; sourceTree = DEVELOPER_DIR; };
-		A0507CF826F9FC0F00F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0507CFC26F9FC1700F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0507D0026F9FC2600F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0507D0426F9FC2C00F91105 /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0507D0826FA303800F91105 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -686,7 +658,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0507CF926F9FC0F00F91105 /* Tor.framework in Frameworks */,
 				A5445C28740CC946E8C5C0FA /* Pods_iCepa.framework in Frameworks */,
 				A0507CF326F9FB8200F91105 /* NetworkExtension.framework in Frameworks */,
 			);
@@ -698,7 +669,6 @@
 			files = (
 				A0FD91A626F36199002C317C /* libleaf.a in Frameworks */,
 				A0507CF426F9FB8C00F91105 /* NetworkExtension.framework in Frameworks */,
-				A0507CFD26F9FC1700F91105 /* Tor.framework in Frameworks */,
 				31E151BC94D5763DF8D173E8 /* Pods_TorVPN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1990,8 +1960,6 @@
 			children = (
 				A0507D0426F9FC2C00F91105 /* Tor.framework */,
 				A0507D0026F9FC2600F91105 /* Tor.framework */,
-				A0507CFC26F9FC1700F91105 /* Tor.framework */,
-				A0507CF826F9FC0F00F91105 /* Tor.framework */,
 				A0507CF226F9FB8200F91105 /* NetworkExtension.framework */,
 				A0507CF526F9FB9400F91105 /* NetworkExtension.framework */,
 				A0FD91A526F36199002C317C /* leaf.h */,
@@ -2034,7 +2002,7 @@
 				A05B73AD24755CE600930C40 /* Frameworks */,
 				A05B73AE24755CE600930C40 /* Resources */,
 				A0A735D9247561F200073C81 /* Embed App Extensions */,
-				A0507CFB26F9FC0F00F91105 /* Embed Frameworks */,
+				B524C267862216AAE38C39C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2055,7 +2023,6 @@
 				A0A735C9247561F200073C81 /* Sources */,
 				A0A735CA247561F200073C81 /* Frameworks */,
 				A0A735CB247561F200073C81 /* Resources */,
-				A0507CFF26F9FC1700F91105 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2228,6 +2195,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PROJECT_DIR}/build-leaf.sh\n";
+		};
+		B524C267862216AAE38C39C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iCepa/Pods-iCepa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iCepa/Pods-iCepa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iCepa/Pods-iCepa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		E106A27B8D0B93AAA622196B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2580,6 +2564,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iCepa/iCepa.entitlements;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2614,6 +2599,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iCepa/iCepa.entitlements;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2644,6 +2630,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TorVPN/TorVPN.entitlements;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				INFOPLIST_FILE = TorVPN/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -2675,6 +2662,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TorVPN/TorVPN.entitlements;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				INFOPLIST_FILE = TorVPN/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
