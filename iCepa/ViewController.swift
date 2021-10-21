@@ -53,15 +53,15 @@ class ViewController: UIViewController {
 
     @IBAction func clear() {
         if let logfile = FileManager.default.vpnLogFile {
-            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+            try? "".write(to: logfile, atomically: false, encoding: .utf8)
         }
 
         if let logfile = FileManager.default.torLogFile {
-            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+            try? "".write(to: logfile, atomically: false, encoding: .utf8)
         }
 
         if let logfile = FileManager.default.leafLogFile {
-            try? "".write(to: logfile, atomically: true, encoding: .utf8)
+            try? "".write(to: logfile, atomically: false, encoding: .utf8)
         }
 
         updateUi()
