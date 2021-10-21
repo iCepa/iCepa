@@ -709,7 +709,7 @@
                                         <action selector="ddgOnion:" target="Oky-zY-oP4" id="zur-cQ-ag8"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="09195DB0-29A0-4BFD-B675-77B14E1EE2B4" label="FB" paletteLabel="FB" tag="-1" image="face.smiling" catalog="system" bordered="YES" id="0QT-7i-cic">
+                                <toolbarItem implicitItemIdentifier="09195DB0-29A0-4BFD-B675-77B14E1EE2B4" label="FP" paletteLabel="FP" tag="-1" image="newspaper" catalog="system" bordered="YES" id="0QT-7i-cic">
                                     <size key="minSize" width="27" height="25"/>
                                     <size key="maxSize" width="27" height="25"/>
                                     <connections>
@@ -880,8 +880,8 @@
     <resources>
         <image name="NSLockUnlockedTemplate" width="17" height="15"/>
         <image name="checkmark.icloud" catalog="system" width="18" height="14"/>
-        <image name="face.smiling" catalog="system" width="15" height="15"/>
         <image name="network" catalog="system" width="15" height="15"/>
+        <image name="newspaper" catalog="system" width="18" height="16"/>
         <image name="trash" catalog="system" width="15" height="17"/>
     </resources>
 </document>
