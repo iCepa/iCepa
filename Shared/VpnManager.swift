@@ -140,7 +140,14 @@ class VpnManager {
             return
         }
 
-        let transport = transportIterator?.next()
+        var transport = transportIterator?.next()
+
+        #if os(macOS)
+        // Don't install Obfs4 and Snowflake profiles: both are unavailable on MacOS.
+        while transport == .obfs4 || transport == .snowflake {
+            transport = transportIterator?.next()
+        }
+        #endif
 
         if let transport = transport {
             let conf = NETunnelProviderProtocol()
