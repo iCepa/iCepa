@@ -628,7 +628,7 @@
 		A05FDFCC270B42FC00A3D46E /* iCepa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCepa-Bridging-Header.h"; sourceTree = "<group>"; };
 		A06470172477F7E900311CBE /* UITextView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Helpers.swift"; sourceTree = "<group>"; };
 		A064701A2478170F00311CBE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A064701B24781C5400311CBE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		A064701B24781C5400311CBE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A08DA307252DDC26006B0DC1 /* GoT2SPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoT2SPTProvider.swift; sourceTree = "<group>"; };
 		A08DA309252DDC49006B0DC1 /* OBT2SPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBT2SPTProvider.swift; sourceTree = "<group>"; };
 		A0A735C024755DCB00073C81 /* iCepa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iCepa.entitlements; sourceTree = "<group>"; };
@@ -1888,7 +1888,7 @@
 				A0A735C524755E2100073C81 /* Podfile */,
 				A0A735C424755E2100073C81 /* Podfile.lock */,
 				A064701A2478170F00311CBE /* README.md */,
-				A064701B24781C5400311CBE /* LICENSE.txt */,
+				A064701B24781C5400311CBE /* LICENSE */,
 				A04F2A4626F8D4F500C660B0 /* build-leaf.sh */,
 			);
 			name = Build;
