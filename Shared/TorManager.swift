@@ -195,18 +195,28 @@ class TorManager {
 //            try? FileManager.default.removeItem(at: dataDirectory)
 //        }
 
-        conf.options = ["DNSPort": "\(TorManager.localhost):\(TorManager.dnsPort)",
-                        "AutomapHostsOnResolve": "1",
-//                        "VirtualAddrNetworkIPv4": "19.0.0.0/8", // "10.192.0.0/10",
-//                        "VirtualAddrNetworkIPv6": "[FC00::]/7",
-                        "Log": "[~circ,~guard]info stdout",
-                        "LogMessageDomains": "1",
-                        "SafeLogging": "0",
-                        "ClientOnly": "1",
-                        "SocksPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
-                        "ControlPort": "\(TorManager.localhost):\(TorManager.torControlPort)",
-                        "AvoidDiskWrites": "1",
-                        "MaxMemInQueues": "5MB" /* For reference, no impact seen so far */]
+        conf.options = [
+            // DNS
+            "DNSPort": "\(TorManager.localhost):\(TorManager.dnsPort)",
+            "AutomapHostsOnResolve": "1",
+            // By default, localhost resp. link-local addresses will be returned by Tor.
+            // That seems to not get accepted by iOS. Use private network addresses instead.
+            "VirtualAddrNetworkIPv4": "10.192.0.0/10",
+            "VirtualAddrNetworkIPv6": "[FC00::]/7",
+
+            // Log
+            "Log": "[~circ,~guard]info stdout",
+            "LogMessageDomains": "1",
+            "SafeLogging": "0",
+
+            // Ports
+            "SocksPort": "\(TorManager.localhost):\(TorManager.torProxyPort)",
+            "ControlPort": "\(TorManager.localhost):\(TorManager.torControlPort)",
+
+            // Miscelaneous
+            "ClientOnly": "1",
+            "AvoidDiskWrites": "1",
+            "MaxMemInQueues": "5MB"]
 
         if Config.torInApp && transport == .direct {
             conf.options["Socks5Proxy"] = "\(TorManager.localhost):\(TorManager.leafProxyPort)"
